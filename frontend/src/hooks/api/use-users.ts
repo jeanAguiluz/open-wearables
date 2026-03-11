@@ -40,11 +40,11 @@ export function useCreateUser() {
         queryKey: queryKeys.dashboard.stats(),
         refetchType: 'active',
       });
-      toast.success('User created successfully');
+      toast.success('Usuario creado correctamente');
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Failed to create user';
+        error instanceof Error ? error.message : 'No se pudo crear el usuario';
       toast.error(message);
     },
   });
@@ -93,7 +93,7 @@ export function useUpdateUser() {
       // Update cache with server response
       queryClient.setQueryData(queryKeys.users.detail(id), updatedUser);
       queryClient.invalidateQueries({ queryKey: queryKeys.users.lists() });
-      toast.success('User updated successfully');
+      toast.success('Usuario actualizado correctamente');
     },
     onError: (error: unknown, { id }, context) => {
       // Rollback on error
@@ -104,7 +104,7 @@ export function useUpdateUser() {
         );
       }
       const message =
-        error instanceof Error ? error.message : 'Failed to update user';
+        error instanceof Error ? error.message : 'No se pudo actualizar el usuario';
       toast.error(message);
     },
   });
@@ -122,11 +122,11 @@ export function useDeleteUser() {
         queryKey: queryKeys.dashboard.stats(),
         refetchType: 'active',
       });
-      toast.success('User deleted successfully');
+      toast.success('Usuario eliminado correctamente');
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Failed to delete user';
+        error instanceof Error ? error.message : 'No se pudo eliminar el usuario';
       toast.error(message);
     },
   });
@@ -136,13 +136,13 @@ export function useGenerateInvitationCode() {
   return useMutation({
     mutationFn: (userId: string) => usersService.generateInvitationCode(userId),
     onSuccess: () => {
-      toast.success('Invitation code generated successfully');
+      toast.success('Código de invitación generado correctamente');
     },
     onError: (error: unknown) => {
       const message =
         error instanceof Error
           ? error.message
-          : 'Failed to generate invitation code';
+          : 'No se pudo generar el código de invitación';
       toast.error(message);
     },
   });
@@ -163,11 +163,11 @@ export function useUploadAppleXml() {
         queryKey: queryKeys.health.all,
         refetchType: 'active',
       });
-      toast.success('XML file uploaded successfully');
+      toast.success('Archivo XML subido correctamente');
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Failed to upload XML file';
+        error instanceof Error ? error.message : 'No se pudo subir el archivo XML';
       toast.error(message);
     },
   });
@@ -203,14 +203,14 @@ export function useUploadAppleXmlViaS3() {
         refetchType: 'active',
       });
       toast.success(
-        'XML file uploaded to S3 successfully. Processing will begin shortly.'
+        'El archivo XML se subió correctamente a S3. El procesamiento comenzará en breve.'
       );
     },
     onError: (error: unknown) => {
       const message =
         error instanceof Error
           ? error.message
-          : 'Failed to upload XML file to S3';
+          : 'No se pudo subir el archivo XML a S3';
       toast.error(message);
     },
   });
@@ -248,9 +248,9 @@ export function useAppleXmlUpload(options: UseAppleXmlUploadOptions = {}) {
       file.type === 'text/xml' || file.type === 'application/xml';
 
     if (!isValidExtension && !isValidMimeType) {
-      toast.error('Invalid file type. Please upload an XML file (.xml)');
+      toast.error('Tipo de archivo no válido. Sube un archivo XML (.xml)');
       if (options.onError) {
-        options.onError(new Error('Invalid file type'));
+        options.onError(new Error('Tipo de archivo no válido'));
       }
       return;
     }
@@ -260,10 +260,10 @@ export function useAppleXmlUpload(options: UseAppleXmlUploadOptions = {}) {
       const maxSizeGB = (MAX_FILE_SIZE / (1024 * 1024 * 1024)).toFixed(0);
       const fileSizeGB = (file.size / (1024 * 1024 * 1024)).toFixed(2);
       toast.error(
-        `File is too large (${fileSizeGB}GB). Maximum size is ${maxSizeGB}GB`
+        `El archivo es demasiado grande (${fileSizeGB} GB). El tamaño máximo es ${maxSizeGB} GB`
       );
       if (options.onError) {
-        options.onError(new Error('File size exceeds maximum limit'));
+        options.onError(new Error('El tamaño del archivo supera el límite máximo'));
       }
       return;
     }

@@ -76,10 +76,10 @@ function RegisterPage() {
           <div className="w-full max-w-sm mx-auto space-y-6 my-auto py-8">
             <div className="space-y-2">
               <h1 className="text-2xl font-medium tracking-tight text-white">
-                Create account
+                Crear cuenta
               </h1>
               <p className="text-sm text-zinc-500">
-                Sign up to start building with Open Wearables
+                Regístrate para comenzar a crear con Open Wearables
               </p>
             </div>
 
@@ -87,7 +87,7 @@ function RegisterPage() {
               {/* Email */}
               <div className="space-y-1.5">
                 <Label htmlFor="email" className="text-xs text-zinc-300">
-                  Email address
+                  Correo electrónico
                 </Label>
                 <div className="relative group">
                   <Input
@@ -111,7 +111,7 @@ function RegisterPage() {
               {/* Password */}
               <div className="space-y-1.5">
                 <Label htmlFor="password" className="text-xs text-zinc-300">
-                  Password
+                  Contraseña
                 </Label>
                 <div className="relative group">
                   <Input
@@ -119,7 +119,7 @@ function RegisterPage() {
                     id="password"
                     {...form.register('password')}
                     className="bg-zinc-900/50 border-zinc-800 pr-10"
-                    placeholder="At least 8 characters"
+                    placeholder="Mínimo 8 caracteres"
                   />
                   <button
                     type="button"
@@ -146,7 +146,7 @@ function RegisterPage() {
                   htmlFor="confirmPassword"
                   className="text-xs text-zinc-300"
                 >
-                  Confirm password
+                  Confirmar contraseña
                 </Label>
                 <div className="relative group">
                   <Input
@@ -154,7 +154,7 @@ function RegisterPage() {
                     id="confirmPassword"
                     {...form.register('confirmPassword')}
                     className="bg-zinc-900/50 border-zinc-800 pr-10"
-                    placeholder="Confirm your password"
+                    placeholder="Confirma tu contraseña"
                   />
                   <button
                     type="button"
@@ -180,11 +180,11 @@ function RegisterPage() {
                 {isRegistering ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Creating account...
+                    Creando cuenta...
                   </>
                 ) : (
                   <>
-                    Create account
+                    Crear cuenta
                     <ArrowRight className="w-4 h-4 opacity-60" />
                   </>
                 )}
@@ -192,12 +192,12 @@ function RegisterPage() {
             </form>
 
             <p className="text-center text-sm text-zinc-500">
-              Already have an account?{' '}
+              ¿Ya tienes una cuenta?{' '}
               <Link
                 to={ROUTES.login}
                 className="text-white hover:text-zinc-200 transition-colors"
               >
-                Sign in
+                Inicia sesión
               </Link>
             </p>
           </div>
@@ -207,10 +207,10 @@ function RegisterPage() {
             <p>{getCopyrightText()}</p>
             <div className="flex gap-3">
               <a href="#" className="hover:text-zinc-400 transition-colors">
-                Privacy
+                Privacidad
               </a>
               <a href="#" className="hover:text-zinc-400 transition-colors">
-                Terms
+                Términos
               </a>
             </div>
           </div>
@@ -223,11 +223,11 @@ function RegisterPage() {
           <div className="relative h-full flex flex-col items-center justify-center p-8">
             <div className="w-full max-w-[350px] space-y-6">
               <h2 className="text-xl font-medium text-white text-center">
-                Start Building Today
+                Comienza a crear hoy
               </h2>
               <p className="text-sm text-zinc-500 text-center">
-                Create your developer account and integrate health data from any
-                wearable device.
+                Crea tu cuenta de desarrollador e integra datos de salud desde
+                cualquier wearable.
               </p>
 
               <div className="space-y-4 mt-8">
@@ -237,10 +237,10 @@ function RegisterPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-white">
-                      Quick Setup
+                      Configuración rápida
                     </h3>
                     <p className="text-xs text-zinc-500 mt-1">
-                      Get started in minutes with our SDK
+                      Comienza en minutos con nuestro SDK
                     </p>
                   </div>
                 </div>
@@ -251,10 +251,10 @@ function RegisterPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-white">
-                      Enterprise Ready
+                      Listo para empresas
                     </h3>
                     <p className="text-xs text-zinc-500 mt-1">
-                      SOC 2, HIPAA compliant infrastructure
+                      Infraestructura compatible con SOC 2 y HIPAA
                     </p>
                   </div>
                 </div>
@@ -265,10 +265,10 @@ function RegisterPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-white">
-                      AI-Powered Insights
+                      Análisis impulsados por IA
                     </h3>
                     <p className="text-xs text-zinc-500 mt-1">
-                      Natural language automations and insights
+                      Automatizaciones y análisis en lenguaje natural
                     </p>
                   </div>
                 </div>

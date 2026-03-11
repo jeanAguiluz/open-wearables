@@ -25,7 +25,7 @@ async def get_current_developer(
     """
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
+        detail="No se pudieron validar las credenciales",
         headers={"WWW-Authenticate": "Bearer"},
     )
 
@@ -39,7 +39,7 @@ async def get_current_developer(
         if payload.get("scope") == "sdk":
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="SDK tokens cannot access this endpoint",
+                detail="Los tokens SDK no pueden acceder a este endpoint",
                 headers={"WWW-Authenticate": "Bearer"},
             )
 
@@ -135,7 +135,7 @@ async def get_sdk_auth(
 
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Authentication required: provide SDK token or API key",
+        detail="Autenticación requerida: proporciona un token SDK o una API key",
     )
 
 

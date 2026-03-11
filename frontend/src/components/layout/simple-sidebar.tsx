@@ -15,22 +15,22 @@ import { Button } from '@/components/ui/button';
 
 const menuItems = [
   {
-    title: 'Dashboard',
+    title: 'Panel',
     url: ROUTES.dashboard,
     icon: Home,
   },
   {
-    title: 'Users',
+    title: 'Usuarios',
     url: ROUTES.users,
     icon: Users,
   },
   {
-    title: 'Settings',
+    title: 'Configuración',
     url: ROUTES.settings,
     icon: Settings,
   },
   {
-    title: 'Documentation',
+    title: 'Documentación',
     url: 'https://docs.openwearables.io/',
     icon: FileText,
     external: true,
@@ -104,7 +104,7 @@ export function SimpleSidebar() {
           className="w-full justify-start gap-3 px-3 text-zinc-400 hover:text-red-400"
         >
           <LogOut className="h-4 w-4" />
-          {isLoggingOut ? 'Logging out...' : 'Logout'}
+          {isLoggingOut ? 'Cerrando sesión...' : 'Cerrar sesión'}
         </Button>
       </div>
     </aside>

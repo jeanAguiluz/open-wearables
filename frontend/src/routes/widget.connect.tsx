@@ -25,7 +25,7 @@ function ConnectWidgetPage() {
       return {
         id: apiProvider.provider,
         name: apiProvider.name,
-        description: 'Connect your device',
+        description: 'Conecta tu dispositivo',
         logoPath: apiProvider.icon_url
           ? `${API_CONFIG.baseUrl}${apiProvider.icon_url}`
           : '',
@@ -71,7 +71,9 @@ function ConnectWidgetPage() {
       }, 2000);
     } catch (err) {
       setConnectionState('error');
-      setErrorMessage(err instanceof Error ? err.message : 'Connection failed');
+      setErrorMessage(
+        err instanceof Error ? err.message : 'No se pudo completar la conexión'
+      );
     }
   };
 
@@ -83,7 +85,7 @@ function ConnectWidgetPage() {
         if (Math.random() > 0.1) {
           resolve();
         } else {
-          reject(new Error('OAuth authorization was cancelled or failed'));
+          reject(new Error('La autorización OAuth fue cancelada o falló'));
         }
       }, 2000);
     });
@@ -99,10 +101,10 @@ function ConnectWidgetPage() {
             </div>
           </div>
           <h2 className="text-2xl font-medium text-white mb-3">
-            Successfully Connected!
+            Conexión realizada correctamente
           </h2>
           <p className="text-zinc-400">
-            Your device has been connected and will start syncing data shortly.
+            Tu dispositivo quedó conectado y comenzará a sincronizar datos en breve.
           </p>
         </div>
       </div>
@@ -114,7 +116,7 @@ function ConnectWidgetPage() {
       <div className="min-h-screen flex items-center justify-center bg-zinc-950 p-6">
         <div className="w-full max-w-md rounded-2xl bg-zinc-900/40 border border-white/5 p-10 text-center">
           <h2 className="text-2xl font-medium text-red-400 mb-3">
-            Connection Failed
+            No se pudo completar la conexión
           </h2>
           <p className="text-zinc-400 mb-8">{errorMessage}</p>
           <Button
@@ -124,7 +126,7 @@ function ConnectWidgetPage() {
               setSelectedProvider(null);
             }}
           >
-            Try Again
+            Intentar de nuevo
           </Button>
         </div>
       </div>
@@ -142,9 +144,11 @@ function ConnectWidgetPage() {
       {/* Header */}
       <div className="relative z-10 text-center mb-14 space-y-3">
         <h1 className="text-4xl font-medium text-white tracking-tight">
-          Connect a device
+          Conecta un dispositivo
         </h1>
-        <p className="text-lg text-zinc-400">Select your wearable platform</p>
+        <p className="text-lg text-zinc-400">
+          Selecciona tu plataforma wearable
+        </p>
       </div>
 
       {/* Grid Layout */}
@@ -171,7 +175,7 @@ function ConnectWidgetPage() {
                 <div className="mb-8 flex items-center justify-center h-20 w-20 bg-white rounded-2xl shadow-lg shadow-black/20 group-hover:scale-105 transition-transform duration-300">
                   <img
                     src={provider.logoPath}
-                    alt={`${provider.name} logo`}
+                    alt={`Logo de ${provider.name}`}
                     className="w-14 h-14 object-contain"
                   />
                 </div>
@@ -187,13 +191,13 @@ function ConnectWidgetPage() {
                   {isConnecting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      Connecting...
+                      Conectando...
                     </>
                   ) : !provider.isAvailable ? (
-                    'Coming Soon'
+                    'Próximamente'
                   ) : (
                     <>
-                      Connect
+                      Conectar
                       <ChevronRight className="w-4 h-4 stroke-[1.5]" />
                     </>
                   )}
@@ -207,7 +211,7 @@ function ConnectWidgetPage() {
       {/* Footer Security */}
       <div className="mt-20 flex items-center gap-2 text-zinc-500 text-base font-normal opacity-80 hover:opacity-100 transition-opacity">
         <Lock className="w-4 h-4 stroke-[1.5]" />
-        <span>Your data is encrypted and secure</span>
+        <span>Tus datos están cifrados y protegidos</span>
       </div>
     </div>
   );

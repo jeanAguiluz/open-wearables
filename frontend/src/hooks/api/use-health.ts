@@ -126,11 +126,11 @@ export function useSynchronizeDataFromProvider(
         queryKey: queryKeys.health.bodySummary(userId),
       });
 
-      toast.success('Data synchronized successfully');
+      toast.success('Los datos se sincronizaron correctamente');
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Failed to synchronize data';
+        error instanceof Error ? error.message : 'No se pudieron sincronizar los datos';
       toast.error(message);
     },
   });
@@ -166,11 +166,11 @@ export function useGarminCancelBackfill(userId: string) {
       queryClient.invalidateQueries({
         queryKey: queryKeys.garmin.backfillStatus(userId),
       });
-      toast.info('Backfill cancellation requested');
+      toast.info('Se solicitó la cancelación del backfill');
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Failed to cancel backfill';
+        error instanceof Error ? error.message : 'No se pudo cancelar el backfill';
       toast.error(message);
     },
   });
@@ -187,11 +187,11 @@ export function useRetryGarminBackfill(userId: string) {
       queryClient.invalidateQueries({
         queryKey: queryKeys.garmin.backfillStatus(userId),
       });
-      toast.info(`Retrying ${typeName} sync...`);
+      toast.info(`Reintentando la sincronización de ${typeName}...`);
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Failed to retry sync';
+        error instanceof Error ? error.message : 'No se pudo reintentar la sincronización';
       toast.error(message);
     },
   });

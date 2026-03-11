@@ -4,20 +4,20 @@
 
 /**
  * Format a date string to a localized string representation.
- * Returns 'Never' if the date is null or undefined.
+ * Returns 'Nunca' if the date is null or undefined.
  */
 export function formatDate(dateString: string | null | undefined): string {
-  if (!dateString) return 'Never';
-  return new Date(dateString).toLocaleString();
+  if (!dateString) return 'Nunca';
+  return new Date(dateString).toLocaleString('es-CL');
 }
 
 /**
  * Format a date string to a localized date (no time).
- * Returns 'Never' if the date is null or undefined.
+ * Returns 'Nunca' if the date is null or undefined.
  */
 export function formatDateOnly(dateString: string | null | undefined): string {
-  if (!dateString) return 'Never';
-  return new Date(dateString).toLocaleDateString();
+  if (!dateString) return 'Nunca';
+  return new Date(dateString).toLocaleDateString('es-CL');
 }
 
 /**
@@ -93,9 +93,7 @@ export function formatBedtime(minutes: number | null | undefined): string {
   const normalizedMinutes = minutes >= 1440 ? minutes - 1440 : minutes;
   const hours = Math.floor(normalizedMinutes / 60);
   const mins = Math.round(normalizedMinutes % 60);
-  const period = hours >= 12 ? 'PM' : 'AM';
-  const displayHours = hours > 12 ? hours - 12 : hours === 0 ? 12 : hours;
-  return `${displayHours}:${mins.toString().padStart(2, '0')} ${period}`;
+  return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
 }
 
 /**

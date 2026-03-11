@@ -30,10 +30,10 @@ export function useCreateApiKey() {
     mutationFn: (data: ApiKeyCreate) => credentialsService.createApiKey(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.credentials.list() });
-      toast.success('API key created successfully');
+      toast.success('API key creada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to create API key: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo crear la API key: ${getErrorMessage(error)}`);
     },
   });
 }
@@ -46,10 +46,10 @@ export function useRevokeApiKey() {
     mutationFn: (id: string) => credentialsService.revokeApiKey(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.credentials.list() });
-      toast.success('API key revoked successfully');
+      toast.success('API key revocada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to revoke API key: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo revocar la API key: ${getErrorMessage(error)}`);
     },
   });
 }
@@ -62,10 +62,10 @@ export function useDeleteApiKey() {
     mutationFn: (id: string) => credentialsService.deleteApiKey(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.credentials.list() });
-      toast.success('API key deleted successfully');
+      toast.success('API key eliminada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to delete API key: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo eliminar la API key: ${getErrorMessage(error)}`);
     },
   });
 }

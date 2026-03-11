@@ -19,22 +19,22 @@ interface TabConfig {
 const tabs: TabConfig[] = [
   {
     id: 'credentials',
-    label: 'Credentials',
+    label: 'Credenciales',
     component: CredentialsTab,
   },
   {
     id: 'providers',
-    label: 'Providers',
+    label: 'Proveedores',
     component: ProvidersTab,
   },
   {
     id: 'priorities',
-    label: 'Priorities',
+    label: 'Prioridades',
     component: PrioritiesTab,
   },
   {
     id: 'team',
-    label: 'Team',
+    label: 'Equipo',
     component: TeamTab,
   },
 ];
@@ -45,9 +45,9 @@ function SettingsPage() {
   return (
     <div className="p-8 space-y-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-medium text-white">Settings</h1>
+        <h1 className="text-2xl font-medium text-white">Configuración</h1>
         <p className="text-sm text-zinc-500 mt-1">
-          Manage your settings and preferences
+          Administra tus ajustes y preferencias
         </p>
       </div>
 

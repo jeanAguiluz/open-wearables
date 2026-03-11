@@ -47,10 +47,10 @@ function LoginPage() {
           <div className="w-full max-w-sm mx-auto space-y-6 my-auto py-8">
             <div className="space-y-2">
               <h1 className="text-2xl font-medium tracking-tight text-white">
-                Welcome back
+                Te damos la bienvenida de nuevo
               </h1>
               <p className="text-sm text-zinc-500">
-                Sign in to access dashboard, users, and settings.
+                Inicia sesión para acceder al dashboard, usuarios y configuración.
               </p>
             </div>
 
@@ -58,7 +58,7 @@ function LoginPage() {
               {/* Email Input */}
               <div className="space-y-1.5">
                 <Label htmlFor="email" className="text-xs text-zinc-300">
-                  Email address
+                  Correo electrónico
                 </Label>
                 <div className="relative group">
                   <Input
@@ -79,7 +79,7 @@ function LoginPage() {
               {/* Password Input */}
               <div className="space-y-1.5">
                 <Label htmlFor="password" className="text-xs text-zinc-300">
-                  Password
+                  Contraseña
                 </Label>
                 <div className="relative group">
                   <Input
@@ -102,11 +102,11 @@ function LoginPage() {
                 {isLoggingIn ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Signing in...
+                    Ingresando...
                   </>
                 ) : (
                   <>
-                    Sign in
+                    Iniciar sesión
                     <ArrowRight className="w-4 h-4 opacity-60" />
                   </>
                 )}

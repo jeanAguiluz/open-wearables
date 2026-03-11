@@ -24,12 +24,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Open Wearables Platform',
+        title: 'Plataforma Open Wearables',
       },
       {
         name: 'description',
         content:
-          'Unified API for wearable device data and AI-powered health insights',
+          'API unificada para datos de dispositivos wearables e insights de salud impulsados por IA',
       },
     ],
     links: [
@@ -99,7 +99,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <head>
         <HeadContent />
       </head>
@@ -134,9 +134,9 @@ function NotFound() {
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold">404</h1>
-        <p className="text-muted-foreground">Page not found</p>
+        <p className="text-muted-foreground">Página no encontrada</p>
         <a href="/" className="text-primary hover:underline">
-          Go back home
+          Volver al inicio
         </a>
       </div>
     </div>

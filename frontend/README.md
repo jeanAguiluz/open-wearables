@@ -1,128 +1,128 @@
 # Open Wearables Platform - Frontend
 
-Modern web application built with TanStack Start for the Open Wearables Platform - a unified API for health data aggregation and automation.
+Aplicación web moderna construida con TanStack Start para Open Wearables Platform, una API unificada para agregación y automatización de datos de salud.
 
-## Tech Stack
+## Stack Tecnológico
 
 - **Framework**: TanStack Start (React 19)
-- **Language**: TypeScript 5.7
-- **Styling**: Tailwind CSS 4.0
-- **UI Components**: shadcn/ui
-- **Data Fetching**: TanStack Query
-- **Form Management**: React Hook Form + Zod
-- **Charts**: Recharts
-- **Icons**: Lucide React
+- **Lenguaje**: TypeScript 5.7
+- **Estilos**: Tailwind CSS 4.0
+- **Componentes UI**: shadcn/ui
+- **Obtención de datos**: TanStack Query
+- **Gestión de formularios**: React Hook Form + Zod
+- **Gráficas**: Recharts
+- **Íconos**: Lucide React
 
-## Features
+## Funcionalidades
 
-- File-based routing with TanStack Router
-- Server-side rendering (SSR) support
-- Type-safe API integration
-- Dark mode support
-- Responsive design
-- Component library with shadcn/ui
-- Form validation with Zod
-- Toast notifications with Sonner
+- Ruteo basado en archivos con TanStack Router
+- Soporte para renderizado del lado del servidor (SSR)
+- Integración con API segura en tipos
+- Soporte para modo oscuro
+- Diseño responsivo
+- Biblioteca de componentes con shadcn/ui
+- Validación de formularios con Zod
+- Notificaciones toast con Sonner
 
-## Project Structure
+## Estructura del Proyecto
 
-```
+```text
 src/
 ├── components/
-│   ├── ui/              # shadcn/ui components
-│   ├── layout/          # Layout components (Sidebar, etc.)
-│   └── features/        # Feature-specific components
+│   ├── ui/              # Componentes de shadcn/ui
+│   ├── layout/          # Componentes de layout (Sidebar, etc.)
+│   └── features/        # Componentes específicos por funcionalidad
 ├── routes/
-│   ├── __root.tsx       # Root layout with providers
-│   ├── index.tsx        # Home (redirects to /login)
-│   ├── login.tsx        # Login page
-│   └── _authenticated/  # Protected routes
+│   ├── __root.tsx       # Layout raíz con providers
+│   ├── index.tsx        # Inicio (redirige a /login)
+│   ├── login.tsx        # Página de inicio de sesión
+│   └── _authenticated/  # Rutas protegidas
 │       ├── dashboard.tsx
 │       └── users.tsx
 ├── lib/
-│   └── utils.ts         # Utility functions
-├── hooks/               # Custom React hooks
-└── styles.css           # Global styles and design tokens
+│   └── utils.ts         # Funciones utilitarias
+├── hooks/               # Hooks personalizados de React
+└── styles.css           # Estilos globales y design tokens
 ```
 
-## Getting Started
+## Primeros Pasos
 
-### Prerequisites
+### Requisitos Previos
 
 - Node.js 18+
-- npm or pnpm
+- npm o pnpm
 
-### Installation
+### Instalación
 
-1. Clone the repository
-2. Install dependencies:
+1. Clona el repositorio
+2. Instala dependencias:
 
 ```bash
 npm install
 ```
 
-3. Copy environment variables:
+3. Copia las variables de entorno:
 
 ```bash
 cp .env.example .env
 ```
 
-4. Start the development server:
+4. Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
 ```
 
-The app will be available at http://localhost:3000
+La aplicación estará disponible en http://localhost:3000
 
-## Available Scripts
+## Scripts Disponibles
 
-- `npm run dev` - Start development server on port 3000
-- `npm run build` - Build for production
-- `npm run serve` - Preview production build
-- `npm test` - Run tests with Vitest
+- `npm run dev` - Inicia el servidor de desarrollo en el puerto 3000
+- `npm run build` - Genera el build de producción
+- `npm run serve` - Previsualiza el build de producción
+- `npm test` - Ejecuta pruebas con Vitest
 
-## Environment Variables
+## Variables de Entorno
 
-Create a `.env` file based on `.env.example`:
+Crea un archivo `.env` a partir de `.env.example`:
 
 ```bash
-VITE_API_URL=http://localhost:8000  # Backend API URL
+VITE_API_URL=http://localhost:8000  # URL de la API backend
 ```
 
-## Design System
+## Sistema de Diseño
 
-### Colors
+### Colores
 
-The application uses a custom color palette defined in `src/styles.css`:
+La aplicación usa una paleta de colores personalizada definida en `src/styles.css`:
 
-- **Primary**: Blue (#3B82F6) - Main brand color
-- **Secondary**: Teal (#14B8A6) - Accent color
-- **Success**: Green - Success states
-- **Warning**: Orange - Warning states
-- **Destructive**: Red - Error states
+- **Primary**: Azul (#3B82F6) - Color principal de marca
+- **Secondary**: Teal (#14B8A6) - Color de acento
+- **Success**: Verde - Estados exitosos
+- **Warning**: Naranja - Estados de advertencia
+- **Destructive**: Rojo - Estados de error
 
-### Dark Mode
+### Modo Oscuro
 
-Dark mode is enabled by default using the `dark` class on the root HTML element.
+El modo oscuro está habilitado por defecto usando la clase `dark` en el elemento raíz de HTML.
 
 ## Routing
 
-TanStack Start uses file-based routing:
+TanStack Start usa ruteo basado en archivos:
 
-- `/` - Redirects to `/login`
-- `/login` - Authentication page
-- `/_authenticated/*` - Protected routes (requires authentication)
-  - `/dashboard` - Main dashboard
-  - `/users` - User management
-  - `/health-insights` - Health automations
-  - `/credentials` - API credentials
+- `/` - Redirige a `/login`
+- `/login` - Página de autenticación
+- `/_authenticated/*` - Rutas protegidas (requieren autenticación)
+- `/dashboard` - Dashboard principal
+- `/users` - Gestión de usuarios
+- `/health-insights` - Automatizaciones de salud
+- `/credentials` - Credenciales de API
 
-## Components
+## Componentes
 
-### UI Components (shadcn/ui)
+### Componentes UI (shadcn/ui)
 
-Installed components:
+Componentes instalados:
 
 - Button
 - Card
@@ -141,26 +141,26 @@ Installed components:
 - Sheet
 - Sidebar
 
-To add more components:
+Para agregar más componentes:
 
 ```bash
 npx shadcn@latest add [component-name]
 ```
 
-### Layout Components
+### Componentes de Layout
 
-- **AppSidebar**: Main navigation sidebar
-- **AuthenticatedLayout**: Layout wrapper for protected routes
+- **AppSidebar**: Barra lateral principal de navegación
+- **AuthenticatedLayout**: Layout contenedor para rutas protegidas
 
-## State Management
+## Gestión de Estado
 
-- **TanStack Query**: Server state management and caching
-- **React Context**: For global UI state (theme, sidebar)
-- **React Hook Form**: Form state management
+- **TanStack Query**: Gestión y caché de estado del servidor
+- **React Context**: Para estado global de UI (tema, sidebar)
+- **React Hook Form**: Gestión del estado de formularios
 
-## API Integration
+## Integración con la API
 
-API calls should be made using TanStack Query for optimal caching and state management:
+Las llamadas a la API deberían hacerse usando TanStack Query para obtener una mejor estrategia de caché y manejo de estado:
 
 ```typescript
 import { useQuery } from '@tanstack/react-query';
@@ -176,64 +176,64 @@ function useUsers() {
 }
 ```
 
-## Authentication
+## Autenticación
 
-Authentication is scaffolded but needs to be connected to the backend:
+La autenticación está scaffolded, pero aún debe conectarse al backend:
 
-1. Update `/src/routes/login.tsx` to call the actual auth API
-2. Implement session management
-3. Add route protection in `/_authenticated` layout
+1. Actualiza `/src/routes/login.tsx` para llamar a la API real de autenticación
+2. Implementa la gestión de sesión
+3. Agrega protección de rutas en el layout `/_authenticated`
 
-## Testing
+## Pruebas
 
-Tests are set up with Vitest and React Testing Library:
+Las pruebas están configuradas con Vitest y React Testing Library:
 
 ```bash
 npm test
 ```
 
-## Building for Production
+## Build para Producción
 
 ```bash
 npm run build
 ```
 
-This creates an optimized production build in the `dist/` directory.
+Esto genera un build de producción optimizado en el directorio `dist/`.
 
-## Deployment
+## Despliegue
 
-The application can be deployed to:
+La aplicación puede desplegarse en:
 
 - Vercel
 - Netlify
 - Cloudflare Pages
-- Any Node.js hosting platform
+- Cualquier plataforma de hosting para Node.js
 
-Set the build command to `npm run build` and the output directory to `dist`.
+Configura el comando de build como `npm run build` y el directorio de salida como `dist`.
 
-## Contributing
+## Contribuir
 
-1. Create a feature branch
-2. Make your changes
-3. Write/update tests
-4. Submit a pull request
+1. Crea una rama de funcionalidad
+2. Haz tus cambios
+3. Escribe o actualiza pruebas
+4. Envía un pull request
 
-## Code Style
+## Estilo de Código
 
-- Use TypeScript strict mode
-- Follow ESLint rules
-- Use Prettier for formatting
-- Components should be functional with hooks
-- Prefer composition over inheritance
+- Usa el modo estricto de TypeScript
+- Sigue las reglas de ESLint
+- Usa Prettier para formatear
+- Los componentes deben ser funcionales y usar hooks
+- Prefiere composición sobre herencia
 
-## Resources
+## Recursos
 
-- [TanStack Start Documentation](https://tanstack.com/start)
-- [TanStack Router Documentation](https://tanstack.com/router)
-- [TanStack Query Documentation](https://tanstack.com/query)
-- [shadcn/ui Documentation](https://ui.shadcn.com)
-- [Tailwind CSS Documentation](https://tailwindcss.com)
+- [Documentación de TanStack Start](https://tanstack.com/start)
+- [Documentación de TanStack Router](https://tanstack.com/router)
+- [Documentación de TanStack Query](https://tanstack.com/query)
+- [Documentación de shadcn/ui](https://ui.shadcn.com)
+- [Documentación de Tailwind CSS](https://tailwindcss.com)
 
-## License
+## Licencia
 
-See LICENSE file in the root directory.
+Consulta el archivo LICENSE en la raíz del proyecto.

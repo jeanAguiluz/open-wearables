@@ -25,7 +25,7 @@ export function DataSummaryCard({
       {mostRecentDate && (
         <div className="mt-4 pt-4 border-t border-zinc-800 w-full flex justify-center">
           <p className="text-xs text-zinc-500">
-            Most recent: {new Date(mostRecentDate).toLocaleDateString()}
+            Más reciente: {new Date(mostRecentDate).toLocaleDateString('es-CL')}
           </p>
         </div>
       )}

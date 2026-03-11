@@ -24,6 +24,7 @@ import {
   Upload,
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
 import type { UserRead, UserQueryParams } from '@/lib/api/types';
 import { copyToClipboard } from '@/lib/utils/clipboard';
 import { truncateId } from '@/lib/utils/format';
@@ -123,7 +124,7 @@ export function UsersTable({
   }, [pagination, sorting, debouncedSearch]);
 
   const handleCopyId = async (id: string) => {
-    const success = await copyToClipboard(id, 'User ID copied to clipboard');
+    const success = await copyToClipboard(id, 'ID de usuario copiado al portapapeles');
     if (success) {
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
@@ -134,7 +135,7 @@ export function UsersTable({
     const pairLink = `${window.location.origin}/users/${userId}/pair`;
     const success = await copyToClipboard(
       pairLink,
-      'Pairing link copied to clipboard'
+      'Enlace de vinculación copiado al portapapeles'
     );
     if (success) {
       setCopiedPairLink(userId);
@@ -189,7 +190,7 @@ export function UsersTable({
       accessorKey: 'id',
       header: () => (
         <span className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
-          User ID
+          ID de usuario
         </span>
       ),
       cell: ({ row }) => (
@@ -216,7 +217,7 @@ export function UsersTable({
       accessorKey: 'external_user_id',
       header: () => (
         <span className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
-          External User ID
+          ID externo de usuario
         </span>
       ),
       cell: ({ row }) => (
@@ -233,7 +234,7 @@ export function UsersTable({
       accessorFn: (row) =>
         `${row.first_name || ''} ${row.last_name || ''}`.trim(),
       header: ({ column }) => (
-        <SortableHeader column={column}>Name</SortableHeader>
+        <SortableHeader column={column}>Nombre</SortableHeader>
       ),
       cell: ({ row }) => {
         const fullName =
@@ -250,7 +251,7 @@ export function UsersTable({
     {
       accessorKey: 'email',
       header: ({ column }) => (
-        <SortableHeader column={column}>Email</SortableHeader>
+        <SortableHeader column={column}>Correo</SortableHeader>
       ),
       cell: ({ row }) => (
         <span
@@ -265,12 +266,13 @@ export function UsersTable({
     {
       accessorKey: 'created_at',
       header: ({ column }) => (
-        <SortableHeader column={column}>Created</SortableHeader>
+        <SortableHeader column={column}>Creado</SortableHeader>
       ),
       cell: ({ row }) => (
         <span className="text-xs text-zinc-500">
           {formatDistanceToNow(new Date(row.original.created_at), {
             addSuffix: true,
+            locale: es,
           })}
         </span>
       ),
@@ -279,7 +281,7 @@ export function UsersTable({
       id: 'actions',
       header: () => (
         <span className="text-xs font-medium text-zinc-500 uppercase tracking-wider text-right block">
-          Actions
+          Acciones
         </span>
       ),
       cell: ({ row }) => (
@@ -294,7 +296,7 @@ export function UsersTable({
             size="icon"
             onClick={() => handleUploadClick(row.original.id)}
             disabled={uploadingUserId === row.original.id}
-            title="Upload Apple Health XML"
+            title="Subir XML de Apple Health"
           >
             {uploadingUserId === row.original.id ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -315,7 +317,7 @@ export function UsersTable({
             variant="outline"
             size="icon"
             onClick={() => handleCopyPairLink(row.original.id)}
-            title="Copy pairing link"
+            title="Copiar enlace de vinculación"
           >
             {copiedPairLink === row.original.id ? (
               <Check className="h-4 w-4 text-emerald-500" />
@@ -398,7 +400,7 @@ export function UsersTable({
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
           <Input
             type="text"
-            placeholder="Search by name or email..."
+            placeholder="Buscar por nombre o correo..."
             value={globalFilter}
             onChange={(e) => setGlobalFilter(e.target.value)}
             className="bg-zinc-900 border-zinc-800 px-9"
@@ -436,8 +438,8 @@ export function UsersTable({
                 <td colSpan={columns.length} className="px-4 py-12 text-center">
                   <p className="text-zinc-400">
                     {globalFilter
-                      ? 'No users match your search criteria.'
-                      : 'No users found'}
+                      ? 'Ningún usuario coincide con tu búsqueda.'
+                      : 'No se encontraron usuarios'}
                   </p>
                 </td>
               </tr>
@@ -465,18 +467,18 @@ export function UsersTable({
       {pageCount > 0 && (
         <div className="p-4 border-t border-zinc-800 flex items-center justify-between">
           <div className="text-sm text-zinc-500">
-            Showing{' '}
+            Mostrando{' '}
             <span className="font-medium text-zinc-300">
               {total === 0 ? 0 : pagination.pageIndex * pagination.pageSize + 1}
             </span>{' '}
-            to{' '}
+            a{' '}
             <span className="font-medium text-zinc-300">
               {Math.min(
                 (pagination.pageIndex + 1) * pagination.pageSize,
                 total
               )}
             </span>{' '}
-            of <span className="font-medium text-zinc-300">{total}</span> users
+            de <span className="font-medium text-zinc-300">{total}</span> usuarios
           </div>
 
           {pageCount > 1 && (

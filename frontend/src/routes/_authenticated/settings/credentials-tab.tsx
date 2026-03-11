@@ -30,7 +30,7 @@ export function CredentialsTab() {
 
   const handleCreate = async () => {
     if (!keyName.trim()) {
-      toast.error('Please enter a key name');
+      toast.error('Ingresa un nombre para la clave');
       return;
     }
 
@@ -44,7 +44,7 @@ export function CredentialsTab() {
   const handleDelete = async (id: string) => {
     if (
       confirm(
-        'Are you sure you want to delete this API key? This action cannot be undone.'
+        '¿Seguro que quieres eliminar esta API key? Esta acción no se puede deshacer.'
       )
     ) {
       await deleteMutation.mutateAsync(id);
@@ -69,7 +69,7 @@ export function CredentialsTab() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString();
+    return new Date(dateString).toLocaleDateString('es-CL');
   };
 
   if (isLoading) {
@@ -90,8 +90,8 @@ export function CredentialsTab() {
   if (error) {
     return (
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
-        <p className="text-zinc-400 mb-4">Failed to load API keys</p>
-        <Button onClick={() => refetch()}>Retry</Button>
+        <p className="text-zinc-400 mb-4">No se pudieron cargar las API keys</p>
+        <Button onClick={() => refetch()}>Reintentar</Button>
       </div>
     );
   }
@@ -101,14 +101,14 @@ export function CredentialsTab() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-medium text-white">API Credentials</h2>
+          <h2 className="text-xl font-medium text-white">Credenciales API</h2>
           <p className="text-sm text-zinc-500 mt-1">
-            Manage your API keys and widget embed codes
+            Administra tus API keys y los códigos de inserción de widgets
           </p>
         </div>
         <Button onClick={() => setIsCreateDialogOpen(true)}>
           <Plus className="h-4 w-4" />
-          Create API Key
+          Crear API Key
         </Button>
       </div>
 
@@ -117,7 +117,7 @@ export function CredentialsTab() {
         <div className="px-6 py-4 border-b border-zinc-800">
           <h3 className="text-sm font-medium text-white">API Keys</h3>
           <p className="text-xs text-zinc-500 mt-1">
-            Use these keys to authenticate API requests and embed widgets
+            Usa estas claves para autenticar solicitudes API e integrar widgets
           </p>
         </div>
 
@@ -127,16 +127,16 @@ export function CredentialsTab() {
               <thead>
                 <tr className="border-b border-zinc-800 text-left">
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Name
+                    Nombre
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Key
+                    Clave
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Created
+                    Creada
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider text-right">
-                    Actions
+                    Acciones
                   </th>
                 </tr>
               </thead>
@@ -197,16 +197,16 @@ export function CredentialsTab() {
         ) : (
           <div className="p-12 text-center">
             <Key className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
-            <p className="text-zinc-400 mb-2">No API keys yet</p>
+            <p className="text-zinc-400 mb-2">Aún no hay API keys</p>
             <p className="text-sm text-zinc-500 mb-4">
-              Create your first key to get started
+              Crea tu primera clave para comenzar
             </p>
             <Button
               variant="outline"
               onClick={() => setIsCreateDialogOpen(true)}
             >
               <Plus className="h-4 w-4" />
-              Create API Key
+              Crear API Key
             </Button>
           </div>
         )}
@@ -216,25 +216,25 @@ export function CredentialsTab() {
       <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Create New API Key</DialogTitle>
+            <DialogTitle>Crear nueva API key</DialogTitle>
             <DialogDescription>
-              Generate a new API key for your application
+              Genera una nueva API key para tu aplicación
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-1.5">
             <Label htmlFor="key_name" className="text-zinc-300">
-              Key Name
+              Nombre de la clave
             </Label>
             <Input
               id="key_name"
               type="text"
-              placeholder="e.g., Production API Key"
+              placeholder="Ej.: API key de producción"
               value={keyName}
               onChange={(e) => setKeyName(e.target.value)}
               className="bg-zinc-800 border-zinc-700"
             />
             <p className="text-[10px] text-zinc-600">
-              A descriptive name to identify this key
+              Un nombre descriptivo para identificar esta clave
             </p>
           </div>
           <DialogFooter className="gap-3">
@@ -246,10 +246,10 @@ export function CredentialsTab() {
               }}
               disabled={createMutation.isPending}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button onClick={handleCreate} disabled={createMutation.isPending}>
-              {createMutation.isPending ? 'Creating...' : 'Create Key'}
+              {createMutation.isPending ? 'Creando...' : 'Crear clave'}
             </Button>
           </DialogFooter>
         </DialogContent>

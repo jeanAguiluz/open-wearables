@@ -10,8 +10,8 @@ export function DashboardLoadingState({
   return (
     <div className={cn('p-8', className)}>
       <div className="mb-6">
-        <h1 className="text-2xl font-medium text-white">Dashboard</h1>
-        <p className="text-sm text-zinc-500 mt-1">Your platform overview</p>
+        <h1 className="text-2xl font-medium text-white">Panel</h1>
+        <p className="text-sm text-zinc-500 mt-1">Vista general de tu plataforma</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {[1, 2, 3].map((i) => (

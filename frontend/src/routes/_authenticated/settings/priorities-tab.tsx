@@ -24,13 +24,13 @@ const PROVIDER_INFO: Record<string, { name: string; color: string }> = {
 
 // Device type display info
 const DEVICE_TYPE_INFO: Record<string, { name: string; icon: string }> = {
-  watch: { name: 'Watch', icon: '⌚' },
-  band: { name: 'Band', icon: '📿' },
-  ring: { name: 'Ring', icon: '💍' },
-  phone: { name: 'Phone', icon: '📱' },
-  scale: { name: 'Scale', icon: '⚖️' },
-  other: { name: 'Other', icon: '📦' },
-  unknown: { name: 'Unknown', icon: '❓' },
+  watch: { name: 'Reloj', icon: '⌚' },
+  band: { name: 'Banda', icon: '📿' },
+  ring: { name: 'Anillo', icon: '💍' },
+  phone: { name: 'Teléfono', icon: '📱' },
+  scale: { name: 'Báscula', icon: '⚖️' },
+  other: { name: 'Otro', icon: '📦' },
+  unknown: { name: 'Desconocido', icon: '❓' },
 };
 
 interface ProviderItemProps {
@@ -60,7 +60,7 @@ function ProviderItem({
           onClick={onMoveUp}
           disabled={index === 0}
           className="p-0.5 text-zinc-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-          title="Move up"
+          title="Mover hacia arriba"
         >
           <ChevronUp className="h-4 w-4" />
         </button>
@@ -68,7 +68,7 @@ function ProviderItem({
           onClick={onMoveDown}
           disabled={index === total - 1}
           className="p-0.5 text-zinc-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-          title="Move down"
+          title="Mover hacia abajo"
         >
           <ChevronDown className="h-4 w-4" />
         </button>
@@ -79,7 +79,7 @@ function ProviderItem({
         <span className="text-white font-medium">{info.name}</span>
       </div>
 
-      <div className="text-sm text-zinc-500">Priority {index + 1}</div>
+      <div className="text-sm text-zinc-500">Prioridad {index + 1}</div>
     </div>
   );
 }
@@ -111,7 +111,7 @@ function DeviceTypeItem({
           onClick={onMoveUp}
           disabled={index === 0}
           className="p-0.5 text-zinc-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-          title="Move up"
+          title="Mover hacia arriba"
         >
           <ChevronUp className="h-4 w-4" />
         </button>
@@ -119,7 +119,7 @@ function DeviceTypeItem({
           onClick={onMoveDown}
           disabled={index === total - 1}
           className="p-0.5 text-zinc-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-          title="Move down"
+          title="Mover hacia abajo"
         >
           <ChevronDown className="h-4 w-4" />
         </button>
@@ -130,7 +130,7 @@ function DeviceTypeItem({
         <span className="text-white font-medium">{info.name}</span>
       </div>
 
-      <div className="text-sm text-zinc-500">Priority {index + 1}</div>
+      <div className="text-sm text-zinc-500">Prioridad {index + 1}</div>
     </div>
   );
 }
@@ -285,9 +285,11 @@ export function PrioritiesTab() {
   if (error) {
     return (
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
-        <p className="text-zinc-400 mb-4">Failed to load provider priorities</p>
+        <p className="text-zinc-400 mb-4">
+          No se pudieron cargar las prioridades de proveedores
+        </p>
         <Button variant="outline" onClick={() => refetch()}>
-          Retry
+          Reintentar
         </Button>
       </div>
     );
@@ -298,11 +300,10 @@ export function PrioritiesTab() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-medium text-white">
-            Provider Priorities
+            Prioridades de proveedores
           </h2>
           <p className="text-sm text-zinc-500 mt-1">
-            Use arrows to reorder which data providers take priority when data
-            overlaps
+            Usa las flechas para reordenar qué proveedores de datos tienen prioridad cuando la información se superpone
           </p>
         </div>
         {hasChanges && (
@@ -310,12 +311,12 @@ export function PrioritiesTab() {
             {updateMutation.isPending ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
+                Guardando...
               </>
             ) : (
               <>
                 <CheckCircle2 className="h-4 w-4" />
-                Save Changes
+                Guardar cambios
               </>
             )}
           </Button>
@@ -324,10 +325,11 @@ export function PrioritiesTab() {
 
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <div className="px-6 py-4 border-b border-zinc-800">
-          <h3 className="text-sm font-medium text-white">Priority Order</h3>
+          <h3 className="text-sm font-medium text-white">
+            Orden de prioridad
+          </h3>
           <p className="text-xs text-zinc-500 mt-1">
-            Higher priority providers are used when multiple sources have the
-            same data
+            Los proveedores con mayor prioridad se usan cuando varias fuentes tienen los mismos datos
           </p>
         </div>
 
@@ -347,18 +349,17 @@ export function PrioritiesTab() {
 
       <div className="bg-zinc-800/30 border border-zinc-700/50 rounded-lg p-4">
         <h4 className="text-sm font-medium text-zinc-300 mb-2">
-          How priorities work
+          Cómo funcionan las prioridades
         </h4>
         <ul className="text-xs text-zinc-500 space-y-1">
           <li>
-            • When data from multiple providers overlaps in time, the higher
-            priority provider's data is shown
+            • Cuando los datos de varios proveedores se superponen en el tiempo, se muestran los del proveedor con mayor prioridad
           </li>
           <li>
-            • Within the same provider, watch data is preferred over phone data
+            • Dentro del mismo proveedor, los datos del reloj tienen prioridad sobre los del teléfono
           </li>
           <li>
-            • Users can still disable specific data sources from their profile
+            • Las personas usuarias igual pueden desactivar fuentes de datos específicas desde su perfil
           </li>
         </ul>
       </div>
@@ -367,11 +368,10 @@ export function PrioritiesTab() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-medium text-white">
-            Device Type Priorities
+            Prioridades por tipo de dispositivo
           </h2>
           <p className="text-sm text-zinc-500 mt-1">
-            Set which device types are preferred when the same provider has data
-            from multiple devices
+            Define qué tipos de dispositivo se prefieren cuando el mismo proveedor tiene datos de varios dispositivos
           </p>
         </div>
         {hasDeviceChanges && (
@@ -382,12 +382,12 @@ export function PrioritiesTab() {
             {updateDeviceMutation.isPending ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
+                Guardando...
               </>
             ) : (
               <>
                 <CheckCircle2 className="h-4 w-4" />
-                Save Changes
+                Guardar cambios
               </>
             )}
           </Button>
@@ -403,21 +403,20 @@ export function PrioritiesTab() {
       ) : deviceError ? (
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
           <p className="text-zinc-400 mb-4">
-            Failed to load device type priorities
+            No se pudieron cargar las prioridades por tipo de dispositivo
           </p>
           <Button variant="outline" onClick={() => refetchDevices()}>
-            Retry
+            Reintentar
           </Button>
         </div>
       ) : (
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
           <div className="px-6 py-4 border-b border-zinc-800">
             <h3 className="text-sm font-medium text-white">
-              Device Type Order
+              Orden por tipo de dispositivo
             </h3>
             <p className="text-xs text-zinc-500 mt-1">
-              Higher priority device types are preferred within the same
-              provider
+              Los tipos de dispositivo con mayor prioridad se prefieren dentro del mismo proveedor
             </p>
           </div>
 

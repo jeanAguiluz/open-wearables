@@ -48,18 +48,18 @@ const STATUS_CONFIG = {
     iconBg: 'bg-emerald-500/20',
     iconColor: 'text-emerald-400',
     icon: CheckCircle2,
-    title: 'Welcome to the Team!',
+    title: 'Te damos la bienvenida al equipo',
     description:
-      'Your account has been created successfully. Redirecting you to sign in...',
+      'Tu cuenta se creó correctamente. Te estamos redirigiendo para iniciar sesión...',
   },
   invalid: {
     glowColor: 'bg-red-900/20',
     iconBg: 'bg-red-500/20',
     iconColor: 'text-red-400',
     icon: AlertCircle,
-    title: 'Invalid Invitation Link',
+    title: 'Enlace de invitación no válido',
     description:
-      'This invitation link is invalid or has expired. Please contact your team administrator for a new invitation.',
+      'Este enlace de invitación no es válido o ya expiró. Ponte en contacto con la persona administradora de tu equipo para recibir una nueva invitación.',
   },
 } as const;
 
@@ -112,7 +112,7 @@ function AcceptInvitePage() {
             type: 'manual',
             message:
               error.message ||
-              'Failed to accept invitation. The link may be invalid or expired.',
+              'No se pudo aceptar la invitación. Es posible que el enlace no sea válido o haya expirado.',
           });
         },
       }
@@ -158,7 +158,7 @@ function AcceptInvitePage() {
                 to={ROUTES.login}
                 className="w-full bg-white text-black hover:bg-zinc-200 font-medium text-sm h-9 rounded-md transition-colors flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
               >
-                Sign In Now
+                Iniciar sesión ahora
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -169,7 +169,7 @@ function AcceptInvitePage() {
                 className="flex items-center justify-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back to sign in
+                Volver a iniciar sesión
               </Link>
             </div>
           )}
@@ -187,10 +187,10 @@ function AcceptInvitePage() {
             <div className="w-full max-w-sm mx-auto space-y-6 my-auto py-8">
               <div className="space-y-2">
                 <h1 className="text-2xl font-medium tracking-tight text-white">
-                  Accept Invitation
+                  Aceptar invitación
                 </h1>
                 <p className="text-sm text-zinc-500">
-                  Complete your account setup to join the team
+                  Completa la configuración de tu cuenta para unirte al equipo
                 </p>
               </div>
 
@@ -204,7 +204,7 @@ function AcceptInvitePage() {
                       htmlFor="first_name"
                       className="text-xs text-zinc-300"
                     >
-                      First name
+                      Nombre
                     </Label>
                     <Input
                       id="first_name"
@@ -223,7 +223,7 @@ function AcceptInvitePage() {
                       htmlFor="last_name"
                       className="text-xs text-zinc-300"
                     >
-                      Last name
+                      Apellido
                     </Label>
                     <Input
                       id="last_name"
@@ -241,13 +241,13 @@ function AcceptInvitePage() {
 
                 <div className="space-y-1.5">
                   <Label htmlFor="password" className="text-xs text-zinc-300">
-                    Password
+                    Contraseña
                   </Label>
                   <div className="relative">
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       id="password"
-                      placeholder="At least 8 characters"
+                      placeholder="Al menos 8 caracteres"
                       className="bg-zinc-900/50 border-zinc-800 pr-10"
                       {...form.register('password')}
                     />
@@ -275,13 +275,13 @@ function AcceptInvitePage() {
                     htmlFor="confirmPassword"
                     className="text-xs text-zinc-300"
                   >
-                    Confirm password
+                    Confirmar contraseña
                   </Label>
                   <div className="relative">
                     <Input
                       type={showConfirmPassword ? 'text' : 'password'}
                       id="confirmPassword"
-                      placeholder="Confirm your password"
+                      placeholder="Confirma tu contraseña"
                       className="bg-zinc-900/50 border-zinc-800 pr-10"
                       {...form.register('confirmPassword')}
                     />
@@ -320,11 +320,11 @@ function AcceptInvitePage() {
                   {acceptInvitationMutation.isPending ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Creating account...
+                      Creando cuenta...
                     </>
                   ) : (
                     <>
-                      Join Team
+                      Unirme al equipo
                       <ArrowRight className="w-4 h-4 opacity-60" />
                     </>
                   )}
@@ -332,12 +332,12 @@ function AcceptInvitePage() {
               </form>
 
               <p className="text-center text-sm text-zinc-500">
-                Already have an account?{' '}
+                ¿Ya tienes una cuenta?{' '}
                 <Link
                   to={ROUTES.login}
                   className="text-white hover:text-zinc-200 transition-colors"
                 >
-                  Sign in
+                  Inicia sesión
                 </Link>
               </p>
             </div>
@@ -355,11 +355,11 @@ function AcceptInvitePage() {
                   <Users className="w-8 h-8 text-zinc-400" />
                 </div>
                 <h2 className="text-xl font-medium text-white text-center">
-                  You've Been Invited
+                  Te invitaron
                 </h2>
                 <p className="text-sm text-zinc-500 text-center">
-                  A team member has invited you to join their organization on
-                  Open Wearables. Complete your registration to get started.
+                  Una persona de tu equipo te invitó a unirte a su organización
+                  en Open Wearables. Completa tu registro para comenzar.
                 </p>
               </div>
             </div>

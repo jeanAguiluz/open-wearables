@@ -30,7 +30,7 @@ async def login(
     if not developers:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
+            detail="Correo o contraseña incorrectos",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
@@ -38,7 +38,7 @@ async def login(
     if not verify_password(form_data.password, developer.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
+            detail="Correo o contraseña incorrectos",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
@@ -56,7 +56,7 @@ async def login(
 @router.post("/logout")
 async def logout(_developer: DeveloperDep):
     """Logout developer (token invalidation should be handled client-side)."""
-    return {"message": "Successfully logged out"}
+    return {"message": "Sesión cerrada correctamente"}
 
 
 # TODO: Implement /forgot-password and /reset-password

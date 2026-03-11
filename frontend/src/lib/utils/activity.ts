@@ -120,19 +120,19 @@ interface ActivityFieldDefinition {
 const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   {
     key: 'distance',
-    label: 'Distance',
+    label: 'Distancia',
     getValue: (s) =>
       s.distance_meters !== null ? formatDistance(s.distance_meters) : null,
   },
   {
     key: 'floors',
-    label: 'Floors Climbed',
+    label: 'Pisos subidos',
     getValue: (s) =>
       s.floors_climbed !== null ? formatNumber(s.floors_climbed) : null,
   },
   {
     key: 'elevation',
-    label: 'Elevation',
+    label: 'Elevación',
     getValue: (s) =>
       s.elevation_meters !== null
         ? `${Math.round(s.elevation_meters)} m`
@@ -140,7 +140,7 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'totalCalories',
-    label: 'Total Calories',
+    label: 'Calorías totales',
     getValue: (s) =>
       s.total_calories_kcal !== null
         ? formatNumber(s.total_calories_kcal)
@@ -148,13 +148,13 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'sedentary',
-    label: 'Sedentary Time',
+    label: 'Tiempo sedentario',
     getValue: (s) =>
       s.sedentary_minutes !== null ? formatMinutes(s.sedentary_minutes) : null,
   },
   {
     key: 'maxHr',
-    label: 'Max Heart Rate',
+    label: 'Frecuencia cardiaca máxima',
     getValue: (s) =>
       s.heart_rate !== null && s.heart_rate.max_bpm !== null
         ? `${s.heart_rate.max_bpm} bpm`
@@ -162,7 +162,7 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'minHr',
-    label: 'Min Heart Rate',
+    label: 'Frecuencia cardiaca mínima',
     getValue: (s) =>
       s.heart_rate !== null && s.heart_rate.min_bpm !== null
         ? `${s.heart_rate.min_bpm} bpm`
@@ -170,7 +170,7 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'lightActivity',
-    label: 'Light Activity',
+    label: 'Actividad ligera',
     getValue: (s) =>
       s.intensity_minutes !== null && s.intensity_minutes.light !== null
         ? formatMinutes(s.intensity_minutes.light)
@@ -178,7 +178,7 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'moderateActivity',
-    label: 'Moderate Activity',
+    label: 'Actividad moderada',
     getValue: (s) =>
       s.intensity_minutes !== null && s.intensity_minutes.moderate !== null
         ? formatMinutes(s.intensity_minutes.moderate)
@@ -186,7 +186,7 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'vigorousActivity',
-    label: 'Vigorous Activity',
+    label: 'Actividad intensa',
     getValue: (s) =>
       s.intensity_minutes !== null && s.intensity_minutes.vigorous !== null
         ? formatMinutes(s.intensity_minutes.vigorous)
@@ -194,7 +194,7 @@ const ACTIVITY_FIELD_DEFINITIONS: ActivityFieldDefinition[] = [
   },
   {
     key: 'source',
-    label: 'Source',
+    label: 'Origen',
     getValue: (s) => s.source?.provider || null,
   },
 ];

@@ -54,19 +54,19 @@ function UsersPage() {
 
     if (formData.external_user_id && formData.external_user_id.length > 255) {
       errors.external_user_id =
-        'External User ID must be 255 characters or less';
+        'El ID externo de usuario debe tener 255 caracteres o menos';
     }
 
     if (formData.first_name && formData.first_name.length > 100) {
-      errors.first_name = 'First name must be 100 characters or less';
+      errors.first_name = 'El nombre debe tener 100 caracteres o menos';
     }
 
     if (formData.last_name && formData.last_name.length > 100) {
-      errors.last_name = 'Last name must be 100 characters or less';
+      errors.last_name = 'El apellido debe tener 100 caracteres o menos';
     }
 
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Please enter a valid email address';
+      errors.email = 'Ingresa un correo electrónico válido';
     }
 
     setFormErrors(errors);
@@ -112,9 +112,9 @@ function UsersPage() {
     return (
       <div className="p-8">
         <div className="mb-6">
-          <h1 className="text-2xl font-medium text-white">Users</h1>
+          <h1 className="text-2xl font-medium text-white">Usuarios</h1>
           <p className="text-sm text-zinc-500 mt-1">
-            Manage your platform users
+            Administra los usuarios de tu plataforma
           </p>
         </div>
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
@@ -136,9 +136,9 @@ function UsersPage() {
       <div className="p-8">
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-8 text-center">
           <p className="text-zinc-400 mb-4">
-            Failed to load users. Please try again.
+            No se pudieron cargar los usuarios. Inténtalo de nuevo.
           </p>
-          <Button onClick={() => refetch()}>Retry</Button>
+          <Button onClick={() => refetch()}>Reintentar</Button>
         </div>
       </div>
     );
@@ -152,14 +152,14 @@ function UsersPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-medium text-white">Users</h1>
+          <h1 className="text-2xl font-medium text-white">Usuarios</h1>
           <p className="text-sm text-zinc-500 mt-1">
-            Manage your platform users and their wearable connections
+            Administra los usuarios de tu plataforma y sus conexiones de wearables
           </p>
         </div>
         <Button onClick={() => setIsCreateDialogOpen(true)}>
           <Plus className="h-4 w-4" />
-          Add User
+          Agregar usuario
         </Button>
       </div>
 
@@ -178,14 +178,14 @@ function UsersPage() {
       ) : (
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
           <UsersIcon className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
-          <p className="text-zinc-400 mb-2">No users found</p>
+          <p className="text-zinc-400 mb-2">No se encontraron usuarios</p>
           <Button
             variant="outline"
             onClick={() => setIsCreateDialogOpen(true)}
             className="mt-4"
           >
             <Plus className="h-4 w-4" />
-            Create First User
+            Crear el primer usuario
           </Button>
         </div>
       )}
@@ -202,21 +202,21 @@ function UsersPage() {
       >
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Create New User</DialogTitle>
+            <DialogTitle>Crear nuevo usuario</DialogTitle>
             <DialogDescription>
-              Create a new user to connect wearable devices and collect health
-              data.
+              Crea un nuevo usuario para conectar dispositivos wearables y
+              recopilar datos de salud.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-1.5">
               <Label htmlFor="external_user_id" className="text-zinc-300">
-                External User ID
+                ID externo de usuario
               </Label>
               <Input
                 id="external_user_id"
                 type="text"
-                placeholder="e.g., user_12345 or external system ID"
+                placeholder="por ejemplo, user_12345 o ID de sistema externo"
                 value={formData.external_user_id || ''}
                 onChange={(e) =>
                   setFormData({
@@ -233,13 +233,13 @@ function UsersPage() {
                 </p>
               )}
               <p className="text-[10px] text-zinc-600">
-                Your unique identifier for this user (max 255 characters)
+                Tu identificador único para este usuario (máximo 255 caracteres)
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="first_name" className="text-zinc-300">
-                  First Name
+                  Nombre
                 </Label>
                 <Input
                   id="first_name"
@@ -260,7 +260,7 @@ function UsersPage() {
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="last_name" className="text-zinc-300">
-                  Last Name
+                  Apellido
                 </Label>
                 <Input
                   id="last_name"
@@ -280,7 +280,7 @@ function UsersPage() {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-zinc-300">
-                Email
+                Correo electrónico
               </Label>
               <Input
                 id="email"
@@ -299,10 +299,10 @@ function UsersPage() {
           </div>
           <DialogFooter className="gap-3">
             <Button variant="outline" onClick={handleCloseCreateDialog}>
-              Cancel
+              Cancelar
             </Button>
             <Button onClick={handleCreateUser} disabled={createUser.isPending}>
-              {createUser.isPending ? 'Creating...' : 'Create User'}
+              {createUser.isPending ? 'Creando...' : 'Crear usuario'}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -314,20 +314,20 @@ function UsersPage() {
       >
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Delete User?</DialogTitle>
+            <DialogTitle>¿Eliminar usuario?</DialogTitle>
             <DialogDescription>
-              This action cannot be undone. This will permanently delete the
-              user and all associated data including:
+              Esta acción no se puede deshacer. Eliminará permanentemente al
+              usuario y todos sus datos asociados, incluidos:
             </DialogDescription>
           </DialogHeader>
           <div>
             <ul className="list-disc list-inside text-sm text-zinc-500 space-y-1">
-              <li>All wearable device connections</li>
-              <li>All health data (sleep, activity)</li>
-              <li>All automation triggers for this user</li>
+              <li>Todas las conexiones con dispositivos wearables</li>
+              <li>Todos los datos de salud (sueño, actividad)</li>
+              <li>Todos los disparadores de automatizaciones de este usuario</li>
             </ul>
             <div className="mt-4 p-3 bg-zinc-800 rounded-md">
-              <p className="text-xs text-zinc-500">User ID:</p>
+              <p className="text-xs text-zinc-500">ID de usuario:</p>
               <code className="font-mono text-sm text-zinc-300">
                 {deleteUserId}
               </code>
@@ -335,14 +335,14 @@ function UsersPage() {
           </div>
           <DialogFooter className="gap-3">
             <Button variant="outline" onClick={() => setDeleteUserId(null)}>
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"
               onClick={handleDeleteUser}
               disabled={deleteUser.isPending}
             >
-              {deleteUser.isPending ? 'Deleting...' : 'Delete User'}
+              {deleteUser.isPending ? 'Eliminando...' : 'Eliminar usuario'}
             </Button>
           </DialogFooter>
         </DialogContent>

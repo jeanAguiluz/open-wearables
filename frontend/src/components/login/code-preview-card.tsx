@@ -20,7 +20,7 @@ export function CodePreviewCard() {
         {/* Code Content */}
         <div className="p-5 font-mono text-[11px] leading-relaxed">
           <div className="flex gap-2 text-zinc-500 mb-2">
-            <span>// Define natural language automation</span>
+            <span>// Define una automatización en lenguaje natural</span>
           </div>
           <div className="text-blue-400">
             const <span className="text-white">insight</span> ={' '}
@@ -28,10 +28,10 @@ export function CodePreviewCard() {
             {'{'}
           </div>
           <div className="pl-4 text-zinc-300">
-            name: <span className="text-green-400">"Post-Run Recovery"</span>,
+            name: <span className="text-green-400">"Recuperación post carrera"</span>,
           </div>
           <div className="pl-4 text-zinc-300">
-            trigger: <span className="text-green-400">"Run &gt; 5km"</span>,
+            trigger: <span className="text-green-400">"Carrera &gt; 5 km"</span>,
           </div>
           <div className="pl-4 text-zinc-300">
             action: <span className="text-blue-400">async</span> (
@@ -42,7 +42,7 @@ export function CodePreviewCard() {
           </div>
           <div className="pl-12 text-zinc-300">
             <span className="text-purple-400">return</span>{' '}
-            <span className="text-green-400">"Suggest yoga"</span>;
+            <span className="text-green-400">"Sugerir yoga"</span>;
           </div>
           <div className="pl-8 text-zinc-300">{'}'}</div>
           <div className="text-zinc-300">{'}'});</div>
@@ -63,7 +63,7 @@ export function CodePreviewCard() {
           </div>
           <div className="flex items-center gap-1.5 text-[9px] text-emerald-400">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Connected
+            Conectado
           </div>
         </div>
       </div>
@@ -71,20 +71,20 @@ export function CodePreviewCard() {
       {/* Text Content */}
       <div className="mt-8 text-center max-w-[300px]">
         <h2 className="text-base font-medium text-white tracking-tight mb-2">
-          Normalized Health Data
+          Datos de salud normalizados
         </h2>
         <p className="text-xs text-zinc-500 leading-relaxed">
-          Connect Garmin, Fitbit, Oura, and more with a single API.
+          Conecta Garmin, Fitbit, Oura y más con una sola API.
         </p>
         <div className="mt-6 flex items-center justify-center gap-4">
           <div className="flex flex-col items-center gap-1">
             <ShieldCheck className="w-4 h-4 text-zinc-400" />
-            <span className="text-[9px] text-zinc-600">Secure</span>
+            <span className="text-[9px] text-zinc-600">Seguro</span>
           </div>
           <div className="w-px h-6 bg-zinc-800" />
           <div className="flex flex-col items-center gap-1">
             <Zap className="w-4 h-4 text-zinc-400" />
-            <span className="text-[9px] text-zinc-600">Fast</span>
+            <span className="text-[9px] text-zinc-600">Rápido</span>
           </div>
           <div className="w-px h-6 bg-zinc-800" />
           <div className="flex flex-col items-center gap-1">

@@ -1,221 +1,240 @@
-
 # Open Wearables
 
-<div align="left">
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-blue.svg)](https://github.com/the-momentum/open-wearables/issues)
-![Built with: FastAPI + React + Tanstack](https://img.shields.io/badge/Built%20with-FastAPI%20%2B%20React%20%2B%20Tanstack-green.svg)
+[![Licencia: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs bienvenidos](https://img.shields.io/badge/PRs-Welcome-blue.svg)](https://github.com/the-momentum/open-wearables/issues)
+![Creado con: FastAPI + React + TanStack](https://img.shields.io/badge/Built%20with-FastAPI%20%2B%20React%20%2B%20Tanstack-green.svg)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Chat-5865F2?logo=discord&logoColor=white)](https://discord.gg/qrcfFnNE6H)
 
-</div>
+---
+
+**Documentación**: <https://docs.openwearables.io>
 
 ---
 
-**Documentation**: https://docs.openwearables.io
+Plataforma de código abierto que unifica datos de dispositivos wearables de múltiples proveedores y habilita insights de salud impulsados por IA mediante automatizaciones en lenguaje natural. Crea aplicaciones de salud más rápido con una sola API, widgets integrables y notificaciones inteligentes por webhook.
 
----
+## Qué Hace
 
-Open-source platform that unifies wearable device data from multiple providers and enables AI-powered health insights through natural language automations. Build health applications faster with a single API, embeddable widgets, and intelligent webhook notifications.
+Open Wearables ofrece una API unificada y un portal para desarrolladores para conectar y sincronizar datos de múltiples dispositivos wearables y plataformas fitness. En lugar de implementar integraciones separadas para cada proveedor, como Garmin, Whoop o Apple Health, puedes usar una sola plataforma para acceder a datos de salud normalizados y crear insights inteligentes mediante automatizaciones impulsadas por IA.
 
-## What It Does
-
-Open Wearables provides a unified API and developer portal to connect and sync data from multiple wearable devices and fitness platforms. Instead of implementing separate integrations for each provider (e.g., Garmin, Whoop, Apple Health), you can use a single platform to access normalized health data and build intelligent health insights through AI-powered automations.
-
-<div align="center">
-<img width="597" height="449" alt="image" src="https://github.com/user-attachments/assets/b626405d-99a3-4ff7-b044-442483a3edea" />
-</div>
+![Vista general de la plataforma Open Wearables que muestra el flujo unificado de datos de wearables y el panel.](https://github.com/user-attachments/assets/b626405d-99a3-4ff7-b044-442483a3edea)
 
 > [!IMPORTANT]
-> **For Individuals**: This platform isn't just for developers - individuals can self-host it to take control of their own wearable data. Connect your devices, explore your health metrics through the unified API, and stay tuned for upcoming features like the AI Health Assistant and personal health insights automations. Best of all, your data stays on your own infrastructure, giving you complete privacy and control.
+> **Para uso personal**: Esta plataforma no es solo para desarrolladores. Cualquier persona puede alojarla por su cuenta para tomar control de sus propios datos de wearables. Conecta tus dispositivos, explora tus métricas de salud a través de la API unificada y mantente al tanto de las próximas funciones, como el Asistente de Salud con IA y las automatizaciones de insights personales. Lo mejor es que tus datos permanecen en tu propia infraestructura, con privacidad y control total.
 
-## Why Use It
+## Por Qué Usarlo
 
-**For Developers building health apps:**
-- 🔌 Integrate multiple wearable providers through one API instead of maintaining separate implementations
-- 📊 Access normalized health data across different devices (heart rate, sleep, activity, steps, etc.)
-- 🏠 Self-hosted solution - deploy on your own infrastructure with full data control
-- 🚀 No third-party dependencies for core functionality - run it locally with `docker compose up`
-- 🤖 Build AI-powered health insights and automations using natural language (coming soon)
-- 🧩 Embeddable widgets for easy integration into your applications (coming soon)
+**Para desarrolladores que crean apps de salud:**
 
-**The Problem It Solves:**
+- 🔌 Integra múltiples proveedores de wearables mediante una sola API, en lugar de mantener implementaciones separadas
+- 📊 Accede a datos de salud normalizados entre distintos dispositivos, como frecuencia cardiaca, sueño, actividad y pasos
+- 🏠 Solución autohospedada: despliega en tu propia infraestructura con control total de los datos
+- 🚀 Sin dependencias de terceros para la funcionalidad principal: ejecútalo localmente con `docker compose up`
+- 🤖 Crea insights de salud y automatizaciones impulsadas por IA usando lenguaje natural (próximamente)
+- 🧩 Widgets integrables para añadir la plataforma fácilmente a tus aplicaciones (próximamente)
 
-Building a health app that supports multiple wearables typically requires:
-- Significant development effort per provider (Garmin, Whoop, Apple Health, etc.) to implement OAuth flows, data mapping, and sync logic
-- Managing different OAuth flows and APIs for each service
-- Handling various data formats and units
-- Maintaining multiple SDKs and dealing with API changes
+**El problema que resuelve:**
 
-Open Wearables handles this complexity so you can focus on building your product 🚀
+Crear una app de salud compatible con múltiples wearables normalmente requiere:
 
-## Use Cases
+- Mucho esfuerzo de desarrollo por proveedor, como Garmin, Whoop o Apple Health, para implementar flujos OAuth, mapeo de datos y lógica de sincronización
+- Gestionar distintos flujos OAuth y APIs para cada servicio
+- Manejar múltiples formatos y unidades de datos
+- Mantener varios SDK y adaptarse a cambios en las APIs
 
-- 🏃 **Fitness Coaching Apps**: Connect user wearables to provide personalized training recommendations. Running coaches can create users, share connection links via WhatsApp, and test AI insights capabilities
-- 🏥 **Healthcare Platforms**: Aggregate patient health data from various devices and set up automations for health alerts
-- 💪 **Wellness Applications**: Track and analyze user activity across different wearables with AI-powered insights
-- 🔬 **Research Projects**: Collect standardized health data from multiple sources
-- 🧪 **Product Pilots**: Non-technical product owners can test platform functionality by sharing connection links with users without needing their own app
-- 👤 **Personal Use**: Individuals can self-host the platform to connect their own wearables, chat with their health data using the AI Health Assistant, and set up personal health insights - all with complete data privacy and control
+Open Wearables absorbe esa complejidad para que puedas concentrarte en construir tu producto.
 
-## Getting Started
+## Casos de Uso
 
-Get Open Wearables up and running in minutes.
+- 🏃 **Apps de coaching fitness**: conecta los wearables de tus usuarios para ofrecer recomendaciones de entrenamiento personalizadas. Los coaches de running pueden crear usuarios, compartir enlaces de conexión por WhatsApp y probar capacidades de insights con IA.
+- 🏥 **Plataformas de salud**: agrega datos de pacientes desde varios dispositivos y configura automatizaciones para alertas de salud.
+- 💪 **Aplicaciones de bienestar**: da seguimiento y analiza la actividad de tus usuarios a través de distintos wearables con insights impulsados por IA.
+- 🔬 **Proyectos de investigación**: recopila datos de salud estandarizados desde múltiples fuentes.
+- 🧪 **Pilotos de producto**: equipos no técnicos pueden probar la funcionalidad compartiendo enlaces de conexión con usuarios, sin necesidad de tener una app propia.
+- 👤 **Uso personal**: cualquier persona puede autohospedar la plataforma para conectar sus propios wearables, conversar con sus datos de salud usando el Asistente de Salud con IA y configurar insights personales, todo con privacidad y control total.
 
-1. **Clone the repository:**
+## Primeros Pasos
+
+Pon Open Wearables en funcionamiento en minutos.
+
+1. **Clona el repositorio:**
+
    ```bash
    git clone https://github.com/the-momentum/open-wearables.git
    cd open-wearables
    ```
 
-2. **Configure environment variables:**
-   
-   **Backend configuration:**
+2. **Configura las variables de entorno:**
+
+   **Configuración del backend:**
+
    ```bash
    cp ./backend/config/.env.example ./backend/config/.env
    ```
-   
-   **Frontend configuration:**
+
+   **Configuración del frontend:**
+
    ```bash
    cp ./frontend/.env.example ./frontend/.env
    ```
 
-3. **Start the application**
-   
-   **Using Docker (Recommended):**
-   
-   The easiest way to get started is with Docker Compose:
+3. **Inicia la aplicación**
+
+   **Con Docker (recomendado):**
+
+   La forma más sencilla de comenzar es con Docker Compose:
+
    ```bash
    docker compose up -d
    ```
-   
-   For local development setup without Docker take a look at [docs](https://docs.openwearables.io/quickstart#local-development-setup)
 
-4. **Log in to the developer portal:**
+   Con la configuración actual de Docker Compose, el frontend queda disponible en `http://127.0.0.1:3000` y el backend en `http://127.0.0.1:8001` para evitar conflictos comunes con otros proyectos locales y con la resolución IPv6 de `localhost` en Windows.
 
-   An admin account is automatically created on startup using the `ADMIN_EMAIL` and `ADMIN_PASSWORD` environment variables (defaults: `admin@admin.com` / `your-secure-password`).
+   Si prefieres una configuración de desarrollo local sin Docker, revisa la [documentación](https://docs.openwearables.io/quickstart#local-development-setup).
 
-   Open http://localhost:3000 to access the developer portal and create API keys.
+4. **Inicia sesión en el portal para desarrolladores:**
 
-5. **Seed sample data** (optional):
-   If you want test users and sample activity data:
+   Al iniciar, se crea automáticamente una cuenta de administrador usando las variables de entorno `ADMIN_EMAIL` y `ADMIN_PASSWORD` (valores por defecto: `admin@admin.com` / `your-secure-password`).
+
+   Abre <http://127.0.0.1:3000> para acceder al portal y crear API keys.
+
+5. **Carga datos de ejemplo** (opcional):
+
+   Si quieres usuarios de prueba y datos de actividad de ejemplo:
+
    ```bash
    make seed
    ```
 
-   This will create:
-   - Test users
-   - Sample activity data for test users
+   Esto creará:
 
+   - Usuarios de prueba
+   - Datos de actividad de ejemplo para esos usuarios
 
-6. **View API documentation:**
+6. **Consulta la documentación de la API:**
 
-   Open http://localhost:8000/docs in your browser to explore the interactive Swagger UI.
+   Abre <http://127.0.0.1:8001/docs> en tu navegador para explorar la interfaz interactiva de Swagger UI.
 
-## Core Features
+## Funcionalidades Principales
 
-### Developer Portal Dashboard
-Web-based dashboard for managing your integration:
-- 📈 **General Statistics**: View number of users and data points at a glance
-- 👥 **User Management**: Add users via the portal or through the API
-- 📋 **User Details**: View connected data sources, integration status, and user metrics with visualizations
-- 🔑 **API Key Management**: Generate and manage credentials in the Credentials tab
+### Panel del Portal para Desarrolladores
 
-### Health Insights & Automations (coming soon)
-The platform's most powerful feature - define intelligent health insights using natural language:
-- 💬 **Natural Language Conditions**: Describe when notifications should be triggered in plain English
-- 🔔 **Webhook Notifications**: Configure your backend endpoint to receive real-time health insights
-- 🧪 **Test Automation**: Run dry runs on historical data to see how automations work in practice
-- 👤 **Human-in-the-Loop**: Mark incorrect AI interpretations during testing to continuously improve the system
-- ✨ **Improve Description**: AI-powered suggestions to refine your automation descriptions
-- 📜 **Automation Logs**: Review past automation triggers and provide feedback
+Panel web para gestionar tu integración:
 
-### AI Health Assistant (coming soon)
-- 💬 Interactive chat interface for debugging and exploring user data
-- 🧩 Embeddable widget that can be integrated into any app with just a few lines of code
-- 🔄 Customizable AI models (swap models to match your needs)
-- 🔍 Natural language queries about user health metrics
+- 📈 **Estadísticas generales**: visualiza rápidamente el número de usuarios y puntos de datos
+- 👥 **Gestión de usuarios**: agrega usuarios desde el portal o mediante la API
+- 📋 **Detalles del usuario**: consulta fuentes de datos conectadas, estado de integración y métricas del usuario con visualizaciones
+- 🔑 **Gestión de API keys**: genera y administra credenciales en la pestaña de credenciales
 
-### Unified API
-Access health data through a consistent REST API regardless of the source device.
+### Insights de Salud y Automatizaciones (próximamente)
 
-### Provider Support
-- ☁️ **Cloud-based**: Garmin, Suunto, Polar (more coming soon!)
-- 📱 **SDK-based**: Apple HealthKit, Samsung Health, Google Health Connect
+La funcionalidad más potente de la plataforma: definir insights de salud inteligentes usando lenguaje natural.
 
-### OAuth Flow Management
-Simplified connection process for end users:
-1. Generate a connection link for your user (or use the SDK widget)
-2. User authenticates with their wearable provider
-3. Data automatically syncs to your platform
-4. Access via unified API
+- 💬 **Condiciones en lenguaje natural**: describe en lenguaje simple cuándo deben activarse las notificaciones
+- 🔔 **Notificaciones por webhook**: configura el endpoint de tu backend para recibir insights de salud en tiempo real
+- 🧪 **Prueba de automatizaciones**: ejecuta simulaciones sobre datos históricos para ver cómo funcionan en la práctica
+- 👤 **Human-in-the-loop**: marca interpretaciones incorrectas de la IA durante las pruebas para mejorar continuamente el sistema
+- ✨ **Mejorar descripción**: recibe sugerencias impulsadas por IA para refinar las descripciones de tus automatizaciones
+- 📜 **Registros de automatización**: revisa activaciones pasadas y entrega retroalimentación
 
-### Mobile Sync SDKs
-Native SDKs for push-based health data sync from on-device health stores:
+### Asistente de Salud con IA (próximamente)
+
+- 💬 Interfaz de chat interactiva para depurar y explorar datos del usuario
+- 🧩 Widget integrable que puede añadirse a cualquier app con solo unas pocas líneas de código
+- 🔄 Modelos de IA personalizables para adaptarlos a tus necesidades
+- 🔍 Consultas en lenguaje natural sobre métricas de salud del usuario
+
+### API Unificada
+
+Accede a datos de salud mediante una API REST consistente, sin importar el dispositivo de origen.
+
+### Soporte de Proveedores
+
+- ☁️ **Basados en la nube**: Garmin, Suunto y Polar (más próximamente)
+- 📱 **Basados en SDK**: Apple HealthKit, Samsung Health y Google Health Connect
+
+### Gestión del Flujo OAuth
+
+Proceso de conexión simplificado para usuarios finales:
+
+1. Genera un enlace de conexión para tu usuario o usa el widget del SDK
+2. La persona usuaria se autentica con su proveedor de wearables
+3. Los datos se sincronizan automáticamente con tu plataforma
+4. Accede a ellos mediante la API unificada
+
+### SDK de Sincronización Móvil
+
+SDK nativos para sincronización push de datos de salud desde almacenes de salud en el dispositivo:
+
 - **[iOS SDK](https://github.com/the-momentum/open_wearables_ios_sdk)** (Swift) - Apple HealthKit
-- **[Android SDK](https://github.com/the-momentum/open_wearables_android_sdk)** (Kotlin) - Samsung Health & Google Health Connect
-- **[Flutter SDK](https://github.com/the-momentum/open_wearables_health_sdk)** (Dart) - Cross-platform wrapper around native SDKs
+- **[Android SDK](https://github.com/the-momentum/open_wearables_android_sdk)** (Kotlin) - Samsung Health y Google Health Connect
+- **[Flutter SDK](https://github.com/the-momentum/open_wearables_health_sdk)** (Dart) - Capa multiplataforma sobre SDK nativos
 
-### Widgets (coming soon)
-- 🔌 **Connection Widget**: Allow users to connect their wearables directly from your app
-- 🤖 **AI Health Assistant Widget**: Embed the AI chat interface for user health queries
+### Widgets (próximamente)
 
-## Architecture
+- 🔌 **Widget de conexión**: permite que los usuarios conecten sus wearables directamente desde tu app
+- 🤖 **Widget del Asistente de Salud con IA**: integra la interfaz de chat para consultas sobre salud del usuario
 
-Built with:
+## Arquitectura
+
+Construido con:
+
 - 🐍 **Backend**: FastAPI (Python)
 - ⚛️ **Frontend**: React + TanStack Router + TypeScript (Vite)
-- 🗄️ **Database**: PostgreSQL + Redis
-- ⚙️ **Task Queue**: Celery (background jobs for data syncing and processing)
-- 🔐 **Authentication**: Self-contained (no external auth services required)
-- 📡 **API Style**: RESTful with OpenAPI/Swagger documentation
+- 🗄️ **Base de datos**: PostgreSQL + Redis
+- ⚙️ **Cola de tareas**: Celery para trabajos en segundo plano de sincronización y procesamiento
+- 🔐 **Autenticación**: autocontenida, sin servicios externos obligatorios
+- 📡 **Estilo de API**: REST con documentación OpenAPI/Swagger
 
-The platform is designed for self-hosting, meaning each deployment serves a single organization. No multi-tenancy complexity.
+La plataforma está diseñada para autohospedarse, lo que significa que cada despliegue da servicio a una sola organización, sin la complejidad de la multitenencia.
 
-## Development Roadmap
+## Hoja de Ruta de Desarrollo
 
-**Available**:
-- Developer portal
-- User management (via API and developer portal)
-- OAuth flow for Garmin, Polar, and Suunto
-- Workout data sync and API access for Garmin, Polar, and Suunto
-- Mobile Sync SDKs (iOS, Android, Flutter)
+**Disponible**:
 
-**In Development**:
-- Core health data endpoints
-- Health Insights automations
-- AI Health Assistant
-- Enhanced widget integration
+- Portal para desarrolladores
+- Gestión de usuarios mediante API y portal
+- Flujo OAuth para Garmin, Polar y Suunto
+- Sincronización de entrenamientos y acceso por API para Garmin, Polar y Suunto
+- SDK de sincronización móvil para iOS, Android y Flutter
 
-## Join the Discord
+**En desarrollo**:
 
-Join our Discord community to connect with other developers, get help, share ideas, and stay updated on the latest developments:
+- Endpoints principales de datos de salud
+- Automatizaciones de insights de salud
+- Asistente de Salud con IA
+- Integración mejorada de widgets
+
+## Únete al Discord
+
+Únete a nuestra comunidad de Discord para conectar con otros desarrolladores, obtener ayuda, compartir ideas y mantenerte al día con las últimas novedades:
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Chat-5865F2?logo=discord&logoColor=white)](https://discord.gg/qrcfFnNE6H)
 
-## Contributing
+## Contribuir
 
-Contributions are welcome! This project aims to be a community-driven solution for wearable data integration.
+Las contribuciones son bienvenidas. Este proyecto busca ser una solución impulsada por la comunidad para la integración de datos de wearables.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details on:
-- 🛠️ Setting up the development environment
-- 📝 Code style and testing requirements
-- 🔀 Pull request process
+Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles sobre:
 
-## License
+- 🛠️ Cómo configurar el entorno de desarrollo
+- 📝 Estilo de código y requisitos de pruebas
+- 🔀 Proceso de pull requests
 
-[MIT License](LICENSE) - Use it freely in commercial and open-source projects.
+## Licencia
 
-## Community
+[Licencia MIT](LICENSE) - Úsala libremente en proyectos comerciales y de código abierto.
 
-- 💬 [GitHub Discussions](https://github.com/the-momentum/open-wearables/discussions) - Questions and ideas
+## Comunidad
 
----
-
-**Note**: This is an early-stage project under active development. APIs may change before version 1.0. We recommend pinning to specific versions in production and following the changelog for updates.
+- 💬 [GitHub Discussions](https://github.com/the-momentum/open-wearables/discussions) - Preguntas e ideas
 
 ---
 
-The backend part of this project was generated from the [Python AI Kit](https://github.com/the-momentum/python-ai-kit).
+**Nota**: Este es un proyecto en etapa temprana y en desarrollo activo. Las APIs pueden cambiar antes de la versión 1.0. Recomendamos fijar versiones específicas en producción y seguir el changelog para futuras actualizaciones.
 
-Built with ❤️ by [Momentum](https://themomentum.ai/)
+---
+
+La parte backend de este proyecto fue generada a partir de [Python AI Kit](https://github.com/the-momentum/python-ai-kit).
+
+Hecho con ❤️ por [Momentum](https://themomentum.ai/)

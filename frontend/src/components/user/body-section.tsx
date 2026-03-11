@@ -95,10 +95,10 @@ function PeriodToggle({ value, onChange }: PeriodToggleProps) {
   return (
     <div className="flex gap-1">
       <button onClick={() => onChange(1)} className={getButtonClass(1)}>
-        Today
+        Hoy
       </button>
       <button onClick={() => onChange(7)} className={getButtonClass(7)}>
-        7 Days
+        7 días
       </button>
     </div>
   );
@@ -161,7 +161,9 @@ export function BodySection({ userId }: BodySectionProps) {
     <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
       <div className="px-6 py-4 border-b border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-sm font-medium text-white">Body Metrics</h3>
+          <h3 className="text-sm font-medium text-white">
+            Métricas corporales
+          </h3>
           {bodySummary?.source?.provider && (
             <SourceBadge provider={bodySummary.source.provider} />
           )}
@@ -178,7 +180,7 @@ export function BodySection({ userId }: BodySectionProps) {
             <div>
               <div className="mb-4">
                 <h4 className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-                  Body Composition
+                  Composición corporal
                 </h4>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -187,14 +189,14 @@ export function BodySection({ userId }: BodySectionProps) {
                   iconColor="text-blue-400"
                   iconBgColor="bg-blue-500/10"
                   value={formatWeight(slowChangingData?.weight_kg ?? null)}
-                  label="Weight"
+                  label="Peso"
                 />
                 <MetricCard
                   icon={Ruler}
                   iconColor="text-cyan-400"
                   iconBgColor="bg-cyan-500/10"
                   value={formatHeight(slowChangingData?.height_cm ?? null)}
-                  label="Height"
+                  label="Altura"
                 />
                 <MetricCard
                   icon={Percent}
@@ -203,21 +205,21 @@ export function BodySection({ userId }: BodySectionProps) {
                   value={formatPercentDecimal(
                     slowChangingData?.body_fat_percent ?? null
                   )}
-                  label="Body Fat"
+                  label="Grasa corporal"
                 />
                 <MetricCard
                   icon={Dumbbell}
                   iconColor="text-emerald-400"
                   iconBgColor="bg-emerald-500/10"
                   value={formatWeight(slowChangingData?.muscle_mass_kg ?? null)}
-                  label="Muscle Mass"
+                  label="Masa muscular"
                 />
                 <MetricCard
                   icon={Calculator}
                   iconColor="text-purple-400"
                   iconBgColor="bg-purple-500/10"
                   value={formatBmi(slowChangingData?.bmi ?? null)}
-                  label="BMI"
+                  label="IMC"
                   sublabel={bmiCategory.label || undefined}
                   sublabelColor={bmiCategory.color}
                 />
@@ -228,7 +230,7 @@ export function BodySection({ userId }: BodySectionProps) {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-                  Vitals ({formatAveragePeriod(averagePeriod)})
+                  Signos vitales ({formatAveragePeriod(averagePeriod)})
                 </h4>
                 <PeriodToggle
                   value={averagePeriod}
@@ -241,14 +243,14 @@ export function BodySection({ userId }: BodySectionProps) {
                   iconColor="text-rose-400"
                   iconBgColor="bg-rose-500/10"
                   value={formatHeartRate(averagedData?.resting_heart_rate_bpm)}
-                  label="Resting HR (bpm)"
+                  label="FC en reposo (bpm)"
                 />
                 <MetricCard
                   icon={Activity}
                   iconColor="text-indigo-400"
                   iconBgColor="bg-indigo-500/10"
                   value={formatHrv(averagedData?.avg_hrv_sdnn_ms)}
-                  label="HRV (ms)"
+                  label="VFC (ms)"
                 />
               </div>
             </div>
@@ -257,7 +259,7 @@ export function BodySection({ userId }: BodySectionProps) {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-                  Recent Readings
+                  Lecturas recientes
                 </h4>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -268,7 +270,7 @@ export function BodySection({ userId }: BodySectionProps) {
                   value={formatTemperature(
                     latestData?.body_temperature_celsius ?? null
                   )}
-                  label="Body Temp"
+                  label="Temperatura corporal"
                   sublabel={
                     latestData?.body_temperature_measured_at
                       ? formatLastUpdated(
@@ -282,7 +284,7 @@ export function BodySection({ userId }: BodySectionProps) {
                   iconColor="text-red-400"
                   iconBgColor="bg-red-500/10"
                   value={formatBloodPressure(latestData?.blood_pressure)}
-                  label="Blood Pressure"
+                  label="Presión arterial"
                   sublabel={
                     latestData?.blood_pressure_measured_at
                       ? formatLastUpdated(latestData.blood_pressure_measured_at)

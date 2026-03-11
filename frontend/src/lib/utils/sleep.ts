@@ -24,10 +24,10 @@ export const SLEEP_STAGE_COLORS: Record<SleepStageKey, string> = {
  * Display labels for sleep stages
  */
 export const SLEEP_STAGE_LABELS: Record<SleepStageKey, string> = {
-  deep: 'Deep',
+  deep: 'Profundo',
   rem: 'REM',
-  light: 'Light',
-  awake: 'Awake',
+  light: 'Ligero',
+  awake: 'Despierto',
 };
 
 /**
@@ -210,7 +210,7 @@ interface SleepFieldDefinition {
 const SLEEP_FIELD_DEFINITIONS: SleepFieldDefinition[] = [
   {
     key: 'deepSleep',
-    label: 'Deep Sleep',
+    label: 'Sueño profundo',
     getValue: (s) =>
       s.stages?.deep_minutes !== null
         ? formatMinutes(s.stages.deep_minutes)
@@ -218,7 +218,7 @@ const SLEEP_FIELD_DEFINITIONS: SleepFieldDefinition[] = [
   },
   {
     key: 'remSleep',
-    label: 'REM Sleep',
+    label: 'Sueño REM',
     getValue: (s) =>
       s.stages?.rem_minutes !== null
         ? formatMinutes(s.stages.rem_minutes)
@@ -226,7 +226,7 @@ const SLEEP_FIELD_DEFINITIONS: SleepFieldDefinition[] = [
   },
   {
     key: 'lightSleep',
-    label: 'Light Sleep',
+    label: 'Sueño ligero',
     getValue: (s) =>
       s.stages?.light_minutes !== null
         ? formatMinutes(s.stages.light_minutes)
@@ -234,7 +234,7 @@ const SLEEP_FIELD_DEFINITIONS: SleepFieldDefinition[] = [
   },
   {
     key: 'awake',
-    label: 'Time Awake',
+    label: 'Tiempo despierto',
     getValue: (s) =>
       s.stages?.awake_minutes !== null
         ? formatMinutes(s.stages.awake_minutes)
@@ -242,7 +242,7 @@ const SLEEP_FIELD_DEFINITIONS: SleepFieldDefinition[] = [
   },
   {
     key: 'source',
-    label: 'Source',
+    label: 'Origen',
     getValue: (s) => s.source?.provider || null,
   },
 ];

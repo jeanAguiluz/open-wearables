@@ -68,7 +68,7 @@ export function TeamTab() {
   const isLoading = isLoadingDevelopers || isLoadingInvitations;
 
   const handleCopyId = async (id: string) => {
-    const success = await copyToClipboard(id, 'ID copied to clipboard');
+    const success = await copyToClipboard(id, 'ID copiado al portapapeles');
     if (success) {
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
@@ -86,7 +86,7 @@ export function TeamTab() {
   const handleInvite = () => {
     const email = inviteEmail.trim();
     if (!email || !isValidEmail(email)) {
-      toast.error('Invalid email address');
+      toast.error('Correo electrónico no válido');
       return;
     }
 
@@ -114,7 +114,7 @@ export function TeamTab() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString('es-CL', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -151,14 +151,16 @@ export function TeamTab() {
   if (developersError || invitationsError) {
     return (
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
-        <p className="text-zinc-400 mb-4">Failed to load team data</p>
+        <p className="text-zinc-400 mb-4">
+          No se pudieron cargar los datos del equipo
+        </p>
         <Button
           onClick={() => {
             refetchDevelopers();
             refetchInvitations();
           }}
         >
-          Retry
+          Reintentar
         </Button>
       </div>
     );
@@ -169,14 +171,14 @@ export function TeamTab() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-medium text-white">Team Members</h2>
+          <h2 className="text-xl font-medium text-white">Miembros del equipo</h2>
           <p className="text-sm text-zinc-500 mt-1">
-            Manage your team and their access
+            Administra tu equipo y sus accesos
           </p>
         </div>
         <Button onClick={() => setIsInviteModalOpen(true)}>
           <UserPlus className="h-4 w-4" />
-          Invite Member
+          Invitar integrante
         </Button>
       </div>
 
@@ -186,10 +188,10 @@ export function TeamTab() {
           <div className="px-6 py-4 border-b border-zinc-800">
             <h3 className="text-sm font-medium text-white flex items-center gap-2">
               <Clock className="h-4 w-4 text-amber-500" />
-              Pending Invitations
+              Invitaciones pendientes
             </h3>
             <p className="text-xs text-zinc-500 mt-1">
-              Invitations that are waiting to be accepted
+              Invitaciones que aún están esperando aceptación
             </p>
           </div>
 
@@ -198,19 +200,19 @@ export function TeamTab() {
               <thead>
                 <tr className="border-b border-zinc-800 text-left">
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Email
+                    Correo
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Sent
+                    Enviada
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Expires
+                    Expira
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Status
+                    Estado
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider text-right">
-                    Actions
+                    Acciones
                   </th>
                 </tr>
               </thead>
@@ -253,7 +255,7 @@ export function TeamTab() {
                           size="icon"
                           onClick={() => handleResendInvitation(invitation.id)}
                           disabled={resendInvitationMutation.isPending}
-                          title="Resend invitation"
+                          title="Reenviar invitación"
                         >
                           <RotateCw className="h-4 w-4" />
                         </Button>
@@ -267,7 +269,7 @@ export function TeamTab() {
                             })
                           }
                           disabled={revokeInvitationMutation.isPending}
-                          title="Revoke invitation"
+                          title="Revocar invitación"
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -284,9 +286,9 @@ export function TeamTab() {
       {/* Team Members Table */}
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <div className="px-6 py-4 border-b border-zinc-800">
-          <h3 className="text-sm font-medium text-white">Developers</h3>
+          <h3 className="text-sm font-medium text-white">Desarrolladores</h3>
           <p className="text-xs text-zinc-500 mt-1">
-            All team members with access to this organization
+            Todas las personas del equipo con acceso a esta organización
           </p>
         </div>
 
@@ -296,19 +298,19 @@ export function TeamTab() {
               <thead>
                 <tr className="border-b border-zinc-800 text-left">
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Name
+                    Nombre
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Email
+                    Correo
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
                     ID
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Created At
+                    Creado el
                   </th>
                   <th className="px-6 py-3 text-xs font-medium text-zinc-500 uppercase tracking-wider text-right">
-                    Actions
+                    Acciones
                   </th>
                 </tr>
               </thead>
@@ -341,7 +343,7 @@ export function TeamTab() {
                           variant="ghost-faded"
                           size="icon-sm"
                           onClick={() => handleCopyId(developer.id)}
-                          title="Copy ID"
+                          title="Copiar ID"
                         >
                           {copiedId === developer.id ? (
                             <Check className="h-3 w-3 text-emerald-500" />
@@ -367,7 +369,7 @@ export function TeamTab() {
                               })
                             }
                             disabled={deleteMutation.isPending}
-                            title="Remove team member"
+                            title="Eliminar integrante del equipo"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -382,16 +384,16 @@ export function TeamTab() {
         ) : (
           <div className="p-12 text-center">
             <Users className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
-            <p className="text-zinc-400 mb-2">No team members yet</p>
+            <p className="text-zinc-400 mb-2">Aún no hay integrantes</p>
             <p className="text-sm text-zinc-500 mb-4">
-              Invite your first team member to get started
+              Invita a la primera persona de tu equipo para comenzar
             </p>
             <Button
               variant="outline"
               onClick={() => setIsInviteModalOpen(true)}
             >
               <UserPlus className="h-4 w-4" />
-              Invite Member
+              Invitar integrante
             </Button>
           </div>
         )}
@@ -407,14 +409,14 @@ export function TeamTab() {
       >
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Invite Team Member</DialogTitle>
+            <DialogTitle>Invitar integrante</DialogTitle>
             <DialogDescription>
-              Send an invitation to join your team
+              Envía una invitación para unirse a tu equipo
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-1.5 py-4">
             <Label htmlFor="invite_email" className="text-xs text-zinc-300">
-              Email Address
+              Correo electrónico
             </Label>
             <Input
               id="invite_email"
@@ -434,7 +436,7 @@ export function TeamTab() {
               className="bg-zinc-800 border-zinc-700"
             />
             <p className="text-[10px] text-zinc-600">
-              They will receive an email with instructions to join
+              Recibirá un correo con instrucciones para unirse
             </p>
           </div>
           <DialogFooter className="gap-3">
@@ -446,7 +448,7 @@ export function TeamTab() {
               }}
               disabled={createInvitationMutation.isPending}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               onClick={handleInvite}
@@ -457,8 +459,8 @@ export function TeamTab() {
               }
             >
               {createInvitationMutation.isPending
-                ? 'Sending...'
-                : 'Send Invitation'}
+                ? 'Enviando...'
+                : 'Enviar invitación'}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -468,13 +470,13 @@ export function TeamTab() {
       <Dialog open={!!deleteTarget} onOpenChange={() => setDeleteTarget(null)}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Remove Team Member</DialogTitle>
+            <DialogTitle>Eliminar integrante</DialogTitle>
             <DialogDescription>
-              Are you sure you want to remove{' '}
+              ¿Seguro que quieres eliminar a{' '}
               <span className="font-medium text-zinc-300">
                 {deleteTarget?.email}
               </span>{' '}
-              from the team? This action cannot be undone.
+              del equipo? Esta acción no se puede deshacer.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-3">
@@ -483,14 +485,14 @@ export function TeamTab() {
               onClick={() => setDeleteTarget(null)}
               disabled={deleteMutation.isPending}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"
               onClick={handleDelete}
               disabled={deleteMutation.isPending}
             >
-              {deleteMutation.isPending ? 'Removing...' : 'Remove'}
+              {deleteMutation.isPending ? 'Eliminando...' : 'Eliminar'}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -500,13 +502,13 @@ export function TeamTab() {
       <Dialog open={!!revokeTarget} onOpenChange={() => setRevokeTarget(null)}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Revoke Invitation</DialogTitle>
+            <DialogTitle>Revocar invitación</DialogTitle>
             <DialogDescription>
-              Are you sure you want to revoke the invitation for{' '}
+              ¿Seguro que quieres revocar la invitación de{' '}
               <span className="font-medium text-zinc-300">
                 {revokeTarget?.email}
               </span>
-              ? They will no longer be able to join.
+              ? Ya no podrá unirse.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-3">
@@ -515,14 +517,14 @@ export function TeamTab() {
               onClick={() => setRevokeTarget(null)}
               disabled={revokeInvitationMutation.isPending}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"
               onClick={handleRevokeInvitation}
               disabled={revokeInvitationMutation.isPending}
             >
-              {revokeInvitationMutation.isPending ? 'Revoking...' : 'Revoke'}
+              {revokeInvitationMutation.isPending ? 'Revocando...' : 'Revocar'}
             </Button>
           </DialogFooter>
         </DialogContent>

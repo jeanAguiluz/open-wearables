@@ -49,12 +49,12 @@ function PairSuccessPage() {
           className="text-center space-y-3 mb-10"
         >
           <h1 className="text-3xl font-medium text-white tracking-tight">
-            Successfully connected
+            Conexión realizada correctamente
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed">
             {provider
-              ? `Your ${provider.name} device is now linked and syncing data.`
-              : 'Your device is now linked and syncing data.'}
+              ? `Tu dispositivo ${provider.name} ya está vinculado y sincronizando datos.`
+              : 'Tu dispositivo ya está vinculado y sincronizando datos.'}
           </p>
         </motion.div>
 
@@ -73,7 +73,7 @@ function PairSuccessPage() {
                     ? `${API_CONFIG.baseUrl}${provider.icon_url}`
                     : ''
                 }
-                alt={`${provider.name} logo`}
+                alt={`Logo de ${provider.name}`}
                 className="w-8 h-8 object-contain"
               />
             </div>
@@ -86,7 +86,7 @@ function PairSuccessPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <span className="text-sm text-zinc-500">Active</span>
+                <span className="text-sm text-zinc-500">Activo</span>
               </div>
             </div>
           </motion.div>
@@ -104,7 +104,7 @@ function PairSuccessPage() {
               href={redirectUrl}
               className="w-full py-3.5 px-4 bg-white hover:bg-zinc-200 text-zinc-950 text-base font-medium rounded-xl transition-all duration-200 focus:ring-2 focus:ring-white/20 outline-none flex items-center justify-center gap-2"
             >
-              Back to the app
+              Volver a la app
               <ExternalLink className="w-4 h-4 stroke-[1.5]" />
             </a>
           )}
@@ -117,7 +117,7 @@ function PairSuccessPage() {
                 : 'bg-white hover:bg-zinc-200 text-zinc-950'
             }`}
           >
-            Connect another device
+            Conectar otro dispositivo
             {!redirectUrl && <ArrowRight className="w-4 h-4 stroke-[1.5]" />}
           </a>
         </motion.div>

@@ -81,11 +81,11 @@ function ResetPasswordPage() {
                 <AlertCircle className="w-8 h-8 text-red-400" />
               </div>
               <h2 className="text-xl font-medium text-white mb-2">
-                Invalid Reset Link
+                Enlace de restablecimiento no válido
               </h2>
               <p className="text-sm text-zinc-500">
-                This password reset link is invalid or has expired. Please
-                request a new one.
+                Este enlace para restablecer la contraseña no es válido o ya
+                expiró. Solicita uno nuevo.
               </p>
             </div>
           </div>
@@ -95,7 +95,7 @@ function ResetPasswordPage() {
               to={ROUTES.forgotPassword}
               className="w-full bg-white text-black hover:bg-zinc-200 font-medium text-sm h-9 rounded-md transition-colors flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             >
-              Request New Reset Link
+              Solicitar un nuevo enlace
             </Link>
           </div>
 
@@ -105,7 +105,7 @@ function ResetPasswordPage() {
               className="flex items-center justify-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to sign in
+              Volver a iniciar sesión
             </Link>
           </div>
         </div>
@@ -130,10 +130,10 @@ function ResetPasswordPage() {
           </div>
 
           <h1 className="text-2xl font-medium tracking-tight text-white">
-            Set New Password
+            Establecer nueva contraseña
           </h1>
           <p className="text-sm text-zinc-500 mt-2">
-            Enter your new password below
+            Ingresa tu nueva contraseña a continuación
           </p>
         </div>
 
@@ -142,7 +142,7 @@ function ResetPasswordPage() {
             {/* New Password */}
             <div className="space-y-1.5">
               <Label htmlFor="password" className="text-xs text-zinc-300">
-                New password
+                Nueva contraseña
               </Label>
               <div className="relative group">
                 <Input
@@ -150,7 +150,7 @@ function ResetPasswordPage() {
                   id="password"
                   {...form.register('password')}
                   className="bg-zinc-900/50 border-zinc-800 pr-10"
-                  placeholder="At least 8 characters"
+                  placeholder="Mínimo 8 caracteres"
                 />
                 <button
                   type="button"
@@ -177,7 +177,7 @@ function ResetPasswordPage() {
                 htmlFor="confirmPassword"
                 className="text-xs text-zinc-300"
               >
-                Confirm new password
+                Confirmar nueva contraseña
               </Label>
               <div className="relative group">
                 <Input
@@ -185,7 +185,7 @@ function ResetPasswordPage() {
                   id="confirmPassword"
                   {...form.register('confirmPassword')}
                   className="bg-zinc-900/50 border-zinc-800 pr-10"
-                  placeholder="Confirm your password"
+                  placeholder="Confirma tu contraseña"
                 />
                 <button
                   type="button"
@@ -214,10 +214,10 @@ function ResetPasswordPage() {
               {isResetPasswordPending ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Resetting password...
+                  Restableciendo contraseña...
                 </>
               ) : (
-                'Reset Password'
+                'Restablecer contraseña'
               )}
             </Button>
           </form>
@@ -229,7 +229,7 @@ function ResetPasswordPage() {
             className="flex items-center justify-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to sign in
+            Volver a iniciar sesión
           </Link>
         </div>
       </div>

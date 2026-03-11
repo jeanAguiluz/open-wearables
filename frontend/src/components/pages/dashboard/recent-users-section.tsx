@@ -23,9 +23,9 @@ export function RecentUsersSection({
       )}
     >
       <div className="px-6 py-4 border-b border-zinc-800">
-        <h2 className="text-sm font-medium text-white">Recent Users</h2>
+        <h2 className="text-sm font-medium text-white">Usuarios recientes</h2>
         <p className="text-xs text-zinc-500 mt-1">
-          Total users: {totalUsersCount}
+          Total de usuarios: {totalUsersCount}
         </p>
       </div>
       <div className="p-6 space-y-4">
@@ -43,10 +43,10 @@ export function RecentUsersSection({
             const userName =
               user.first_name || user.last_name
                 ? `${user.first_name || ''} ${user.last_name || ''}`.trim()
-                : user.email || 'Unknown User';
+                : user.email || 'Usuario desconocido';
             const date = new Date(user.created_at);
             const formattedDate = isNaN(date.getTime())
-              ? 'Invalid date'
+              ? 'Fecha no válida'
               : format(date, 'MMM d, yyyy');
             return (
               <div key={user.id} className="flex items-center justify-between">
@@ -55,19 +55,19 @@ export function RecentUsersSection({
                     {userName}
                   </p>
                   <p className="text-xs text-zinc-500">
-                    {user.email || user.external_user_id || 'No email'}
+                    {user.email || user.external_user_id || 'Sin correo'}
                   </p>
                   <p className="text-xs text-zinc-600 mt-0.5">
-                    Created on {formattedDate}
+                    Creado el {formattedDate}
                   </p>
                 </div>
-                <span className="text-xs text-emerald-400">Active</span>
+                <span className="text-xs text-emerald-400">Activo</span>
               </div>
             );
           })
         ) : (
           <div className="flex items-center justify-center h-[200px] text-zinc-600">
-            <p className="text-sm">No users found</p>
+            <p className="text-sm">No se encontraron usuarios</p>
           </div>
         )}
       </div>

@@ -32,10 +32,10 @@ export function useCreateInvitation() {
           { ...createdInvitation, status: 'sent' },
         ]
       );
-      toast.success('Invitation sent successfully');
+      toast.success('Invitación enviada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to send invitation: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo enviar la invitación: ${getErrorMessage(error)}`);
     },
   });
 }
@@ -47,10 +47,10 @@ export function useRevokeInvitation() {
     mutationFn: (id: string) => invitationsService.revokeInvitation(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.invitations.list() });
-      toast.success('Invitation revoked successfully');
+      toast.success('Invitación revocada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to revoke invitation: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo revocar la invitación: ${getErrorMessage(error)}`);
     },
   });
 }
@@ -62,10 +62,10 @@ export function useResendInvitation() {
     mutationFn: (id: string) => invitationsService.resendInvitation(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.invitations.list() });
-      toast.success('Invitation resent successfully');
+      toast.success('Invitación reenviada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to resend invitation: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo reenviar la invitación: ${getErrorMessage(error)}`);
     },
   });
 }
@@ -75,10 +75,10 @@ export function useAcceptInvitation() {
     mutationFn: (data: InvitationAccept) =>
       invitationsService.acceptInvitation(data),
     onSuccess: () => {
-      toast.success('Invitation accepted successfully');
+      toast.success('Invitación aceptada correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to accept invitation: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo aceptar la invitación: ${getErrorMessage(error)}`);
     },
   });
 }

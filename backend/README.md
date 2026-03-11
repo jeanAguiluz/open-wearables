@@ -1,200 +1,212 @@
 # Backend
 
-FastAPI backend for the Open Wearables platform.
+Backend en FastAPI para la plataforma Open Wearables.
 
-## Requirements
+## Requisitos
 
 - Python 3.13+
-- [uv](https://github.com/astral-sh/uv) package manager
-- PostgreSQL database
+- Gestor de paquetes [uv](https://github.com/astral-sh/uv)
+- Base de datos PostgreSQL
 
-## Development
+## Desarrollo
 
-### Virtual Environment Setup
+### Configuración del Entorno Virtual
 
-The project uses a virtual environment (`.venv`) located in the `backend/` directory.
+El proyecto usa un entorno virtual (`.venv`) ubicado en el directorio `backend/`.
 
-**First-time setup:**
+**Configuración inicial:**
 
-Proceed to the `backend` directory:
+Ve al directorio `backend`:
+
 ```bash
 cd backend
 ```
 
-and run:
+y ejecuta:
 
 ```bash
 uv sync
 ```
 
-This will:
-- Create the `.venv` directory in `backend/`
-- Install all project dependencies
-- Set up the virtual environment that VS Code will automatically use
+Esto hará lo siguiente:
 
-**VS Code Configuration:**
-- The workspace is configured to use `backend/.venv/bin/python` as the default interpreter (see `.vscode/settings.json`)
-- After running `uv sync`, VS Code should automatically detect and use the virtual environment
-- If it doesn't, reload the VS Code window or manually select the interpreter from the command palette (Cmd+Shift+P → "Python: Select Interpreter")
+- Crear el directorio `.venv` dentro de `backend/`
+- Instalar todas las dependencias del proyecto
+- Preparar el entorno virtual que VS Code usará automáticamente
 
-**Recreating the virtual environment:**
-If you need to recreate the virtual environment:
+**Configuración de VS Code:**
+
+- El workspace está configurado para usar `backend/.venv/bin/python` como intérprete por defecto (consulta `.vscode/settings.json`)
+- Después de ejecutar `uv sync`, VS Code debería detectar y usar automáticamente el entorno virtual
+- Si no lo hace, recarga la ventana de VS Code o selecciona manualmente el intérprete desde la paleta de comandos (Cmd+Shift+P → "Python: Select Interpreter")
+
+**Recrear el entorno virtual:**
+
+Si necesitas recrearlo:
+
 ```bash
-rm -rf .venv  # Optional: remove existing venv
-uv sync       # Recreate and install dependencies
+rm -rf .venv  # Opcional: elimina el entorno virtual actual
+uv sync       # Lo vuelve a crear e instala dependencias
 ```
 
-**Note:** The `.venv` directory is already in `.gitignore`, so you don't need to worry about committing it.
+**Nota:** El directorio `.venv` ya está incluido en `.gitignore`, así que no necesitas preocuparte por hacer commit de ese contenido.
 
-### Installing Dependencies
+### Instalación de Dependencias
 
 ```bash
-# Install all dependencies (including dev dependencies)
+# Instalar todas las dependencias (incluyendo dependencias de desarrollo)
 uv sync
 
-# Install only production dependencies
+# Instalar solo dependencias de producción
 uv sync --no-dev
 
-# Install with code quality tools
+# Instalar junto con herramientas de calidad de código
 uv sync --group code-quality
 ```
 
-### Running the Application
+### Ejecutar la Aplicación
 
-**Using Docker (Recommended):**
+**Usando Docker (Recomendado):**
 
 ```bash
-# From the project root directory
-# Start services
+# Desde la raíz del proyecto
+# Iniciar servicios
 docker compose up -d
 
-# Run migrations
+# Ejecutar migraciones
 docker compose exec app uv run alembic upgrade head
 ```
 
-The API will be available at:
+La API estará disponible en:
+
 - 🌐 API: http://localhost:8000
 - 📚 Swagger: http://localhost:8000/docs
 
-**Local Development:**
+**Desarrollo Local:**
 
 ```bash
-# Install dependencies
+# Instalar dependencias
 uv sync
 
-# Start PostgreSQL locally
+# Iniciar PostgreSQL localmente
 
-# Create migration
+# Crear migración
 uv run alembic revision --autogenerate -m "Description"
 
-# Run migrations
+# Ejecutar migraciones
 uv run alembic upgrade head
 
-# Start development server
+# Iniciar servidor de desarrollo
 uv run fastapi run app/main.py --reload
 ```
 
-### Database Migrations
+### Migraciones de Base de Datos
 
-**Create a new migration:**
+**Crear una nueva migración:**
+
 ```bash
-# Using Docker
+# Usando Docker
 docker compose exec app uv run alembic revision --autogenerate -m "Description of changes"
 
-# Local development
+# Desarrollo local
 uv run alembic revision --autogenerate -m "Description of changes"
 ```
 
-**Run migrations:**
+**Ejecutar migraciones:**
+
 ```bash
-# Using Docker
+# Usando Docker
 docker compose exec app uv run alembic upgrade head
 
-# Local development
+# Desarrollo local
 uv run alembic upgrade head
 ```
 
-**Rollback migrations:**
+**Revertir migraciones:**
+
 ```bash
-# Using Docker
+# Usando Docker
 docker compose exec app uv run alembic downgrade -1
 
-# Local development
+# Desarrollo local
 uv run alembic downgrade -1
 ```
 
-### Running Tests
+### Ejecutar Pruebas
 
 ```bash
-# Run all tests
+# Ejecutar todas las pruebas
 uv run pytest
 
-# Run with coverage
+# Ejecutar con cobertura
 uv run pytest --cov=app --cov-report=html
 
-# Run specific test file
+# Ejecutar un archivo de prueba específico
 uv run pytest tests/path/to/test_file.py
 ```
 
-### Code Quality
+### Calidad de Código
 
-The project uses [Ruff](https://github.com/astral-sh/ruff) for linting and formatting.
+El proyecto usa [Ruff](https://github.com/astral-sh/ruff) para linting y formateo.
 
-**Check code quality:**
+**Revisar calidad de código:**
+
 ```bash
 uv run ruff check .
 uv run ruff format . --check
 ```
 
-**Fix issues automatically:**
+**Corregir problemas automáticamente:**
+
 ```bash
 uv run ruff check . --fix
 uv run ruff format .
 ```
 
-**Pre-commit hooks:**
+**Hooks de pre-commit:**
+
 ```bash
-# Install pre-commit hooks
+# Instalar hooks de pre-commit
 uv run pre-commit install
 
-# Run hooks manually
+# Ejecutar hooks manualmente
 uv run pre-commit run --all-files
 ```
 
-## Project Structure
+## Estructura del Proyecto
 
-```
+```text
 backend/
-├── app/                    # Main application code
-│   ├── api/               # API routes
-│   │   └── routes/        # Route handlers organized by version
-│   ├── config.py          # Configuration settings
-│   ├── database.py        # Database connection and session management
-│   ├── main.py            # FastAPI application entry point
-│   ├── models/            # SQLAlchemy database models
-│   ├── repositories/      # Data access layer
-│   ├── schemas/           # Pydantic schemas for request/response validation
-│   ├── services/          # Business logic layer
-│   └── utils/             # Utility functions
-├── migrations/            # Alembic database migrations
-├── scripts/               # Utility scripts
-├── alembic.ini            # Alembic configuration
-├── pyproject.toml         # Project dependencies and configuration
-└── uv.lock                # Locked dependency versions
+├── app/                    # Código principal de la aplicación
+│   ├── api/               # Rutas de la API
+│   │   └── routes/        # Handlers de rutas organizados por versión
+│   ├── config.py          # Configuración
+│   ├── database.py        # Conexión a base de datos y manejo de sesiones
+│   ├── main.py            # Punto de entrada de la aplicación FastAPI
+│   ├── models/            # Modelos de base de datos con SQLAlchemy
+│   ├── repositories/      # Capa de acceso a datos
+│   ├── schemas/           # Schemas de Pydantic para validar requests/responses
+│   ├── services/          # Capa de lógica de negocio
+│   └── utils/             # Funciones utilitarias
+├── migrations/            # Migraciones de base de datos con Alembic
+├── scripts/               # Scripts utilitarios
+├── alembic.ini            # Configuración de Alembic
+├── pyproject.toml         # Dependencias y configuración del proyecto
+└── uv.lock                # Versiones bloqueadas de dependencias
 ```
 
-## Environment Variables
+## Variables de Entorno
 
-Create a `.env` file in the `config/` directory (see `config/.env.example` for reference). Required environment variables include:
+Crea un archivo `.env` en el directorio `config/` (consulta `config/.env.example` como referencia). Las variables de entorno requeridas incluyen:
 
-- Database connection settings
-- OAuth provider credentials
-- JWT secrets
-- Other service configurations
+- Configuración de conexión a la base de datos
+- Credenciales de proveedores OAuth
+- Secrets de JWT
+- Otras configuraciones de servicios
 
-## Additional Services
+## Servicios Adicionales
 
-The backend also includes:
+El backend también incluye:
 
-- **Celery**: For background task processing
-- **Flower**: Celery monitoring (available at http://localhost:5555 when running)
+- **Celery**: Para procesamiento de tareas en segundo plano
+- **Flower**: Monitoreo de Celery (disponible en http://localhost:5555 cuando está en ejecución)

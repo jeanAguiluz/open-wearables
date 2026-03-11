@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 import {
   Bar,
   BarChart,
@@ -90,8 +91,8 @@ interface SleepMetricDefinition {
 const SLEEP_METRICS: SleepMetricDefinition[] = [
   {
     key: 'efficiency',
-    label: 'Avg Efficiency',
-    shortLabel: 'Efficiency',
+    label: 'Eficiencia prom.',
+    shortLabel: 'Eficiencia',
     icon: Zap,
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',
@@ -103,8 +104,8 @@ const SLEEP_METRICS: SleepMetricDefinition[] = [
   },
   {
     key: 'duration',
-    label: 'Avg Duration',
-    shortLabel: 'Duration',
+    label: 'Duración prom.',
+    shortLabel: 'Duración',
     icon: Moon,
     color: 'text-indigo-400',
     bgColor: 'bg-indigo-500/10',
@@ -205,7 +206,7 @@ function SleepSessionRow({
           <div className="flex items-center gap-1">
             {session.is_nap && (
               <span className="text-[10px] font-medium px-1.5 py-0.5 bg-amber-500/20 text-amber-400 rounded">
-                NAP
+                SIESTA
               </span>
             )}
             {session.source?.provider && (
@@ -214,7 +215,9 @@ function SleepSessionRow({
           </div>
           <div className="flex items-center gap-2">
             <p className="text-sm font-medium text-white">
-              {format(new Date(session.end_time), 'EEE, MMM d')}
+              {format(new Date(session.end_time), 'EEE d MMM', {
+                locale: es,
+              })}
             </p>
           </div>
           <p className="text-xs text-zinc-500">
@@ -238,7 +241,7 @@ function SleepSessionRow({
                     ? `${Math.round(session.efficiency_percent)}%`
                     : '-'}
                 </p>
-                <p className="text-xs text-zinc-500">Efficiency</p>
+                <p className="text-xs text-zinc-500">Eficiencia</p>
               </div>
             </div>
 
@@ -249,7 +252,7 @@ function SleepSessionRow({
                 <p className="text-sm font-medium text-white">
                   {formatDuration(session.duration_seconds)}
                 </p>
-                <p className="text-xs text-zinc-500">Duration</p>
+                <p className="text-xs text-zinc-500">Duración</p>
               </div>
             </div>
 
@@ -258,9 +261,9 @@ function SleepSessionRow({
               <Clock className="h-4 w-4 text-sky-400" />
               <div>
                 <p className="text-sm font-medium text-white">
-                  {format(new Date(session.start_time), 'h:mm a')}
+                  {format(new Date(session.start_time), 'HH:mm')}
                 </p>
-                <p className="text-xs text-zinc-500">Bedtime</p>
+                <p className="text-xs text-zinc-500">Hora de dormir</p>
               </div>
             </div>
 
@@ -269,9 +272,9 @@ function SleepSessionRow({
               <Clock className="h-4 w-4 text-amber-400" />
               <div>
                 <p className="text-sm font-medium text-white">
-                  {format(new Date(session.end_time), 'h:mm a')}
+                  {format(new Date(session.end_time), 'HH:mm')}
                 </p>
-                <p className="text-xs text-zinc-500">Wake</p>
+                <p className="text-xs text-zinc-500">Despertar</p>
               </div>
             </div>
           </div>
@@ -295,7 +298,7 @@ function SleepSessionRow({
           {/* Heart Rate During Sleep Chart */}
           <div>
             <h4 className="text-xs font-medium text-zinc-400 mb-3 uppercase tracking-wider">
-              Heart Rate During Sleep
+              Frecuencia cardiaca durante el sueño
             </h4>
             {hrLoading ? (
               <div className="h-[160px] flex items-center justify-center">
@@ -344,7 +347,7 @@ function SleepSessionRow({
               </ChartContainer>
             ) : (
               <p className="text-xs text-zinc-500 text-center py-4">
-                No heart rate data available for this session
+                No hay datos de frecuencia cardiaca disponibles para esta sesión
               </p>
             )}
           </div>
@@ -516,7 +519,7 @@ export function SleepSection({
     return [...summaries]
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       .map((s) => ({
-        date: format(new Date(s.date), 'MMM d'),
+        date: format(new Date(s.date), 'd MMM', { locale: es }),
         value: currentMetric.getChartValue(s),
       }));
   }, [sleepSummaries, currentMetric]);
@@ -526,7 +529,7 @@ export function SleepSection({
       {/* Summary Section */}
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <SectionHeader
-          title="Sleep Summary"
+          title="Resumen de sueño"
           dateRange={dateRange}
           onDateRangeChange={onDateRangeChange}
         />
@@ -536,7 +539,7 @@ export function SleepSection({
             <SleepSectionSkeleton />
           ) : !stats ? (
             <p className="text-sm text-zinc-500 text-center py-4">
-              No sleep data in this period
+              No hay datos de sueño en este período
             </p>
           ) : (
             <div className="space-y-6">
@@ -548,7 +551,7 @@ export function SleepSection({
                   iconColor="text-purple-400"
                   iconBgColor="bg-purple-500/10"
                   value={String(stats.nightsTracked)}
-                  label="Nights Tracked"
+                  label="Noches registradas"
                 />
 
                 {/* Clickable Metric Cards */}
@@ -573,7 +576,7 @@ export function SleepSection({
                   iconColor="text-sky-400"
                   iconBgColor="bg-sky-500/10"
                   value={formatBedtime(stats.avgBedtime)}
-                  label="Avg Bedtime"
+                  label="Hora promedio de dormir"
                 />
               </div>
 
@@ -581,7 +584,7 @@ export function SleepSection({
               {chartData.length > 1 && (
                 <div className="pt-4 border-t border-zinc-800">
                   <h4 className="text-sm font-medium text-white mb-4">
-                    Daily {currentMetric.shortLabel}
+                    {currentMetric.shortLabel} por día
                   </h4>
                   <ChartContainer
                     config={{
@@ -643,7 +646,7 @@ export function SleepSection({
               {stats.stages && stats.stagesTotal > 0 && (
                 <div className="p-4 border border-zinc-800 rounded-lg bg-zinc-900/30">
                   <h4 className="text-xs font-medium text-zinc-400 mb-4 uppercase tracking-wider">
-                    Average Sleep Stages
+                    Etapas promedio del sueño
                   </h4>
                   <div className="space-y-4">
                     {/* Visual bar - reusing SleepStagesBar component */}
@@ -687,11 +690,11 @@ export function SleepSection({
       {/* Sleep Sessions Section */}
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <SectionHeader
-          title="Sleep Sessions"
+          title="Sesiones de sueño"
           rightContent={
             !sessionsLoading && hasData ? (
               <span className="text-xs text-zinc-500">
-                Page {pagination.currentPage}
+                Página {pagination.currentPage}
               </span>
             ) : undefined
           }
@@ -702,7 +705,7 @@ export function SleepSection({
             <SessionsListSkeleton />
           ) : displayedSessions.length === 0 ? (
             <p className="text-sm text-zinc-500 text-center py-8">
-              No sleep sessions available
+              No hay sesiones de sueño disponibles
             </p>
           ) : (
             <div className="space-y-4">

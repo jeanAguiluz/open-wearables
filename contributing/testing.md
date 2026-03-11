@@ -1,81 +1,81 @@
-# Testing
+# Pruebas
 
-This guide covers how to run tests and write new tests for Open Wearables.
+Esta guía explica cómo ejecutar pruebas y cómo escribir nuevas pruebas para Open Wearables.
 
-## Prerequisites
+## Requisitos Previos
 
-Before running tests, you need a PostgreSQL database running:
+Antes de ejecutar pruebas, necesitas tener una base de datos PostgreSQL en funcionamiento:
 
-### Option 1: Use Docker (Recommended)
+### Opción 1: Usar Docker (Recomendado)
 
 ```bash
-# Start only the PostgreSQL container
+# Iniciar solo el contenedor de PostgreSQL
 docker compose up db -d
 
-# Wait for it to be ready
-docker compose logs -f db  # Look for "database system is ready"
+# Esperar a que esté listo
+docker compose logs -f db  # Busca "database system is ready"
 
-# Create the test database
+# Crear la base de datos de pruebas
 docker compose exec db psql -U open-wearables -c "CREATE DATABASE open_wearables_test;"
 ```
 
-### Option 2: Local PostgreSQL
+### Opción 2: PostgreSQL Local
 
-If you have PostgreSQL installed locally:
+Si tienes PostgreSQL instalado localmente:
 
 ```bash
 createdb -U open-wearables open_wearables_test
 ```
 
-**Test Database Configuration:**
+**Configuración de la Base de Datos de Pruebas:**
 - Host: `localhost`
 - Port: `5432`
 - Database: `open_wearables_test`
 - User: `open-wearables`
 - Password: `open-wearables`
 
-## Running Tests
+## Ejecutar Pruebas
 
-### Backend Tests
+### Pruebas del Backend
 
 ```bash
-# Using Make (recommended)
+# Usando Make (recomendado)
 make test
 
-# Or directly with pytest
+# O directamente con pytest
 cd backend
 uv run pytest
 
-# Run specific test file
+# Ejecutar un archivo de prueba específico
 uv run pytest tests/api/v1/test_users.py
 
-# Run with verbose output
+# Ejecutar con salida detallada
 uv run pytest -v
 
-# Run with coverage report
+# Ejecutar con reporte de cobertura
 uv run pytest --cov=app --cov-report=html
 ```
 
-### Frontend Tests
+### Pruebas del Frontend
 
 ```bash
 cd frontend
 
-# Run all tests
+# Ejecutar todas las pruebas
 pnpm test
 
-# Run tests in watch mode
+# Ejecutar pruebas en modo watch
 pnpm test:watch
 
-# Run specific test file
+# Ejecutar un archivo de prueba específico
 pnpm test src/components/Button.test.tsx
 ```
 
-## Writing Tests
+## Cómo Escribir Pruebas
 
-### Backend Tests
+### Pruebas del Backend
 
-Backend tests use **pytest** with **pytest-asyncio** for async support.
+Las pruebas del backend usan **pytest** con **pytest-asyncio** para soporte asíncrono.
 
 ```python
 import pytest
@@ -88,11 +88,11 @@ async def test_get_users(client: AsyncClient):
     assert isinstance(response.json(), list)
 ```
 
-Test files should be placed in the `backend/tests/` directory and named with `test_` prefix.
+Los archivos de prueba deben ubicarse en el directorio `backend/tests/` y comenzar con el prefijo `test_`.
 
-### Frontend Tests
+### Pruebas del Frontend
 
-Frontend tests use **Vitest** with **React Testing Library**.
+Las pruebas del frontend usan **Vitest** con **React Testing Library**.
 
 ```typescript
 import { render, screen } from '@testing-library/react';
@@ -107,20 +107,20 @@ describe('Button', () => {
 });
 ```
 
-Test files should be colocated with components using `.test.tsx` or `.test.ts` suffix.
+Los archivos de prueba deben vivir junto a los componentes y usar el sufijo `.test.tsx` o `.test.ts`.
 
-## Test Requirements
+## Requisitos de Pruebas
 
-- All new features should include tests
-- Bug fixes should include a test that would have caught the bug
-- Tests must pass before a PR can be merged
-- Aim for meaningful test coverage, not just high percentages
+- Toda funcionalidad nueva debe incluir pruebas
+- Toda corrección de bug debe incluir una prueba que hubiera detectado el problema
+- Todas las pruebas deben pasar antes de que un PR pueda fusionarse
+- Busca una cobertura útil y significativa, no solo porcentajes altos
 
-**Note:** Tests use transaction rollback for isolation - each test runs in its own transaction that is rolled back after the test completes. This ensures tests don't interfere with each other.
+**Nota:** Las pruebas usan rollback de transacciones para aislarse: cada prueba corre dentro de su propia transacción y se revierte al finalizar. Esto asegura que no interfieran entre sí.
 
-## Testing Patterns
+## Patrones de Prueba
 
-For more detailed testing patterns, see:
+Para ver patrones de prueba más detallados, revisa:
 
-- [Backend AGENTS.md](../backend/AGENTS.md) - Backend testing conventions
-- [Frontend AGENTS.md](../frontend/AGENTS.md) - Frontend testing patterns
+- [AGENTS.md del backend](../backend/AGENTS.md) - Convenciones de pruebas del backend
+- [AGENTS.md del frontend](../frontend/AGENTS.md) - Patrones de pruebas del frontend

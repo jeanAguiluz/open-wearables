@@ -12,6 +12,8 @@ FROM python:3.13-slim AS builder
 
     COPY uv.lock pyproject.toml ./
     COPY . .
+    RUN find scripts -type f -name "*.sh" -exec sed -i 's/\r$//' {} \; && \
+        find scripts -type f -name "*.sh" -exec chmod +x {} \;
 
     ENV VIRTUAL_ENV=/opt/venv
     RUN uv venv $VIRTUAL_ENV

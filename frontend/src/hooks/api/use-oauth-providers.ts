@@ -27,10 +27,10 @@ export function useUpdateOAuthProviders() {
       await queryClient.invalidateQueries({
         queryKey: queryKeys.oauthProviders.all,
       });
-      toast.success('Provider settings updated successfully');
+      toast.success('La configuración de proveedores se actualizó correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to update providers: ${getErrorMessage(error)}`);
+      toast.error(`No se pudieron actualizar los proveedores: ${getErrorMessage(error)}`);
     },
   });
 }

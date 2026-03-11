@@ -1,25 +1,25 @@
-# Pull Request Guidelines
+# Guía de Pull Requests
 
-This guide covers how to submit pull requests to Open Wearables.
+Esta guía explica cómo enviar pull requests a Open Wearables.
 
-## Before You Start
+## Antes de Empezar
 
-1. Search [existing PRs](https://github.com/the-momentum/open-wearables/pulls) to avoid duplicating effort
-2. Check [existing issues](https://github.com/the-momentum/open-wearables/issues) for related discussions
-3. For major changes, open an issue first to discuss the approach
+1. Busca [PRs existentes](https://github.com/the-momentum/open-wearables/pulls) para evitar trabajo duplicado
+2. Revisa [issues existentes](https://github.com/the-momentum/open-wearables/issues) para ver discusiones relacionadas
+3. Para cambios grandes, abre primero un issue para discutir el enfoque
 
-## Branch Naming
+## Nomenclatura de Ramas
 
-Use this format: `<issue-number>-<brief-description>`
+Usa este formato: `<issue-number>-<brief-description>`
 
-Examples:
+Ejemplos:
 - `123-fix-user-authentication`
 - `456-add-garmin-provider`
 - `789-update-dashboard-layout`
 
-## Commit Message Convention
+## Convención de Mensajes de Commit
 
-We follow [Conventional Commits](https://www.conventionalcommits.org/):
+Seguimos [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 <type>(<optional scope>): <description>
@@ -29,33 +29,33 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 [optional footer]
 ```
 
-### Types
+### Tipos
 
-| Type | Description |
+| Tipo | Descripción |
 |------|-------------|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation changes |
-| `chore` | Maintenance tasks |
-| `refactor` | Code refactoring (no functional change) |
-| `test` | Adding or updating tests |
-| `style` | Formatting changes |
-| `perf` | Performance improvements |
-| `ci` | CI/CD changes |
+| `feat` | Nueva funcionalidad |
+| `fix` | Corrección de bug |
+| `docs` | Cambios en documentación |
+| `chore` | Tareas de mantenimiento |
+| `refactor` | Refactor de código (sin cambio funcional) |
+| `test` | Agregar o actualizar pruebas |
+| `style` | Cambios de formato |
+| `perf` | Mejoras de rendimiento |
+| `ci` | Cambios de CI/CD |
 
-### Examples
+### Ejemplos
 
 ```bash
-# Simple commit
+# Commit simple
 feat: add user profile endpoint
 
-# With scope
+# Con scope
 fix(auth): resolve token refresh issue
 
-# With ticket reference
+# Con referencia a ticket
 [WHOOP-01] feat: implement Whoop provider integration
 
-# With body
+# Con cuerpo
 feat(api): add pagination to workouts endpoint
 
 Adds limit and offset parameters to support
@@ -64,17 +64,17 @@ pagination in the workouts list endpoint.
 Closes #123
 ```
 
-## PR Title Convention
+## Convención para el Título del PR
 
-**PR titles must follow the same [Conventional Commits](https://www.conventionalcommits.org/) format as commit messages.**
+**Los títulos de los PR deben seguir el mismo formato de [Conventional Commits](https://www.conventionalcommits.org/) que los mensajes de commit.**
 
-The CI workflow automatically validates PR titles to ensure they follow this convention. Your PR title should use the format:
+El workflow de CI valida automáticamente los títulos de los PR para asegurar que cumplan esta convención. Tu título debe usar el formato:
 
 ```
 <type>(<optional scope>): <description>
 ```
 
-### Examples
+### Ejemplos
 
 - `feat: add user profile endpoint`
 - `fix(auth): resolve token refresh issue`
@@ -82,59 +82,59 @@ The CI workflow automatically validates PR titles to ensure they follow this con
 - `ci: add PR title validation to workflow`
 - `refactor(backend): simplify authentication logic`
 
-## Creating a Pull Request
+## Crear un Pull Request
 
-1. **Create a branch** from `main`:
+1. **Crea una rama** desde `main`:
    ```bash
    git checkout -b 123-your-feature-description
    ```
 
-2. **Make your changes** and commit following the conventions above
+2. **Haz tus cambios** y haz commit siguiendo las convenciones anteriores
 
-3. **Push your branch**:
+3. **Sube tu rama**:
    ```bash
    git push -u origin 123-your-feature-description
    ```
 
-4. **Open a PR** on GitHub and fill out the template
+4. **Abre un PR** en GitHub y completa la plantilla
 
-## PR Checklist
+## Checklist del PR
 
-The PR template includes these requirements:
+La plantilla de PR incluye estos requisitos:
 
 ### General
-- [ ] Code follows the project's code style
-- [ ] Self-review completed
-- [ ] Tests added (if applicable)
-- [ ] All tests pass locally
+- [ ] El código sigue el estilo del proyecto
+- [ ] Se realizó auto-revisión
+- [ ] Se agregaron pruebas (si aplica)
+- [ ] Todas las pruebas pasan localmente
 
-### Backend Changes
-- [ ] `uv run pre-commit run --all-files` passes (runs ruff, ty, and formatting checks)
+### Cambios de Backend
+- [ ] `uv run pre-commit run --all-files` pasa correctamente (ejecuta ruff, ty y checks de formato)
 
-### Frontend Changes
-- [ ] `pnpm run lint` passes
-- [ ] `pnpm run format:check` passes
-- [ ] `pnpm run build` succeeds
+### Cambios de Frontend
+- [ ] `pnpm run lint` pasa correctamente
+- [ ] `pnpm run format:check` pasa correctamente
+- [ ] `pnpm run build` finaliza con éxito
 
-## Linking Issues
+## Vincular Issues
 
-Link related issues in your PR description:
+Vincula issues relacionados en la descripción de tu PR:
 
-- `Fixes #123` - Closes the issue when PR is merged
-- `Closes #456` - Same as Fixes
-- `Relates to #789` - References without closing
+- `Fixes #123` - Cierra el issue cuando el PR se fusiona
+- `Closes #456` - Igual que Fixes
+- `Relates to #789` - Hace referencia sin cerrar
 
-## Code Review Process
+## Proceso de Code Review
 
-1. **Request review**: PRs require at least one approval
-2. **Address feedback**: Respond to comments and make requested changes
-3. **CI must pass**: All automated checks must be green
-4. **Merge**: Once approved, the PR can be merged
+1. **Solicita revisión**: los PR requieren al menos una aprobación
+2. **Responde al feedback**: contesta comentarios y haz los cambios solicitados
+3. **CI debe pasar**: todos los checks automáticos deben estar en verde
+4. **Merge**: una vez aprobado, el PR puede fusionarse
 
-## Tips for a Good PR
+## Consejos para un Buen PR
 
-- Keep PRs focused and reasonably sized
-- Write a clear description of what and why
-- Include screenshots for UI changes
-- Update documentation if needed
-- Add tests for new functionality
+- Mantén los PR enfocados y de tamaño razonable
+- Escribe una descripción clara del qué y el porqué
+- Incluye screenshots para cambios de UI
+- Actualiza la documentación si corresponde
+- Agrega pruebas para la nueva funcionalidad

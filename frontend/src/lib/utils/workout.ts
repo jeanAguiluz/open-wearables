@@ -27,17 +27,17 @@ export interface WorkoutFieldConfig {
 export const WORKOUT_FIELD_DEFINITIONS: Record<string, WorkoutFieldConfig> = {
   start_time: {
     key: 'start_time',
-    label: 'Start',
-    format: (v) => (v ? format(new Date(v as string), 'h:mm a') : '-'),
+    label: 'Inicio',
+    format: (v) => (v ? format(new Date(v as string), 'HH:mm') : '-'),
   },
   end_time: {
     key: 'end_time',
-    label: 'End',
-    format: (v) => (v ? format(new Date(v as string), 'h:mm a') : '-'),
+    label: 'Fin',
+    format: (v) => (v ? format(new Date(v as string), 'HH:mm') : '-'),
   },
   distance_meters: {
     key: 'distance_meters',
-    label: 'Distance',
+    label: 'Distancia',
     format: (v) => {
       if (!v) return '-';
       const meters = Number(v);
@@ -47,42 +47,42 @@ export const WORKOUT_FIELD_DEFINITIONS: Record<string, WorkoutFieldConfig> = {
   },
   steps_count: {
     key: 'steps_avg',
-    label: 'Steps',
+    label: 'Pasos',
     format: (v) => (v ? Number(v).toLocaleString() : '-'),
   },
   avg_heart_rate_bpm: {
     key: 'avg_heart_rate_bpm',
-    label: 'Avg HR',
+    label: 'FC prom.',
     format: (v) => (v ? `${Math.round(Number(v))} bpm` : '-'),
   },
   max_heart_rate_bpm: {
     key: 'max_heart_rate_bpm',
-    label: 'Max HR',
+    label: 'FC máx.',
     format: (v) => (v ? `${Math.round(Number(v))} bpm` : '-'),
   },
   elevation_gain_meters: {
     key: 'elevation_gain_meters',
-    label: 'Elevation',
+    label: 'Elevación',
     format: (v) => (v ? `${Math.round(Number(v))} m` : '-'),
   },
   average_speed: {
     key: 'average_speed',
-    label: 'Avg Speed',
+    label: 'Velocidad prom.',
     format: (v) => (v ? `${Number(v).toFixed(1)} km/h` : '-'),
   },
   max_speed: {
     key: 'max_speed',
-    label: 'Max Speed',
+    label: 'Velocidad máx.',
     format: (v) => (v ? `${Number(v).toFixed(1)} km/h` : '-'),
   },
   average_watts: {
     key: 'average_watts',
-    label: 'Avg Power',
+    label: 'Potencia prom.',
     format: (v) => (v ? `${Math.round(Number(v))} W` : '-'),
   },
   moving_time: {
     key: 'moving_time_seconds',
-    label: 'Moving Time',
+    label: 'Tiempo en movimiento',
     format: (v) => {
       if (!v) return '-';
       const secs = Number(v);
@@ -94,7 +94,7 @@ export const WORKOUT_FIELD_DEFINITIONS: Record<string, WorkoutFieldConfig> = {
   },
   source: {
     key: 'source',
-    label: 'Source',
+    label: 'Origen',
     format: (v) => {
       if (!v) return '-';
       const source = v as { provider?: string; device?: string };

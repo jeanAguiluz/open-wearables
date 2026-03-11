@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import {
   Activity,
@@ -65,8 +66,8 @@ interface MetricDefinition {
 const METRICS: MetricDefinition[] = [
   {
     key: 'steps',
-    label: 'Total Steps',
-    shortLabel: 'Steps',
+    label: 'Pasos totales',
+    shortLabel: 'Pasos',
     icon: Footprints,
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',
@@ -78,8 +79,8 @@ const METRICS: MetricDefinition[] = [
   },
   {
     key: 'calories',
-    label: 'Active Calories',
-    shortLabel: 'Calories',
+    label: 'Calorías activas',
+    shortLabel: 'Calorías',
     icon: Flame,
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/10',
@@ -91,8 +92,8 @@ const METRICS: MetricDefinition[] = [
   },
   {
     key: 'activeTime',
-    label: 'Active Time',
-    shortLabel: 'Active',
+    label: 'Tiempo activo',
+    shortLabel: 'Activo',
     icon: Timer,
     color: 'text-sky-400',
     bgColor: 'bg-sky-500/10',
@@ -104,8 +105,8 @@ const METRICS: MetricDefinition[] = [
   },
   {
     key: 'heartRate',
-    label: 'Avg Heart Rate',
-    shortLabel: 'Heart Rate',
+    label: 'Frecuencia cardiaca prom.',
+    shortLabel: 'Frecuencia cardiaca',
     icon: Heart,
     color: 'text-rose-400',
     bgColor: 'bg-rose-500/10',
@@ -117,8 +118,8 @@ const METRICS: MetricDefinition[] = [
   },
   {
     key: 'distance',
-    label: 'Total Distance',
-    shortLabel: 'Distance',
+    label: 'Distancia total',
+    shortLabel: 'Distancia',
     icon: MoveHorizontal,
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
@@ -130,8 +131,8 @@ const METRICS: MetricDefinition[] = [
   },
   {
     key: 'floors',
-    label: 'Floors Climbed',
-    shortLabel: 'Floors',
+    label: 'Pisos subidos',
+    shortLabel: 'Pisos',
     icon: TrendingUp,
     color: 'text-amber-400',
     bgColor: 'bg-amber-500/10',
@@ -143,8 +144,8 @@ const METRICS: MetricDefinition[] = [
   },
   {
     key: 'sedentary',
-    label: 'Sedentary Time',
-    shortLabel: 'Sedentary',
+    label: 'Tiempo sedentario',
+    shortLabel: 'Sedentario',
     icon: Armchair,
     color: 'text-zinc-400',
     bgColor: 'bg-zinc-500/10',
@@ -199,7 +200,7 @@ function ActivityDayRow({ summary }: { summary: ActivitySummary }) {
         {/* Date */}
         <div className="w-28 flex-shrink-0">
           <p className="text-sm font-medium text-white">
-            {format(new Date(summary.date), 'EEE, MMM d')}
+            {format(new Date(summary.date), 'EEE d MMM', { locale: es })}
           </p>
           <p className="text-xs text-zinc-500">
             {format(new Date(summary.date), 'yyyy')}
@@ -218,7 +219,7 @@ function ActivityDayRow({ summary }: { summary: ActivitySummary }) {
               <p className="text-sm font-medium text-white">
                 {formatNumber(summary.steps)}
               </p>
-              <p className="text-xs text-zinc-500">Steps</p>
+              <p className="text-xs text-zinc-500">Pasos</p>
             </div>
           </div>
 
@@ -229,7 +230,7 @@ function ActivityDayRow({ summary }: { summary: ActivitySummary }) {
               <p className="text-sm font-medium text-white">
                 {formatNumber(summary.active_calories_kcal)}
               </p>
-              <p className="text-xs text-zinc-500">Calories</p>
+              <p className="text-xs text-zinc-500">Calorías</p>
             </div>
           </div>
 
@@ -242,7 +243,7 @@ function ActivityDayRow({ summary }: { summary: ActivitySummary }) {
                   ? `${Math.round(summary.heart_rate.avg_bpm)} bpm`
                   : '-'}
               </p>
-              <p className="text-xs text-zinc-500">Avg HR</p>
+              <p className="text-xs text-zinc-500">FC prom.</p>
             </div>
           </div>
 
@@ -253,7 +254,7 @@ function ActivityDayRow({ summary }: { summary: ActivitySummary }) {
               <p className="text-sm font-medium text-white">
                 {formatMinutes(summary.active_minutes)}
               </p>
-              <p className="text-xs text-zinc-500">Active</p>
+              <p className="text-xs text-zinc-500">Activo</p>
             </div>
           </div>
         </div>
@@ -384,7 +385,7 @@ export function ActivitySection({
     return [...summaries]
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       .map((s) => ({
-        date: format(new Date(s.date), 'MMM d'),
+        date: format(new Date(s.date), 'd MMM', { locale: es }),
         value: currentMetric.getChartValue(s),
       }));
   }, [summaryData, currentMetric]);
@@ -394,7 +395,7 @@ export function ActivitySection({
       {/* Summary Section */}
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <SectionHeader
-          title="Activity Summary"
+          title="Resumen de actividad"
           dateRange={dateRange}
           onDateRangeChange={onDateRangeChange}
         />
@@ -404,7 +405,7 @@ export function ActivitySection({
             <ActivitySectionSkeleton />
           ) : !stats ? (
             <p className="text-sm text-zinc-500 text-center py-4">
-              No activity data in this period
+              No hay datos de actividad en este período
             </p>
           ) : (
             <div className="space-y-6">
@@ -430,7 +431,7 @@ export function ActivitySection({
                   iconColor="text-indigo-400"
                   iconBgColor="bg-indigo-500/10"
                   value={String(stats.daysTracked)}
-                  label="Days Tracked"
+                  label="Días registrados"
                 />
               </div>
 
@@ -438,7 +439,7 @@ export function ActivitySection({
               {chartData.length > 1 && (
                 <div className="pt-4 border-t border-zinc-800">
                   <h4 className="text-sm font-medium text-white mb-4">
-                    Daily {currentMetric.shortLabel}
+                    {currentMetric.shortLabel} por día
                   </h4>
                   <ChartContainer
                     config={{
@@ -491,11 +492,11 @@ export function ActivitySection({
       {/* Activity Days Section */}
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <SectionHeader
-          title="Activity Days"
+          title="Días con actividad"
           rightContent={
             !daysLoading && hasData ? (
               <span className="text-xs text-zinc-500">
-                Page {pagination.currentPage}
+                Página {pagination.currentPage}
               </span>
             ) : undefined
           }
@@ -531,7 +532,7 @@ export function ActivitySection({
             </div>
           ) : displayedDays.length === 0 ? (
             <p className="text-sm text-zinc-500 text-center py-8">
-              No activity data available
+              No hay datos de actividad disponibles
             </p>
           ) : (
             <div className="space-y-4">

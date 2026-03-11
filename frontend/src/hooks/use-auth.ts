@@ -20,31 +20,31 @@ export function useAuth() {
     mutationFn: (credentials: LoginRequest) => authService.login(credentials),
     onSuccess: (data) => {
       setSession(data.access_token, data.developer_id);
-      toast.success('Logged in successfully');
+      toast.success('Sesión iniciada correctamente');
       navigate({ to: DEFAULT_REDIRECTS.authenticated });
     },
     onError: (error: unknown) => {
       if (error instanceof ApiError) {
         switch (error.code) {
           case 'UNAUTHORIZED':
-            toast.error('Incorrect email or password');
+            toast.error('Correo o contraseña incorrectos');
             break;
           case 'NETWORK_ERROR':
             toast.error(
-              'Unable to connect to the server. Please check your connection.'
+              'No se pudo conectar con el servidor. Revisa tu conexión.'
             );
             break;
           case 'TIMEOUT':
-            toast.error('Request timed out. Please try again.');
+            toast.error('La solicitud excedió el tiempo de espera. Inténtalo de nuevo.');
             break;
           case 'SERVER_ERROR':
-            toast.error('Server error. Please try again later.');
+            toast.error('Error del servidor. Inténtalo más tarde.');
             break;
           default:
-            toast.error('Login failed. Please try again.');
+            toast.error('No se pudo iniciar sesión. Inténtalo de nuevo.');
         }
       } else {
-        toast.error('Login failed. Please try again.');
+        toast.error('No se pudo iniciar sesión. Inténtalo de nuevo.');
       }
     },
   });
@@ -60,12 +60,12 @@ export function useAuth() {
     },
     onSuccess: (data) => {
       setSession(data.access_token, data.developer_id);
-      toast.success('Account created successfully');
+      toast.success('Cuenta creada correctamente');
       navigate({ to: DEFAULT_REDIRECTS.authenticated });
     },
     onError: (error: unknown) => {
       const message =
-        error instanceof Error ? error.message : 'Registration failed';
+        error instanceof Error ? error.message : 'No se pudo completar el registro';
       toast.error(message);
     },
   });
@@ -74,7 +74,7 @@ export function useAuth() {
     mutationFn: () => authService.logout(),
     onSuccess: () => {
       clearSession();
-      toast.success('Logged out successfully');
+      toast.success('Sesión cerrada correctamente');
       navigate({ to: DEFAULT_REDIRECTS.unauthenticated });
     },
     onError: () => {
@@ -94,12 +94,12 @@ export function useAuth() {
       authService.forgotPassword(data),
     onSuccess: () => {
       toast.success(
-        'If an account exists with that email, we have sent password reset instructions'
+        'Si existe una cuenta con ese correo, ya enviamos las instrucciones para restablecer la contraseña'
       );
     },
     onError: () => {
       toast.success(
-        'If an account exists with that email, we have sent password reset instructions'
+        'Si existe una cuenta con ese correo, ya enviamos las instrucciones para restablecer la contraseña'
       );
     },
   });
@@ -107,14 +107,14 @@ export function useAuth() {
   const resetPasswordMutation = useMutation({
     mutationFn: (data: ResetPasswordRequest) => authService.resetPassword(data),
     onSuccess: () => {
-      toast.success('Password reset successfully');
+      toast.success('Contraseña restablecida correctamente');
       navigate({ to: DEFAULT_REDIRECTS.unauthenticated });
     },
     onError: (error: unknown) => {
       const message =
         error instanceof Error
           ? error.message
-          : 'Unable to reset password. The link may have expired.';
+          : 'No se pudo restablecer la contraseña. Es posible que el enlace haya expirado.';
       toast.error(message);
     },
   });

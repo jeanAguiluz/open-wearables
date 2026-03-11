@@ -10,6 +10,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
 import { UserConnection } from '@/lib/api/types';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -108,21 +109,21 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
         return (
           <Badge variant="success" className="flex items-center gap-1">
             <CheckCircle2 className="h-3 w-3 text-green-400" />
-            Active
+            Activa
           </Badge>
         );
       case 'revoked':
         return (
           <Badge variant="destructive" className="flex items-center gap-1">
             <XCircle className="h-3 w-3 text-red-400" />
-            Revoked
+            Revocada
           </Badge>
         );
       case 'expired':
         return (
           <Badge variant="warning" className="flex items-center gap-1">
             <TriangleAlert className="h-3 w-3 text-orange-400" />
-            Expired
+            Expirada
           </Badge>
         );
       default:
@@ -144,12 +145,13 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                 {connection.provider}
               </h3>
               <p className="text-sm text-muted-foreground mt-0.5">
-                Last sync:{' '}
+                Última sincronización:{' '}
                 {connection.last_synced_at
                   ? formatDistanceToNow(new Date(connection.last_synced_at), {
                       addSuffix: true,
+                      locale: es,
                     })
-                  : 'Never'}
+                  : 'Nunca'}
               </p>
             </div>
           </div>
@@ -165,11 +167,11 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                 <DropdownMenuItem
                   className="text-destructive focus:text-destructive cursor-pointer"
                   onClick={() => {
-                    toast.error('Disconnecting not implemented yet'); // TODO: Implement disconnect
+                    toast.error('La desconexión todavía no está implementada'); // TODO: Implement disconnect
                   }}
                 >
                   <Unlink className="mr-2 h-4 w-4" />
-                  Disconnect
+                  Desconectar
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -182,7 +184,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
         {scopeItems.length > 0 && (
           <div className="space-y-1.5">
             <p className="text-xs font-medium text-muted-foreground">
-              Data scope
+              Alcance de datos
             </p>
             <div className="flex flex-wrap gap-1.5">
               {scopeItems.map((scopeItem) => (
@@ -206,17 +208,19 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                 <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
                 {isRetryPhase && backfillStatus.retry_type ? (
                   <span className="text-sm text-muted-foreground">
-                    Retrying {formatTypeName(backfillStatus.retry_type)}{' '}
+                    Reintentando {formatTypeName(backfillStatus.retry_type)}{' '}
                     {backfillStatus.retry_window !== null && (
-                      <span>(window {backfillStatus.retry_window + 1})...</span>
+                      <span>
+                        (ventana {backfillStatus.retry_window + 1})...
+                      </span>
                     )}
                   </span>
                 ) : (
                   <span className="text-sm text-muted-foreground">
-                    Fetching historical data...{' '}
+                    Obteniendo datos históricos...{' '}
                     <span className="font-medium">
-                      {backfillStatus.current_window} of{' '}
-                      {backfillStatus.total_windows} windows complete
+                      {backfillStatus.current_window} de{' '}
+                      {backfillStatus.total_windows} ventanas completadas
                     </span>
                   </span>
                 )}
@@ -229,7 +233,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                 disabled={isCancelling}
               >
                 <XCircle className="h-3 w-3 mr-1" />
-                Cancel
+                Cancelar
               </Button>
             </div>
             {/* Progress bar */}
@@ -244,7 +248,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
             {/* Attempt counter */}
             {backfillStatus.attempt_count > 0 && (
               <span className="text-xs text-muted-foreground">
-                Attempt {backfillStatus.attempt_count} of{' '}
+                Intento {backfillStatus.attempt_count} de{' '}
                 {backfillStatus.max_attempts}
               </span>
             )}
@@ -256,7 +260,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
           <div className="flex items-center gap-2 p-3 bg-muted/50 rounded-lg border">
             <XCircle className="h-4 w-4 text-muted-foreground" />
             <span className="text-sm text-muted-foreground">
-              Backfill cancelled
+              Backfill cancelado
             </span>
           </div>
         )}
@@ -266,8 +270,8 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
           <div className="flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20">
             <XCircle className="h-4 w-4 text-destructive" />
             <span className="text-sm text-destructive">
-              Backfill failed after {backfillStatus?.max_attempts} attempts.
-              Please disconnect and reconnect your Garmin.
+              El backfill falló después de {backfillStatus?.max_attempts} intentos.
+              Desconecta y vuelve a conectar tu Garmin.
             </span>
           </div>
         )}
@@ -278,7 +282,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
           !isPermanentlyFailed && (
             <div className="space-y-2 p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
               <p className="text-sm font-medium text-amber-600 dark:text-amber-500">
-                Some data types timed out:
+                Algunos tipos de datos agotaron el tiempo de espera:
               </p>
               <div className="space-y-1.5">
                 {timedOutTypes.map(({ type, timedOutCount }) => (
@@ -291,7 +295,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                         {formatTypeName(type)}
                       </span>
                       <p className="text-xs text-muted-foreground">
-                        Timed out in {timedOutCount} window
+                        Tiempo de espera agotado en {timedOutCount} ventana
                         {timedOutCount > 1 ? 's' : ''}
                       </p>
                     </div>
@@ -303,7 +307,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                       disabled={isRetrying}
                     >
                       <RotateCcw className="h-3 w-3 mr-1" />
-                      Retry
+                      Reintentar
                     </Button>
                   </div>
                 ))}
@@ -317,7 +321,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
           !isPermanentlyFailed && (
             <div className="space-y-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20">
               <p className="text-sm font-medium text-destructive">
-                Some data types failed:
+                Algunos tipos de datos fallaron:
               </p>
               <div className="space-y-1.5">
                 {failedTypes.map(({ type, failedCount }) => (
@@ -325,7 +329,7 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
                     <XCircle className="h-3 w-3 text-destructive mr-2" />
                     <span className="font-medium">{formatTypeName(type)}</span>
                     <span className="text-xs text-muted-foreground ml-2">
-                      Failed in {failedCount} window
+                      Falló en {failedCount} ventana
                       {failedCount > 1 ? 's' : ''}
                     </span>
                   </div>
@@ -347,12 +351,12 @@ export function ConnectionCard({ connection, className }: ConnectionCardProps) {
               {isSynchronizing ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Syncing...
+                  Sincronizando...
                 </>
               ) : (
                 <>
                   <RefreshCw className="h-4 w-4" />
-                  Sync Now
+                  Sincronizar ahora
                 </>
               )}
             </Button>

@@ -1,35 +1,35 @@
-# Open Wearables Documentation
+# Documentación de Open Wearables
 
-This directory houses the documentation site built with Mintlify.
+Este directorio contiene el sitio de documentación construido con Mintlify.
 
-## Development
+## Desarrollo
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+Instala la [CLI de Mintlify](https://www.npmjs.com/package/mint) para previsualizar localmente los cambios en la documentación. Para instalarla, usa el siguiente comando:
 
 ```
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Ejecuta el siguiente comando en la raíz de tu documentación, donde se encuentra `docs.json`:
 
 ```
 mint dev --port 3333
 ```
 
-(port `3000` is already being used by the frontend)
+(el puerto `3000` ya está siendo usado por el frontend)
 
-View your local preview at `http://localhost:3333` (or the port you specified).
+Consulta la vista previa local en `http://localhost:3333` o en el puerto que hayas definido.
 
-## Publishing changes
+## Publicación de Cambios
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Instala nuestra app de GitHub desde tu [panel](https://dashboard.mintlify.com/settings/organization/github-app) para propagar los cambios desde tu repositorio hasta tu despliegue. Los cambios se publican automáticamente en producción después de hacer push a la rama por defecto.
 
-## Need help?
+## ¿Necesitas Ayuda?
 
-### Troubleshooting
+### Solución de Problemas
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+- Si tu entorno de desarrollo no arranca: ejecuta `mint update` para asegurarte de tener la versión más reciente de la CLI.
+- Si una página carga como 404: asegúrate de estar ejecutando el comando en una carpeta con un `docs.json` válido.
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+### Recursos
+- [Documentación de Mintlify](https://mintlify.com/docs)

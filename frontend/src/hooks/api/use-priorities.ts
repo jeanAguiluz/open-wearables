@@ -27,10 +27,10 @@ export function useBulkUpdateProviderPriorities() {
       await queryClient.invalidateQueries({
         queryKey: queryKeys.priorities.all,
       });
-      toast.success('Provider priorities updated successfully');
+      toast.success('Las prioridades de proveedores se actualizaron correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to update priorities: ${getErrorMessage(error)}`);
+      toast.error(`No se pudieron actualizar las prioridades: ${getErrorMessage(error)}`);
     },
   });
 }
@@ -54,11 +54,11 @@ export function useBulkUpdateDeviceTypePriorities() {
       await queryClient.invalidateQueries({
         queryKey: queryKeys.priorities.all,
       });
-      toast.success('Device type priorities updated successfully');
+      toast.success('Las prioridades por tipo de dispositivo se actualizaron correctamente');
     },
     onError: (error) => {
       toast.error(
-        `Failed to update device priorities: ${getErrorMessage(error)}`
+        `No se pudieron actualizar las prioridades de dispositivos: ${getErrorMessage(error)}`
       );
     },
   });
@@ -95,11 +95,11 @@ export function useUpdateDataSourceEnabled() {
         queryKey: queryKeys.priorities.dataSources(variables.userId),
       });
       toast.success(
-        `Data source ${variables.isEnabled ? 'enabled' : 'disabled'}`
+        `Fuente de datos ${variables.isEnabled ? 'activada' : 'desactivada'}`
       );
     },
     onError: (error) => {
-      toast.error(`Failed to update data source: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo actualizar la fuente de datos: ${getErrorMessage(error)}`);
     },
   });
 }

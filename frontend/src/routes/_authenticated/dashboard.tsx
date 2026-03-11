@@ -33,9 +33,9 @@ function DashboardPage() {
     <div className="p-8 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-medium text-white">Dashboard</h1>
+        <h1 className="text-2xl font-medium text-white">Panel</h1>
         <p className="text-sm text-zinc-500 mt-1">
-          Your platform overview and key metrics
+          Vista general de la plataforma y métricas clave
         </p>
       </div>
 

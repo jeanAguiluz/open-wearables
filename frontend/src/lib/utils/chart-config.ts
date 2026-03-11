@@ -9,7 +9,7 @@ export const HR_CHART_CONFIG = {
     color: '#f43f5e',
   },
   avgHr: {
-    label: 'Avg HR (bpm)',
+    label: 'FC prom. (bpm)',
     color: '#f43f5e',
   },
 } satisfies ChartConfig;

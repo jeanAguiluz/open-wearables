@@ -18,10 +18,10 @@ export function useDeleteDeveloper() {
     mutationFn: (id: string) => developersService.deleteDeveloper(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.developers.list() });
-      toast.success('Team member removed successfully');
+      toast.success('Integrante eliminado correctamente');
     },
     onError: (error) => {
-      toast.error(`Failed to remove team member: ${getErrorMessage(error)}`);
+      toast.error(`No se pudo eliminar al integrante: ${getErrorMessage(error)}`);
     },
   });
 }

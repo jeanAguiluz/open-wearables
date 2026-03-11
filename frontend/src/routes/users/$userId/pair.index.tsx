@@ -39,7 +39,7 @@ function PairWearablePage() {
       return {
         id: apiProvider.provider,
         name: apiProvider.name,
-        description: 'Connect your device',
+        description: 'Conecta tu dispositivo',
         logoPath: apiProvider.icon_url
           ? `${API_CONFIG.baseUrl}${apiProvider.icon_url}`
           : '',
@@ -71,9 +71,11 @@ function PairWearablePage() {
         className="relative z-10 text-center mb-14 space-y-3"
       >
         <h1 className="text-4xl font-medium text-white tracking-tight">
-          Connect a device
+          Conecta un dispositivo
         </h1>
-        <p className="text-lg text-zinc-400">Select your wearable platform</p>
+        <p className="text-lg text-zinc-400">
+          Selecciona tu plataforma wearable
+        </p>
       </motion.div>
 
       {/* Error notification */}
@@ -91,7 +93,7 @@ function PairWearablePage() {
               variant="destructive"
               size="icon"
               onClick={reset}
-              aria-label="Dismiss error"
+              aria-label="Cerrar error"
             >
               <X className="w-5 h-5" />
             </Button>
@@ -129,7 +131,7 @@ function PairWearablePage() {
                     <div className="mb-8 flex items-center justify-center h-20 w-20 bg-white rounded-2xl shadow-lg shadow-black/20 group-hover:scale-105 transition-transform duration-300">
                       <img
                         src={provider.logoPath}
-                        alt={`${provider.name} logo`}
+                        alt={`Logo de ${provider.name}`}
                         className="w-14 h-14 object-contain"
                       />
                     </div>
@@ -144,7 +146,7 @@ function PairWearablePage() {
 
                     {/* Connect indicator */}
                     <div className="mt-8 flex items-center gap-1.5 text-base font-medium text-zinc-200 group-hover:text-white transition-colors">
-                      <span>Connect</span>
+                      <span>Conectar</span>
                       <ChevronRight className="w-4 h-4 stroke-[1.5]" />
                     </div>
                   </motion.button>
@@ -164,11 +166,11 @@ function PairWearablePage() {
             <div
               role="status"
               aria-live="polite"
-              aria-label={`Connecting to ${connectingProviderData.name}`}
+              aria-label={`Conectando con ${connectingProviderData.name}`}
               className="w-12 h-12 mx-auto mb-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
             />
             <p className="text-zinc-400">
-              Connecting to {connectingProviderData.name}...
+              Conectando con {connectingProviderData.name}...
             </p>
           </motion.div>
         )}
@@ -194,16 +196,18 @@ function PairWearablePage() {
             >
               <Check className="w-8 h-8 text-green-500" />
             </motion.div>
-            <h2 className="text-xl font-medium text-white mb-2">Connected</h2>
+            <h2 className="text-xl font-medium text-white mb-2">
+              Conectado
+            </h2>
             <p className="text-zinc-400 text-sm mb-6">
-              Your device will start syncing shortly
+              Tu dispositivo comenzará a sincronizarse en breve
             </p>
             <Button
               variant="ghost"
               onClick={reset}
               className="text-zinc-200 hover:text-white hover:bg-white/10"
             >
-              Connect another device
+              Conectar otro dispositivo
             </Button>
           </motion.div>
         )}
@@ -217,7 +221,7 @@ function PairWearablePage() {
         className="mt-20 flex items-center gap-2 text-zinc-500 text-base font-normal opacity-80 hover:opacity-100 transition-opacity"
       >
         <Lock className="w-4 h-4 stroke-[1.5]" />
-        <span>Your data is encrypted and secure</span>
+        <span>Tus datos están cifrados y protegidos</span>
       </motion.div>
     </div>
   );

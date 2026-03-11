@@ -65,9 +65,11 @@ export function ProvidersTab() {
   if (error) {
     return (
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
-        <p className="text-zinc-400 mb-4">Failed to load OAuth providers</p>
+        <p className="text-zinc-400 mb-4">
+          No se pudieron cargar los proveedores OAuth
+        </p>
         <Button variant="outline" onClick={() => refetch()}>
-          Retry
+          Reintentar
         </Button>
       </div>
     );
@@ -76,7 +78,7 @@ export function ProvidersTab() {
   if (!providers || providers.length === 0) {
     return (
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
-        <p className="text-zinc-400">No OAuth providers available</p>
+        <p className="text-zinc-400">No hay proveedores OAuth disponibles</p>
       </div>
     );
   }
@@ -85,9 +87,11 @@ export function ProvidersTab() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-medium text-white">OAuth Providers</h2>
+          <h2 className="text-xl font-medium text-white">
+            Proveedores OAuth
+          </h2>
           <p className="text-sm text-zinc-500 mt-1">
-            Configure which OAuth providers are available to your end users
+            Configura qué proveedores OAuth estarán disponibles para tus usuarios finales
           </p>
         </div>
         {hasChanges && (
@@ -95,12 +99,12 @@ export function ProvidersTab() {
             {updateMutation.isPending ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
+                Guardando...
               </>
             ) : (
               <>
                 <CheckCircle2 className="h-4 w-4" />
-                Save Changes
+                Guardar cambios
               </>
             )}
           </Button>
@@ -110,10 +114,10 @@ export function ProvidersTab() {
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <div className="px-6 py-4 border-b border-zinc-800">
           <h3 className="text-sm font-medium text-white">
-            Available Providers
+            Proveedores disponibles
           </h3>
           <p className="text-xs text-zinc-500 mt-1">
-            Enable or disable OAuth providers for your application
+            Activa o desactiva proveedores OAuth para tu aplicación
           </p>
         </div>
 

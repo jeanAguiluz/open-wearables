@@ -1,105 +1,105 @@
-# Reporting Issues
+# Reportar Issues
 
-This guide covers how to report bugs and request features for Open Wearables.
+Esta guía explica cómo reportar bugs y solicitar funcionalidades para Open Wearables.
 
-## Before Creating an Issue
+## Antes de Crear un Issue
 
-1. **Search existing issues** - Your issue may already be reported at [GitHub Issues](https://github.com/the-momentum/open-wearables/issues)
-2. **Check closed issues** - The issue may have been resolved in a recent update
-3. **Update to latest** - Ensure you're running the latest version
+1. **Busca issues existentes** - Es posible que tu problema ya haya sido reportado en [GitHub Issues](https://github.com/the-momentum/open-wearables/issues)
+2. **Revisa issues cerrados** - El problema podría haberse resuelto en una actualización reciente
+3. **Actualiza a la última versión** - Asegúrate de estar usando la versión más reciente
 
-## Bug Reports
+## Reportes de Bugs
 
-When reporting a bug, include:
+Al reportar un bug, incluye:
 
-### Required Information
+### Información Obligatoria
 
-- **Description**: Clear, concise description of the bug
-- **Steps to Reproduce**: Numbered steps to reproduce the issue
-- **Expected Behavior**: What you expected to happen
-- **Actual Behavior**: What actually happened
+- **Descripción**: Explicación clara y concisa del bug
+- **Pasos para Reproducir**: Pasos numerados para reproducir el problema
+- **Comportamiento Esperado**: Qué esperabas que ocurriera
+- **Comportamiento Actual**: Qué ocurrió realmente
 
-### Helpful Information
+### Información Útil
 
-- **Environment**: OS, browser, Node.js/Python version
-- **Screenshots**: If applicable, add screenshots
-- **Error Messages**: Include any error logs or stack traces
-- **Related Configuration**: Relevant settings or environment variables
+- **Entorno**: SO, navegador, versión de Node.js/Python
+- **Capturas de pantalla**: Si aplica, agrega screenshots
+- **Mensajes de error**: Incluye logs o stack traces relevantes
+- **Configuración relacionada**: Variables de entorno o ajustes relevantes
 
-### Bug Report Template
-
-```markdown
-## Description
-[Clear description of the bug]
-
-## Steps to Reproduce
-1. Go to '...'
-2. Click on '...'
-3. See error
-
-## Expected Behavior
-[What you expected to happen]
-
-## Actual Behavior
-[What actually happened]
-
-## Environment
-- OS: [e.g., macOS 14.0]
-- Browser: [e.g., Chrome 120]
-- Node.js: [e.g., 20.10.0]
-- Python: [e.g., 3.13.0]
-
-## Additional Context
-[Any other relevant information]
-```
-
-## Feature Requests
-
-When requesting a feature, include:
-
-### Required Information
-
-- **Problem Statement**: What problem does this solve?
-- **Proposed Solution**: How would you like it to work?
-- **Use Case**: Who would benefit and how?
-
-### Feature Request Template
+### Plantilla para Reporte de Bug
 
 ```markdown
-## Problem Statement
-[Description of the problem or need]
+## Descripción
+[Descripción clara del bug]
 
-## Proposed Solution
-[How you'd like this to work]
+## Pasos para Reproducir
+1. Ve a '...'
+2. Haz clic en '...'
+3. Observa el error
 
-## Use Case
-[Who benefits and in what scenario]
+## Comportamiento Esperado
+[Qué esperabas que ocurriera]
 
-## Alternatives Considered
-[Other solutions you've thought about]
+## Comportamiento Actual
+[Qué ocurrió realmente]
 
-## Additional Context
-[Any other relevant information]
+## Entorno
+- OS: [por ejemplo, macOS 14.0]
+- Browser: [por ejemplo, Chrome 120]
+- Node.js: [por ejemplo, 20.10.0]
+- Python: [por ejemplo, 3.13.0]
+
+## Contexto Adicional
+[Cualquier otra información relevante]
 ```
 
-## Issue Labels
+## Solicitudes de Funcionalidades
 
-Common labels you may see:
+Al solicitar una funcionalidad, incluye:
 
-| Label | Description |
+### Información Obligatoria
+
+- **Problema que resuelve**: ¿Qué problema soluciona?
+- **Solución propuesta**: ¿Cómo te gustaría que funcionara?
+- **Caso de uso**: ¿Quién se beneficiaría y cómo?
+
+### Plantilla para Solicitud de Funcionalidad
+
+```markdown
+## Problema que resuelve
+[Descripción del problema o la necesidad]
+
+## Solución propuesta
+[Cómo te gustaría que funcionara]
+
+## Caso de uso
+[Quién se beneficia y en qué escenario]
+
+## Alternativas consideradas
+[Otras soluciones que hayas evaluado]
+
+## Contexto adicional
+[Cualquier otra información relevante]
+```
+
+## Etiquetas de Issues
+
+Etiquetas comunes que podrías ver:
+
+| Etiqueta | Descripción |
 |-------|-------------|
-| `bug` | Something isn't working |
-| `feature` | New feature request |
-| `documentation` | Documentation improvements |
-| `good first issue` | Good for newcomers |
-| `help wanted` | Extra attention needed |
-| `backend` | Related to Python/FastAPI |
-| `frontend` | Related to React/TypeScript |
+| `bug` | Algo no está funcionando |
+| `feature` | Solicitud de nueva funcionalidad |
+| `documentation` | Mejoras de documentación |
+| `good first issue` | Buena para quienes recién empiezan |
+| `help wanted` | Requiere atención adicional |
+| `backend` | Relacionado con Python/FastAPI |
+| `frontend` | Relacionado con React/TypeScript |
 
-## Getting Help
+## Obtener Ayuda
 
-If you need help but it's not a bug or feature request:
+Si necesitas ayuda, pero no se trata de un bug ni de una solicitud de funcionalidad:
 
-- Check the [documentation](../README.md)
-- Review the [API docs](http://localhost:8000/docs) when running locally
-- Ask in discussions or community channels
+- Revisa la [documentación](../README.md)
+- Consulta la [documentación de la API](http://localhost:8000/docs) cuando lo ejecutes localmente
+- Pregunta en discusiones o canales de la comunidad

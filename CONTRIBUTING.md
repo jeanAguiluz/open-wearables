@@ -1,22 +1,22 @@
-# Contributing to Open Wearables
+# Contribuir a Open Wearables
 
-Thank you for your interest in contributing to Open Wearables! This project aims to provide a unified API for health and wearable data aggregation.
+Gracias por tu interés en contribuir a Open Wearables. Este proyecto busca ofrecer una API unificada para la agregación de datos de salud y wearables.
 
-Before jumping into a PR:
-- Check [Discord](https://discord.gg/qrcfFnNE6H) to confirm no one else is working on the same feature and to validate your approach aligns with the project roadmap
-- Search [existing PRs](https://github.com/the-momentum/open-wearables/pulls) and [issues](https://github.com/the-momentum/open-wearables/issues) for related submissions to avoid duplicating work
+Antes de abrir un PR:
+- Revisa [Discord](https://discord.gg/qrcfFnNE6H) para confirmar que nadie más esté trabajando en la misma funcionalidad y validar que tu enfoque esté alineado con la hoja de ruta del proyecto
+- Busca [PRs existentes](https://github.com/the-momentum/open-wearables/pulls) e [issues](https://github.com/the-momentum/open-wearables/issues) relacionados para evitar trabajo duplicado
 
-## Development
+## Desarrollo
 
-- [Setting Up Your Environment](./contributing/developing.md)
-- [Testing](./contributing/testing.md)
-- [Code Style & Linting](./contributing/linting.md)
+- [Configurar tu entorno](./contributing/developing.md)
+- [Pruebas](./contributing/testing.md)
+- [Estilo de código y linting](./contributing/linting.md)
 
-## Contributing
+## Cómo contribuir
 
-- [Reporting Issues](./contributing/issues.md)
-- [Pull Request Guidelines](./contributing/pull-requests.md)
+- [Reportar issues](./contributing/issues.md)
+- [Guía de pull requests](./contributing/pull-requests.md)
 
-## Extending
+## Extender la plataforma
 
-- [Adding a New Provider](./docs/dev-guides/how-to-add-new-provider.mdx)
+- [Agregar un nuevo proveedor](./docs/dev-guides/how-to-add-new-provider.mdx)

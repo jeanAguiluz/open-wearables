@@ -14,10 +14,10 @@ export function DashboardErrorState({
     <div className={cn('p-8', className)}>
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
         <p className="text-zinc-400 mb-4">
-          Failed to load dashboard data. Please try again.
+          No se pudieron cargar los datos del panel. Inténtalo de nuevo.
         </p>
         <Button variant="outline" onClick={onRetry}>
-          Retry
+          Reintentar
         </Button>
       </div>
     </div>

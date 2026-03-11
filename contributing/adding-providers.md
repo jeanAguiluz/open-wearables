@@ -1,32 +1,32 @@
-# Adding a New Provider
+# Agregar un Nuevo Proveedor
 
-This guide covers how to add support for a new wearable device provider to Open Wearables.
+Esta guía explica cómo añadir soporte para un nuevo proveedor de dispositivos wearables en Open Wearables.
 
-## Overview
+## Resumen
 
-Open Wearables uses a provider strategy pattern to support multiple wearable device integrations. Each provider implements OAuth authentication and data fetching for their specific API.
+Open Wearables usa un patrón de estrategia de proveedores para soportar múltiples integraciones de wearables. Cada proveedor implementa autenticación OAuth y obtención de datos para su API específica.
 
-## Comprehensive Guide
+## Guía Completa
 
-For detailed, step-by-step instructions on adding a new provider, see the comprehensive guide:
+Si necesitas instrucciones detalladas paso a paso para agregar un nuevo proveedor, revisa la guía completa:
 
-**[How to Add a New Provider](../docs/dev-guides/how-to-add-new-provider.mdx)**
+**[Cómo Agregar un Nuevo Proveedor](../docs/dev-guides/how-to-add-new-provider.mdx)**
 
-This guide covers:
+Esta guía cubre:
 
-- Creating provider configuration
-- Implementing OAuth flow
-- Building data transformers
-- Adding API routes
-- Database migrations
-- Testing your integration
-- Frontend integration
+- Creación de la configuración del proveedor
+- Implementación del flujo OAuth
+- Construcción de transformadores de datos
+- Adición de rutas API
+- Migraciones de base de datos
+- Pruebas de la integración
+- Integración del frontend
 
-## Quick Reference
+## Referencia Rápida
 
-### Key Files to Create
+### Archivos Clave que Debes Crear
 
-For a new provider (e.g., "strava"):
+Para un nuevo proveedor, por ejemplo `strava`:
 
 ```
 backend/app/services/providers/strava/
@@ -34,37 +34,37 @@ backend/app/services/providers/strava/
 ├── strategy.py           # StravaStrategy(BaseProviderStrategy)
 ├── oauth.py              # StravaOAuth(BaseOAuthTemplate)
 ├── workouts.py           # StravaWorkouts(BaseWorkoutsTemplate)
-└── data_247.py           # Optional: Strava247Data(Base247DataTemplate)
+└── data_247.py           # Opcional: Strava247Data(Base247DataTemplate)
 ```
 
-Additional files:
+Archivos adicionales:
 ```
-backend/app/constants/workout_types/strava.py   # Workout type mappings
-backend/app/static/provider-icons/strava.svg    # Provider icon
-```
-
-Files to modify:
-```
-backend/app/services/providers/factory.py       # Register in ProviderFactory
-backend/app/schemas/oauth.py                    # Add to ProviderName enum
-backend/app/config.py                           # Add OAuth credentials
+backend/app/constants/workout_types/strava.py   # Mapeos de tipos de entrenamiento
+backend/app/static/provider-icons/strava.svg    # Ícono del proveedor
 ```
 
-### Existing Providers for Reference
+Archivos que debes modificar:
+```
+backend/app/services/providers/factory.py       # Registrar en ProviderFactory
+backend/app/schemas/oauth.py                    # Agregar en ProviderName enum
+backend/app/config.py                           # Agregar credenciales OAuth
+```
 
-| Provider | OAuth | Workouts | 247 Data | Pattern |
-|----------|-------|----------|----------|---------|
-| Garmin | Yes (PKCE) | Yes | No | PULL + PUSH |
-| Polar | Yes | Yes | No | PULL |
-| Suunto | Yes | Yes | Yes | PULL |
-| Whoop | Yes | No | Yes | PULL |
-| Apple | No | Yes | No | PUSH only |
+### Proveedores Existentes como Referencia
 
-Study existing implementations in `backend/app/services/providers/` before starting.
+| Proveedor | OAuth | Entrenamientos | Datos 24/7 | Patrón |
+|-----------|-------|----------------|------------|---------|
+| Garmin | Sí (PKCE) | Sí | No | PULL + PUSH |
+| Polar | Sí | Sí | No | PULL |
+| Suunto | Sí | Sí | Sí | PULL |
+| Whoop | Sí | No | Sí | PULL |
+| Apple | No | Sí | No | Solo PUSH |
 
-## Getting Started
+Antes de empezar, estudia las implementaciones existentes en `backend/app/services/providers/`.
 
-1. Read the [comprehensive guide](../docs/dev-guides/how-to-add-new-provider.mdx)
-2. Study existing providers in `backend/app/services/providers/`
-3. Open an issue to discuss your integration approach
-4. Submit a PR with your implementation
+## Primeros Pasos
+
+1. Lee la [guía completa](../docs/dev-guides/how-to-add-new-provider.mdx)
+2. Revisa los proveedores ya existentes en `backend/app/services/providers/`
+3. Abre un issue para conversar tu enfoque de integración
+4. Envía un PR con tu implementación

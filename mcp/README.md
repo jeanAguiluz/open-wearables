@@ -1,74 +1,51 @@
-# Open Wearables MCP Server
+# Servidor MCP de Open Wearables
 
-MCP (Model Context Protocol) server for Open Wearables, enabling AI assistants like Claude Desktop and Cursor to query wearable health data through natural language.
+Servidor MCP (Model Context Protocol) para Open Wearables, que permite a asistentes de IA como Claude Desktop y Cursor consultar datos de salud de wearables mediante lenguaje natural.
 
-## Features
+## Funcionalidades
 
-- **get_users**: Discover users accessible via your API key
-- **get_activity_summary**: Get daily activity data (steps, calories, heart rate, intensity minutes)
-- **get_sleep_summary**: Get sleep data for a user within a date range
-- **get_workout_events**: Get workout/exercise sessions for a user within a date range
+- **get_users**: descubre los usuarios accesibles con tu API key
+- **get_activity_summary**: obtiene datos diarios de actividad, como pasos, calorías, frecuencia cardiaca y minutos de intensidad
+- **get_sleep_summary**: obtiene datos de sueño de un usuario dentro de un rango de fechas
+- **get_workout_events**: obtiene sesiones de entrenamiento o ejercicio de un usuario dentro de un rango de fechas
 
-## Prerequisites
+## Requisitos Previos
 
-- [uv](https://docs.astral.sh/uv/) package manager
-- Running Open Wearables backend (or access to a deployed instance)
-- Valid Open Wearables API key
+- Administrador de paquetes [uv](https://docs.astral.sh/uv/)
+- Backend de Open Wearables en ejecución, o acceso a una instancia desplegada
+- API key válida de Open Wearables
 
-## Quick Start
+## Inicio Rápido
 
-### 1. Install dependencies
+### 1. Instala las dependencias
 
 ```bash
 cd mcp
 uv sync --group code-quality
 ```
 
-### 2. Configure environment
+### 2. Configura el entorno
 
 ```bash
 cp config/.env.example config/.env
 ```
 
-Edit `config/.env` with your settings:
+Edita `config/.env` con tus valores:
 
 ```bash
 OPEN_WEARABLES_API_URL=http://localhost:8000
 OPEN_WEARABLES_API_KEY=ow_your_api_key_here
 ```
 
-### 3. Test the server
+### 3. Prueba el servidor
 
 ```bash
 uv run start
 ```
 
-## Claude Desktop Configuration
+## Configuración de Claude Desktop
 
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "open-wearables": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--frozen",
-        "--directory",
-        "/path/to/open-wearables/mcp",
-        "start"
-      ]
-    }
-  }
-}
-```
-
-Replace `/path/to/open-wearables/mcp` with the actual path to this directory.
-
-## Cursor Configuration
-
-Add to Cursor MCP settings:
+Agrega esto a `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ```json
 {
@@ -87,52 +64,75 @@ Add to Cursor MCP settings:
 }
 ```
 
-## Example Interactions
+Reemplaza `/path/to/open-wearables/mcp` con la ruta real de este directorio.
 
-### Discovering users
+## Configuración de Cursor
+
+Agrega esto en la configuración MCP de Cursor:
+
+```json
+{
+  "mcpServers": {
+    "open-wearables": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--frozen",
+        "--directory",
+        "/path/to/open-wearables/mcp",
+        "start"
+      ]
+    }
+  }
+}
+```
+
+## Ejemplos de Interacción
+
+### Descubrir usuarios
 
 ```
-User: "Who can I query health data for?"
+User: "¿De quién puedo consultar datos de salud?"
 Claude: [calls get_users()]
-Claude: "I found 2 users: John Doe and Jane Smith."
+Claude: "Encontré 2 usuarios: John Doe y Jane Smith."
 ```
 
-### Querying sleep data
+### Consultar datos de sueño
 
 ```
-User: "How much sleep did John get last week?"
+User: "¿Cuánto durmió John la semana pasada?"
 Claude: [calls get_users() to get John's user_id]
 Claude: [calls get_sleep_summary(user_id="uuid-1", start_date="2026-01-28", end_date="2026-02-04")]
-Claude: "John slept an average of 7 hours and 45 minutes over the last week.
-His longest sleep was 8h 15m on Monday, and shortest was 6h 30m on Thursday."
+Claude: "John durmió un promedio de 7 horas y 45 minutos durante la última semana.
+Su sueño más largo fue de 8 h 15 min el lunes, y el más corto fue de 6 h 30 min el jueves."
 ```
 
-### Generic request (no time range specified)
+### Solicitud genérica (sin rango de tiempo)
 
 ```
-User: "Fetch workouts for John"
+User: "Busca los entrenamientos de John"
 Claude: [calls get_users() to get John's user_id]
 Claude: [defaults to last 2 weeks: calls get_workout_events(user_id="uuid-1", start_date="2026-01-21", end_date="2026-02-04")]
-Claude: "Over the last 2 weeks, John completed 8 workouts..."
+Claude: "Durante las últimas 2 semanas, John completó 8 entrenamientos..."
 ```
 
-### Specifying time range
+### Especificar un rango de tiempo
 
 ```
-User: "Show me Jane's sleep for January 2026"
+User: "Muéstrame el sueño de Jane de enero de 2026"
 Claude: [calls get_sleep_summary(user_id="uuid-2", start_date="2026-01-01", end_date="2026-01-31")]
 ```
 
-## Available Tools
+## Herramientas Disponibles
 
 ### get_users
 
-Get all users accessible via the configured API key.
+Obtén todos los usuarios accesibles con la API key configurada.
 
-**Parameters:**
-- `search` (optional): Filter users by name or email
+**Parámetros:**
+- `search` (opcional): filtra usuarios por nombre o correo
 
-**Returns:**
+**Devuelve:**
 ```json
 {
   "users": [
@@ -144,14 +144,14 @@ Get all users accessible via the configured API key.
 
 ### get_sleep_summary
 
-Get sleep summaries for a user within a date range.
+Obtén resúmenes de sueño de un usuario dentro de un rango de fechas.
 
-**Parameters:**
-- `user_id` (required): UUID of the user
-- `start_date` (required): Start date in YYYY-MM-DD format
-- `end_date` (required): End date in YYYY-MM-DD format
+**Parámetros:**
+- `user_id` (obligatorio): UUID del usuario
+- `start_date` (obligatorio): fecha de inicio en formato YYYY-MM-DD
+- `end_date` (obligatorio): fecha de término en formato YYYY-MM-DD
 
-**Returns:**
+**Devuelve:**
 ```json
 {
   "user": {"id": "uuid-1", "first_name": "John", "last_name": "Doe"},
@@ -177,86 +177,84 @@ Get sleep summaries for a user within a date range.
 }
 ```
 
-## Architecture
+## Arquitectura
 
 ```
 mcp/
 ├── app/
-│   ├── main.py           # FastMCP entry point
-│   ├── config.py         # Settings (API URL, API key)
+│   ├── main.py           # Punto de entrada de FastMCP
+│   ├── config.py         # Configuración (URL API, API key)
 │   ├── tools/
-│   │   ├── users.py      # get_users tool
-│   │   ├── activity.py   # get_activity_summary tool
-│   │   ├── sleep.py      # get_sleep_summary tool
-│   │   └── workouts.py   # get_workout_events tool
+│   │   ├── users.py      # Herramienta get_users
+│   │   ├── activity.py   # Herramienta get_activity_summary
+│   │   ├── sleep.py      # Herramienta get_sleep_summary
+│   │   └── workouts.py   # Herramienta get_workout_events
 │   └── services/
-│       └── api_client.py # HTTP client for backend API
+│       └── api_client.py # Cliente HTTP para la API backend
 ├── config/
-│   └── .env.example      # Environment template
+│   └── .env.example      # Plantilla de entorno
 ├── pyproject.toml
 └── README.md
 ```
 
-The MCP server is **decoupled** from the backend - it communicates via REST API using your API key. This means:
-- No shared database access
-- Can be deployed independently
-- Uses existing, tested API endpoints
+El servidor MCP está **desacoplado** del backend: se comunica mediante la API REST usando tu API key. Eso significa:
+- No hay acceso compartido a la base de datos
+- Puede desplegarse de forma independiente
+- Usa endpoints existentes y ya probados
 
-## Development
+## Desarrollo
 
-### Running locally
+### Ejecución local
 
 ```bash
-# Start the backend first (from project root)
+# Primero inicia el backend (desde la raíz del proyecto)
 docker compose up -d
 
-# Then start the MCP server
+# Luego inicia el servidor MCP
 cd mcp
 uv run start
 ```
 
-### Testing with MCPJam
+### Pruebas con MCPJam
 
-[MCPJam](https://www.mcpjam.com/) is a local inspector for testing MCP servers. It provides a UI to explore tools, test calls, and debug responses.
+[MCPJam](https://www.mcpjam.com/) es un inspector local para probar servidores MCP. Proporciona una interfaz para explorar herramientas, probar llamadas y depurar respuestas.
 
 ```bash
 npx @mcpjam/inspector@latest
 ```
 
-Then configure the connection:
-- **Command**: `uv`
-- **Arguments**: `run --frozen --directory /path/to/open-wearables/mcp start`
+Luego configura la conexión:
+- **Comando**: `uv`
+- **Argumentos**: `run --frozen --directory /path/to/open-wearables/mcp start`
 
-### Code quality
+### Calidad de código
 
 ```bash
 uv run pre-commit run --all-files
 ```
 
-## Troubleshooting
+## Solución de Problemas
 
-### "Invalid API key" error
+### Error "API key no válida"
 
-Ensure your `OPEN_WEARABLES_API_KEY` in `config/.env` is valid. You can get an API key from:
-1. The Open Wearables developer portal
-2. Or via the backend admin panel at `/api/v1/developer/api-keys`
+Asegúrate de que `OPEN_WEARABLES_API_KEY` en `config/.env` sea válido. Puedes obtener una API key desde:
+1. El portal de desarrolladores de Open Wearables
+2. O desde el panel de administración del backend en `/api/v1/developer/api-keys`
 
-### "Connection refused" error
+### Error "Conexión rechazada"
 
-Make sure the backend is running at the URL specified in `OPEN_WEARABLES_API_URL`.
+Asegúrate de que el backend esté corriendo en la URL indicada en `OPEN_WEARABLES_API_URL`.
 
-For local development:
+Para desarrollo local:
 ```bash
-# From project root
+# Desde la raíz del proyecto
 docker compose up -d
 ```
 
-### No users found
+### No se encontraron usuarios
 
-The API key determines which users you can see. Ensure:
-1. Users have been created via the API or SDK
-2. Your API key has access to those users
+La API key determina qué usuarios puedes ver. Asegúrate de que:
+1. Los usuarios se hayan creado mediante la API o el SDK
+2. Tu API key tenga acceso a esos usuarios
 
-## License
-
-MIT - See the main project LICENSE file.
+## Licencia

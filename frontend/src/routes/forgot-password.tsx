@@ -67,10 +67,10 @@ function ForgotPasswordPage() {
           {!isSubmitted ? (
             <>
               <h1 className="text-2xl font-medium tracking-tight text-white">
-                Reset Password
+                Restablecer contraseña
               </h1>
               <p className="text-sm text-zinc-500 mt-2">
-                Enter your email and we'll send you a reset link
+                Ingresa tu correo y te enviaremos un enlace para restablecerla
               </p>
             </>
           ) : (
@@ -79,15 +79,15 @@ function ForgotPasswordPage() {
                 <CheckCircle className="w-8 h-8 text-emerald-400" />
               </div>
               <h2 className="text-xl font-medium text-white mb-2">
-                Check Your Email
+                Revisa tu correo
               </h2>
               <p className="text-sm text-zinc-500">
-                If an account exists with that email, we've sent password reset
-                instructions.
+                Si existe una cuenta con ese correo, enviamos instrucciones
+                para restablecer la contraseña.
               </p>
               <div className="flex items-center justify-center gap-2 text-zinc-600 text-xs mt-4">
                 <Mail className="w-4 h-4" />
-                <span>Check your inbox and spam folder</span>
+                <span>Revisa tu bandeja de entrada y la carpeta de spam</span>
               </div>
             </div>
           )}
@@ -99,7 +99,7 @@ function ForgotPasswordPage() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-1.5">
                 <Label htmlFor="email" className="text-xs text-zinc-300">
-                  Email address
+                  Correo electrónico
                 </Label>
                 <div className="relative group">
                   <Input
@@ -107,7 +107,7 @@ function ForgotPasswordPage() {
                     id="email"
                     {...form.register('email')}
                     className="bg-zinc-900/50 border-zinc-800 pr-10"
-                    placeholder="you@example.com"
+                    placeholder="tu@ejemplo.com"
                   />
                   <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none opacity-0 group-focus-within:opacity-100 transition-opacity">
                     <Mail className="w-4 h-4 text-zinc-500" />
@@ -128,10 +128,10 @@ function ForgotPasswordPage() {
                 {isForgotPasswordPending ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending...
+                    Enviando...
                   </>
                 ) : (
-                  'Send Reset Link'
+                  'Enviar enlace de restablecimiento'
                 )}
               </Button>
             </form>
@@ -145,7 +145,7 @@ function ForgotPasswordPage() {
             className="flex items-center justify-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to sign in
+            Volver a iniciar sesión
           </Link>
         </div>
       </div>

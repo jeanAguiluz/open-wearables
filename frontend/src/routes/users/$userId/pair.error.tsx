@@ -27,7 +27,7 @@ function PairErrorPage() {
     : null;
 
   const errorMessage =
-    error || 'Something went wrong while connecting your device.';
+    error || 'Ocurrió un problema al conectar tu dispositivo.';
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-200 flex flex-col items-center justify-center p-6 relative overflow-hidden selection:bg-red-500/20">
@@ -57,7 +57,7 @@ function PairErrorPage() {
           className="text-center space-y-3 mb-10"
         >
           <h1 className="text-3xl font-medium text-white tracking-tight">
-            Connection failed
+            No se pudo completar la conexión
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed">
             {errorMessage}
@@ -80,7 +80,7 @@ function PairErrorPage() {
                       ? `${API_CONFIG.baseUrl}${provider.icon_url}`
                       : ''
                   }
-                  alt={`${provider.name} logo`}
+                  alt={`Logo de ${provider.name}`}
                   className="w-8 h-8 object-contain"
                 />
               </div>
@@ -92,7 +92,7 @@ function PairErrorPage() {
                   <span className="relative flex h-2 w-2">
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
                   </span>
-                  <span className="text-sm text-zinc-500">Failed</span>
+                  <span className="text-sm text-zinc-500">Falló</span>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@ function PairErrorPage() {
             className="w-full py-3.5 px-4 bg-white hover:bg-zinc-200 text-zinc-950 text-base font-medium rounded-xl transition-all duration-200 focus:ring-2 focus:ring-white/20 outline-none flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-4 h-4 stroke-[1.5]" />
-            Try again
+            Intentar de nuevo
           </a>
 
           {redirectUrl && (
@@ -119,7 +119,7 @@ function PairErrorPage() {
               href={redirectUrl}
               className="w-full py-3.5 px-4 bg-transparent border border-white/5 hover:bg-white/5 text-zinc-400 hover:text-white text-base font-medium rounded-xl transition-all duration-200 outline-none flex items-center justify-center gap-2"
             >
-              Back to the app
+              Volver a la app
               <ExternalLink className="w-4 h-4 stroke-[1.5]" />
             </a>
           )}

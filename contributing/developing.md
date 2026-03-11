@@ -1,105 +1,105 @@
-# Setting Up Your Development Environment
+# Configurar tu Entorno de Desarrollo
 
-This guide covers setting up your local development environment for Open Wearables.
+Esta guía explica cómo preparar tu entorno local de desarrollo para Open Wearables.
 
-## Prerequisites
+## Requisitos Previos
 
-- **Docker** (recommended) - [Install Docker](https://docs.docker.com/get-docker/)
-- **uv** - Python package manager ([Install uv](https://docs.astral.sh/uv/)) - manages Python automatically
-- **pnpm** - Node.js package manager ([Install pnpm](https://pnpm.io/installation))
+- **Docker** (recomendado) - [Instalar Docker](https://docs.docker.com/get-docker/)
+- **uv** - Gestor de paquetes de Python ([Instalar uv](https://docs.astral.sh/uv/)) - administra Python automáticamente
+- **pnpm** - Gestor de paquetes de Node.js ([Instalar pnpm](https://pnpm.io/installation))
 
-For local frontend development without Docker, you'll also need:
-- **Node.js 22+** - For frontend development
+Para desarrollo local del frontend sin Docker, también necesitarás:
+- **Node.js 22+** - Para desarrollo frontend
 
-## Quick Start with Docker (Recommended)
+## Inicio Rápido con Docker (Recomendado)
 
-The easiest way to get started is using Docker Compose:
+La forma más sencilla de comenzar es usando Docker Compose:
 
 ```bash
-# Clone the repository
+# Clonar el repositorio
 git clone https://github.com/the-momentum/open-wearables.git
 cd open-wearables
 
-# Start all services with hot-reload (recommended for development)
+# Iniciar todos los servicios con hot reload (recomendado para desarrollo)
 make watch
 
-# Admin account is auto-created on startup (admin@admin.com / your-secure-password)
-# Seed sample test data (optional)
+# La cuenta de administrador se crea automáticamente al iniciar (admin@admin.com / your-secure-password)
+# Cargar datos de prueba de ejemplo (opcional)
 make seed
 ```
 
-## Access Points
+## Puntos de Acceso
 
-Once running, you can access:
+Una vez en ejecución, podrás acceder a:
 
-| Service | URL |
+| Servicio | URL |
 |---------|-----|
 | Frontend | http://localhost:3000 |
 | API | http://localhost:8000 |
-| API Documentation | http://localhost:8000/docs |
+| Documentación de la API | http://localhost:8000/docs |
 | Celery Flower | http://localhost:5555 |
 
-## Makefile Commands
+## Comandos del Makefile
 
-| Command | Description |
+| Comando | Descripción |
 |---------|-------------|
-| `make build` | Build Docker images |
-| `make run` | Start in detached mode |
-| `make up` | Start in foreground |
-| `make watch` | Start with hot-reload (recommended for development) |
-| `make stop` | Stop containers |
-| `make down` | Remove containers |
-| `make test` | Run backend tests |
-| `make migrate` | Apply database migrations |
-| `make create_migration m="..."` | Create new migration |
-| `make seed` | Seed sample data |
+| `make build` | Construye las imágenes de Docker |
+| `make run` | Inicia en modo desacoplado |
+| `make up` | Inicia en primer plano |
+| `make watch` | Inicia con hot reload (recomendado para desarrollo) |
+| `make stop` | Detiene los contenedores |
+| `make down` | Elimina los contenedores |
+| `make test` | Ejecuta las pruebas del backend |
+| `make migrate` | Aplica migraciones de base de datos |
+| `make create_migration m="..."` | Crea una nueva migración |
+| `make seed` | Carga datos de ejemplo |
 
-## Local Development Without Docker
+## Desarrollo Local sin Docker
 
-### Backend Setup
+### Configuración del Backend
 
 ```bash
 cd backend
 
-# Create virtual environment and install dependencies
+# Crear el entorno virtual e instalar dependencias
 uv sync
 
-# Copy environment file
+# Copiar el archivo de entorno
 cp config/.env.example config/.env
 
-# Run database migrations
+# Ejecutar migraciones de base de datos
 uv run alembic upgrade head
 
-# Start the backend server (with auto-reload)
+# Iniciar el servidor backend (con recarga automática)
 uv run fastapi dev app/main.py --host 0.0.0.0 --port 8000
 ```
 
-### Frontend Setup
+### Configuración del Frontend
 
 ```bash
 cd frontend
 
-# Install dependencies
+# Instalar dependencias
 pnpm install
 
-# Copy environment file
+# Copiar el archivo de entorno
 cp .env.example .env
 
-# Start development server
+# Iniciar el servidor de desarrollo
 pnpm dev
 ```
 
-## Environment Variables
+## Variables de Entorno
 
-Copy the example environment files and configure as needed:
+Copia los archivos de entorno de ejemplo y configúralos según sea necesario:
 
 - Backend: `backend/config/.env.example` -> `backend/config/.env`
 - Frontend: `frontend/.env.example` -> `frontend/.env`
 
-## Development Patterns
+## Patrones de Desarrollo
 
-For detailed code patterns and architecture guidelines, see:
+Para ver patrones de código y lineamientos de arquitectura con más detalle, revisa:
 
-- [Root AGENTS.md](../AGENTS.md) - General workflow and guidelines
-- [Backend AGENTS.md](../backend/AGENTS.md) - Python/FastAPI patterns
-- [Frontend AGENTS.md](../frontend/AGENTS.md) - React/TypeScript patterns
+- [AGENTS.md raíz](../AGENTS.md) - Flujo general y lineamientos
+- [AGENTS.md del backend](../backend/AGENTS.md) - Patrones de Python/FastAPI
+- [AGENTS.md del frontend](../frontend/AGENTS.md) - Patrones de React/TypeScript

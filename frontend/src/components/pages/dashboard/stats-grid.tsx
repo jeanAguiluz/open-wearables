@@ -11,26 +11,26 @@ export interface StatsGridProps {
 export function StatsGrid({ stats, className }: StatsGridProps) {
   const statCards = [
     {
-      title: 'Total Users',
+      title: 'Usuarios totales',
       value: stats.total_users.count,
       suffix: '',
-      description: 'Registered users',
+      description: 'Usuarios registrados',
       icon: Users,
       growth: stats.total_users.weekly_growth,
     },
     {
-      title: 'Active Connections',
+      title: 'Conexiones activas',
       value: stats.active_conn.count,
       suffix: '',
-      description: 'Connected wearables',
+      description: 'Wearables conectados',
       icon: Activity,
       growth: stats.active_conn.weekly_growth,
     },
     {
-      title: 'Data Points',
+      title: 'Puntos de datos',
       value: stats.data_points.count / 1000,
       suffix: 'K',
-      description: 'Health data collected',
+      description: 'Datos de salud recopilados',
       icon: Database,
       decimalPlaces: 1,
       growth: stats.data_points.weekly_growth,

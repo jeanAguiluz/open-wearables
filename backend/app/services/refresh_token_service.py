@@ -98,7 +98,7 @@ class RefreshTokenService:
         if not token:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid or revoked refresh token",
+                detail="Refresh token inválido o revocado",
                 headers={"WWW-Authenticate": "Bearer"},
             )
 
@@ -127,7 +127,7 @@ class RefreshTokenService:
         else:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Unknown token type: {token.token_type}",
+                detail=f"Tipo de token desconocido: {token.token_type}",
             )
 
         return TokenResponse(
@@ -154,7 +154,7 @@ class RefreshTokenService:
         if not token:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail="Refresh token not found",
+                detail="Refresh token no encontrado",
             )
 
         self.repo.revoke_token(db_session, token)

@@ -104,13 +104,13 @@ function UserDetailPage() {
     () => [
       {
         id: 'profile',
-        label: 'Profile',
+        label: 'Perfil',
         icon: User,
         content: <ProfileSection userId={userId} />,
       },
       {
         id: 'workouts',
-        label: 'Workouts',
+        label: 'Entrenamientos',
         icon: Dumbbell,
         content: (
           <WorkoutSection
@@ -122,7 +122,7 @@ function UserDetailPage() {
       },
       {
         id: 'activity',
-        label: 'Activity',
+        label: 'Actividad',
         icon: Activity,
         content: (
           <ActivitySection
@@ -134,7 +134,7 @@ function UserDetailPage() {
       },
       {
         id: 'sleep',
-        label: 'Sleep',
+        label: 'Sueño',
         icon: Moon,
         content: (
           <SleepSection
@@ -146,7 +146,7 @@ function UserDetailPage() {
       },
       {
         id: 'body',
-        label: 'Body',
+        label: 'Cuerpo',
         icon: Scale,
         content: <BodySection userId={userId} />,
       },
@@ -158,7 +158,7 @@ function UserDetailPage() {
     const pairLink = `${window.location.origin}/users/${userId}/pair`;
     const success = await copyToClipboard(
       pairLink,
-      'Pairing link copied to clipboard'
+      'Enlace de vinculación copiado al portapapeles'
     );
     if (success) {
       setCopied(true);
@@ -189,7 +189,7 @@ function UserDetailPage() {
   const handleCopyCode = async () => {
     const success = await copyToClipboard(
       invitationCodeData?.code || '',
-      'Invitation code copied to clipboard'
+      'Código de invitación copiado al portapapeles'
     );
     if (success) {
       setCodeCopied(true);
@@ -200,11 +200,11 @@ function UserDetailPage() {
     return (
       <div className="p-8">
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-12 text-center">
-          <p className="text-zinc-400">User not found</p>
+          <p className="text-zinc-400">Usuario no encontrado</p>
           <Button variant="outline" className="mt-4" asChild>
             <Link to={ROUTES.users}>
               <ArrowLeft className="h-4 w-4" />
-              Back to Users
+              Volver a usuarios
             </Link>
           </Button>
         </div>
@@ -233,10 +233,10 @@ function UserDetailPage() {
               <h1 className="text-2xl font-medium text-white">
                 {user?.first_name || user?.last_name
                   ? `${user?.first_name || ''} ${user?.last_name || ''}`.trim()
-                  : 'Unnamed User'}
+                  : 'Usuario sin nombre'}
               </h1>
               <p className="text-sm text-zinc-500">
-                {user?.email || 'No email'}
+                {user?.email || 'Sin correo'}
               </p>
             </div>
           )}
@@ -250,12 +250,12 @@ function UserDetailPage() {
             {isUploading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Uploading...
+                Subiendo...
               </>
             ) : (
               <>
                 <Upload className="h-4 w-4" />
-                Upload Apple Health XML
+                Subir XML de Apple Health
               </>
             )}
           </Button>
@@ -270,12 +270,12 @@ function UserDetailPage() {
             {copied ? (
               <>
                 <Check className="h-4 w-4 text-emerald-600" />
-                Copied!
+                Copiado
               </>
             ) : (
               <>
                 <LinkIcon className="h-4 w-4" />
-                Copy Pairing Link
+                Copiar enlace de vinculación
               </>
             )}
           </Button>
@@ -289,39 +289,40 @@ function UserDetailPage() {
                 {isGeneratingCode ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Generating...
+                    Generando...
                   </>
                 ) : (
                   <>
                     <Smartphone className="h-4 w-4" />
-                    Connect Mobile App
+                    Conectar app móvil
                   </>
                 )}
               </Button>
             </TooltipTrigger>
             <TooltipContent side="bottom">
-              Generate a one-time code to connect the Open Wearables iOS app
+              Genera un código de un solo uso para conectar la app iOS de Open Wearables
             </TooltipContent>
           </Tooltip>
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="destructive" disabled={isDeleting}>
                 <Trash2 className="h-4 w-4" />
-                {isDeleting ? 'Deleting...' : 'Delete User'}
+                {isDeleting ? 'Eliminando...' : 'Eliminar usuario'}
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Delete User</AlertDialogTitle>
+                <AlertDialogTitle>Eliminar usuario</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to delete this user? This action cannot
-                  be undone and will permanently remove all associated data.
+                  ¿Seguro que quieres eliminar a este usuario? Esta acción no
+                  se puede deshacer y eliminará permanentemente todos los datos
+                  asociados.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction onClick={handleDelete}>
-                  Delete
+                  Eliminar
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -350,17 +351,17 @@ function UserDetailPage() {
       <Dialog open={isCodeDialogOpen} onOpenChange={setIsCodeDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Connect Mobile App</DialogTitle>
+            <DialogTitle>Conectar app móvil</DialogTitle>
             <DialogDescription>
-              Enter these details in the Open Wearables iOS app to connect it to
-              this user's account. The invitation code is single-use and will
-              expire.
+              Ingresa estos datos en la app iOS de Open Wearables para
+              conectarla con la cuenta de este usuario. El código de invitación
+              es de un solo uso y vencerá.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="api-url" className="text-zinc-300">
-                API URL
+                URL de la API
               </Label>
               <div className="flex items-center gap-2">
                 <Input
@@ -373,7 +374,7 @@ function UserDetailPage() {
                   onClick={async () => {
                     const success = await copyToClipboard(
                       API_CONFIG.baseUrl,
-                      'API URL copied to clipboard'
+                      'URL de la API copiada al portapapeles'
                     );
                     if (success) {
                       setUrlCopied(true);
@@ -383,7 +384,7 @@ function UserDetailPage() {
                   variant="outline"
                   size="icon"
                   className="shrink-0"
-                  aria-label="Copy API URL"
+                  aria-label="Copiar URL de la API"
                 >
                   {urlCopied ? (
                     <Check className="h-4 w-4 text-emerald-500" />
@@ -395,7 +396,7 @@ function UserDetailPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="invitation-code" className="text-zinc-300">
-                Invitation Code
+                Código de invitación
               </Label>
               <div className="flex items-center gap-2">
                 <Input
@@ -409,7 +410,7 @@ function UserDetailPage() {
                   variant="outline"
                   size="icon"
                   className="shrink-0"
-                  aria-label="Copy invitation code"
+                  aria-label="Copiar código de invitación"
                 >
                   {codeCopied ? (
                     <Check className="h-4 w-4 text-emerald-500" />
@@ -420,8 +421,8 @@ function UserDetailPage() {
               </div>
               {invitationCodeData?.expires_at && (
                 <p className="text-xs text-zinc-500">
-                  Expires:{' '}
-                  {new Date(invitationCodeData.expires_at).toLocaleString()}
+                  Expira:{' '}
+                  {new Date(invitationCodeData.expires_at).toLocaleString('es-CL')}
                 </p>
               )}
             </div>

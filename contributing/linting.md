@@ -1,135 +1,135 @@
-# Code Style & Linting
+# Estilo de Código y Linting
 
-This guide covers code formatting and linting for Open Wearables.
+Esta guía explica el formateo de código y el linting en Open Wearables.
 
-## Quick Start
+## Inicio Rápido
 
-The project uses **pre-commit hooks** to run all checks automatically. This is the recommended way to ensure your code passes all checks:
+El proyecto usa **pre-commit hooks** para ejecutar todas las verificaciones automáticamente. Esta es la forma recomendada de asegurar que tu código pase todos los checks:
 
 ```bash
-# Run all checks (from project root)
+# Ejecutar todos los checks (desde la raíz del proyecto)
 uv run pre-commit run --all-files
 ```
 
-This runs:
-- Ruff linter with auto-fix
-- Ruff formatter
-- ty type checker
-- Trailing whitespace removal
-- End-of-file fixer
+Esto ejecuta:
+- Linter Ruff con auto-fix
+- Formateador Ruff
+- Verificador de tipos ty
+- Eliminación de espacios en blanco al final de línea
+- Corrección de fin de archivo
 
 ## Backend (Python)
 
-We use **Ruff** for linting and formatting, and **ty** for type checking.
+Usamos **Ruff** para linting y formateo, y **ty** para type checking.
 
-### Individual Commands
+### Comandos Individuales
 
-If you need to run checks individually:
+Si necesitas ejecutar los checks por separado:
 
 ```bash
 cd backend
 
-# Check for linting errors
+# Revisar errores de linting
 uv run ruff check .
 
-# Fix linting errors automatically
+# Corregir errores de linting automáticamente
 uv run ruff check . --fix
 
-# Check formatting
+# Revisar formato
 uv run ruff format --check .
 
-# Apply formatting
+# Aplicar formato
 uv run ruff format .
 
-# Type checking
+# Verificación de tipos
 uv run ty check .
 ```
 
-### Style Guidelines
+### Guías de Estilo
 
-- **Line length**: 120 characters
-- **Type hints**: Required on all function parameters and return types
-- **Imports**: Sorted automatically by Ruff
+- **Longitud de línea**: 120 caracteres
+- **Type hints**: Requeridos en todos los parámetros y tipos de retorno
+- **Imports**: Ordenados automáticamente por Ruff
 
 ## Frontend (TypeScript/React)
 
-We use **oxlint** for linting and **Prettier** for formatting.
+Usamos **oxlint** para linting y **Prettier** para formateo.
 
-### Commands
+### Comandos
 
 ```bash
 cd frontend
 
-# Check for linting errors
+# Revisar errores de linting
 pnpm lint
 
-# Fix linting errors
+# Corregir errores de linting
 pnpm lint:fix
 
-# Check formatting
+# Revisar formato
 pnpm format:check
 
-# Apply formatting
+# Aplicar formato
 pnpm format
 ```
 
-### Style Guidelines
+### Guías de Estilo
 
-- **Line length**: 80 characters
-- **Quotes**: Single quotes
-- **Semicolons**: Required
-- **TypeScript**: Strict mode enabled
+- **Longitud de línea**: 80 caracteres
+- **Comillas**: Simples
+- **Punto y coma**: Obligatorio
+- **TypeScript**: Modo estricto habilitado
 
-### Before Submitting a PR
+### Antes de Enviar un PR
 
-Run all checks:
+Ejecuta todos los checks:
 
 ```bash
 cd frontend
 pnpm lint:fix && pnpm format
 ```
 
-## CI Checks
+## Checks de CI
 
-The CI pipeline runs these checks automatically:
+El pipeline de CI ejecuta estos checks automáticamente:
 
 **Backend:**
 - `uv run ruff check` - Linting
-- `uv run ruff format --check` - Formatting
-- `uv run ty check` - Type checking
+- `uv run ruff format --check` - Formato
+- `uv run ty check` - Verificación de tipos
 
 **Frontend:**
 - `pnpm run lint` - Linting
-- `pnpm run format:check` - Formatting
-- `pnpm run build` - Build verification
+- `pnpm run format:check` - Formato
+- `pnpm run build` - Verificación del build
 
-All checks must pass before a PR can be merged.
+Todos los checks deben pasar antes de que un PR pueda fusionarse.
 
-## Editor Setup
+## Configuración del Editor
 
 ### VS Code
 
-Recommended extensions:
-- **Python**: Ruff extension for auto-formatting
-- **TypeScript**: Prettier extension with format-on-save
+Extensiones recomendadas:
+- **Python**: Extensión de Ruff para autoformato
+- **TypeScript**: Extensión de Prettier con formateo al guardar
 
 ### Pre-commit Hooks
 
-The project uses pre-commit hooks to run checks automatically before each commit:
+El proyecto usa pre-commit hooks para ejecutar checks automáticamente antes de cada commit:
 
 ```bash
-# Install pre-commit hooks (first time only, from project root)
+# Instalar hooks de pre-commit (solo la primera vez, desde la raíz del proyecto)
 uv sync --group code-quality
 uv run pre-commit install
 
-# Run all checks manually
+# Ejecutar todos los checks manualmente
 uv run pre-commit run --all-files
 ```
 
-See `.pre-commit-config.yaml` for the full hook configuration.
+Consulta `.pre-commit-config.yaml` para ver la configuración completa de hooks.
 
-## More Information
+## Más Información
 
-For detailed style guidelines, see:
-- [Backend AGENTS.md](../backend/AGENTS.md) - Backend code conventions
-- [Frontend AGENTS.md](../frontend/AGENTS.md) - Frontend code conventions
+Para ver guías de estilo más detalladas, revisa:
+- [AGENTS.md del backend](../backend/AGENTS.md) - Convenciones de código del backend
+- [AGENTS.md del frontend](../frontend/AGENTS.md) - Convenciones de código del frontend

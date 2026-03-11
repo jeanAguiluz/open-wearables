@@ -51,7 +51,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
   const handleCopyUserId = async () => {
     const success = await copyToClipboard(
       userId,
-      'User ID copied to clipboard'
+      'ID de usuario copiado al portapapeles'
     );
     if (success) {
       setCopiedUserId(true);
@@ -63,7 +63,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
     const pairLink = `${window.location.origin}/users/${userId}/pair`;
     const success = await copyToClipboard(
       pairLink,
-      'Pairing link copied to clipboard'
+      'Enlace de vinculación copiado al portapapeles'
     );
     if (success) {
       setCopied(true);
@@ -96,7 +96,9 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
         {/* User Information */}
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
           <div className="px-6 py-4 border-b border-zinc-800 flex items-center justify-between">
-            <h2 className="text-sm font-medium text-white">User Information</h2>
+            <h2 className="text-sm font-medium text-white">
+              Información del usuario
+            </h2>
             <Button
               variant="outline"
               size="sm"
@@ -104,7 +106,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
               className="text-zinc-400 hover:text-white"
             >
               <Pencil className="h-3.5 w-3.5" />
-              Edit
+              Editar
             </Button>
           </div>
           <div className="p-6">
@@ -122,7 +124,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div>
-                  <p className="text-xs text-zinc-500 mb-1">User ID</p>
+                  <p className="text-xs text-zinc-500 mb-1">ID de usuario</p>
                   <div className="flex items-center gap-1.5">
                     <code className="font-mono text-sm text-zinc-300 bg-zinc-800 px-2 py-1 rounded">
                       {truncateId(user?.id ?? '')}
@@ -141,17 +143,19 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 mb-1">External User ID</p>
+                  <p className="text-xs text-zinc-500 mb-1">
+                    ID externo de usuario
+                  </p>
                   <code className="font-mono text-sm text-zinc-300 bg-zinc-800 px-2 py-1 rounded">
                     {user?.external_user_id || '—'}
                   </code>
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 mb-1">Email</p>
+                  <p className="text-xs text-zinc-500 mb-1">Correo</p>
                   <p className="text-sm text-zinc-300">{user?.email || '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 mb-1">Created</p>
+                  <p className="text-xs text-zinc-500 mb-1">Creado</p>
                   <p className="text-sm text-zinc-300">
                     {formatDate(user?.created_at)}
                   </p>
@@ -165,10 +169,10 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
           <div className="px-6 py-4 border-b border-zinc-800">
             <h2 className="text-sm font-medium text-white">
-              Connected Providers
+              Proveedores conectados
             </h2>
             <p className="text-xs text-zinc-500 mt-1">
-              Wearable devices and health platforms connected to this user
+              Dispositivos wearables y plataformas de salud conectados a esta persona usuaria
             </p>
           </div>
           <div className="p-6">
@@ -198,17 +202,19 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
               </div>
             ) : (
               <div className="text-center py-8">
-                <p className="text-zinc-500 mb-4">No providers connected yet</p>
+                <p className="text-zinc-500 mb-4">
+                  Aún no hay proveedores conectados
+                </p>
                 <Button variant="outline" onClick={handleCopyPairLink}>
                   {copied ? (
                     <>
                       <Check className="h-4 w-4 text-emerald-500" />
-                      Link Copied!
+                      Enlace copiado
                     </>
                   ) : (
                     <>
                       <LinkIcon className="h-4 w-4" />
-                      Copy Pairing Link
+                      Copiar enlace de vinculación
                     </>
                   )}
                 </Button>
@@ -222,14 +228,16 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Edit User</DialogTitle>
-            <DialogDescription>Update user information</DialogDescription>
+            <DialogTitle>Editar usuario</DialogTitle>
+            <DialogDescription>
+              Actualiza la información del usuario
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="first_name" className="text-zinc-300">
-                  First Name
+                  Nombre
                 </Label>
                 <Input
                   id="first_name"
@@ -243,7 +251,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="last_name" className="text-zinc-300">
-                  Last Name
+                  Apellido
                 </Label>
                 <Input
                   id="last_name"
@@ -258,7 +266,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-zinc-300">
-                Email
+                Correo
               </Label>
               <Input
                 id="email"
@@ -273,7 +281,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="external_user_id" className="text-zinc-300">
-                External User ID
+                ID externo de usuario
               </Label>
               <Input
                 id="external_user_id"
@@ -288,7 +296,7 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
                 className="bg-zinc-800 border-zinc-700"
               />
               <p className="text-xs text-zinc-500">
-                Optional identifier from your system
+                Identificador opcional de tu sistema
               </p>
             </div>
           </div>
@@ -297,10 +305,10 @@ export function ProfileSection({ userId }: ProfileSectionProps) {
               variant="outline"
               onClick={() => setIsEditDialogOpen(false)}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button onClick={handleEditSubmit} disabled={isUpdating}>
-              {isUpdating ? 'Saving...' : 'Save Changes'}
+              {isUpdating ? 'Guardando...' : 'Guardar cambios'}
             </Button>
           </DialogFooter>
         </DialogContent>

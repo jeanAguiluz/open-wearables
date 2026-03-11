@@ -8,10 +8,10 @@ import { toast } from 'sonner';
  */
 export async function copyToClipboard(
   text: string,
-  successMessage = 'Copied to clipboard'
+  successMessage = 'Copiado al portapapeles'
 ): Promise<boolean> {
   if (!navigator.clipboard) {
-    toast.error('Clipboard not supported');
+    toast.error('El portapapeles no es compatible');
     return false;
   }
 
@@ -20,7 +20,7 @@ export async function copyToClipboard(
     toast.success(successMessage);
     return true;
   } catch {
-    toast.error('Failed to copy to clipboard');
+    toast.error('No se pudo copiar al portapapeles');
     return false;
   }
 }
